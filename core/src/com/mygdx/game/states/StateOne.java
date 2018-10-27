@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
@@ -19,6 +20,9 @@ public class StateOne extends State{
 	Rectangle2D targetCanvasBox;
 	ArrayList<GameObject> platforms;
 	float tween = 15f;
+	
+	Sound musicTest;
+	long musicID;
 	
 	public StateOne(StateManager manager) {
 		super(manager);
@@ -35,6 +39,12 @@ public class StateOne extends State{
 				
 		camera.position.set(400 / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
 		platforms = getByClass(Platform.class);
+		
+		resizeBox(new Vector2(800, 350));
+		
+		musicTest = Gdx.audio.newSound(Gdx.files.internal("music/badvibes.wav"));
+		musicID = musicTest.play();
+		musicTest.setLooping(musicID, true);
 	}
 
 	public void render(SpriteBatch sb) {
@@ -58,6 +68,12 @@ public class StateOne extends State{
 		for(GameObject g : platforms) {
 			((Platform)g).resizeBox(oldRect, canvasBox);
 		}
+		
+		float a = (float) ((canvasBox.getHeight() - 100f) / 500f);
+		worldStepFPS = Helper.lerp(30, 100, a);
+		
+		musicTest.setPitch(musicID, Helper.lerp(0.5f, 1.7f, 1-a));
+
 	}
 	
 	public void resizeBox(Vector2 newSize) {

@@ -44,6 +44,8 @@ public abstract class State{
 	ArrayList<Body> forRemoval;
 	boolean pause = false;
 	
+	float worldStepFPS = 60;
+	
 	//Iluminação
 	RayHandler rayHandler;
 	
@@ -227,7 +229,7 @@ public abstract class State{
 				}
 				forRemoval.clear();
 				
-				getWorld().step(1/60f, 6, 2);
+				getWorld().step(1/worldStepFPS, 6, 2);
 			}
 		}
 	}

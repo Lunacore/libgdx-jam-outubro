@@ -22,11 +22,6 @@ public class MyGdxGame extends ApplicationAdapter {
 		manager = new StateManager();
 		manager.create();
 		gifRecorder = new GifRecorder(batch);
-
-		OZMod mod = new OZMod();
-		mod.initOutput();
-		mod.startSoftwareMixer();
-		mod.getXM(Gdx.files.internal("music/thc.xm")).play();
 	}
 
 	@Override
