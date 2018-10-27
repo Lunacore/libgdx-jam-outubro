@@ -32,7 +32,7 @@ public abstract class State{
 	
 	public static final float PHYS_SCALE = 45f;
 	
-	StateManager manager;
+	public StateManager manager;
 	ShapeRenderer sr;
 	OrthographicCamera camera;
 	ArrayList<GameObject> gos;
@@ -45,7 +45,7 @@ public abstract class State{
 	ArrayList<Body> forRemoval;
 	boolean pause = false;
 	
-	float worldStepFPS = 60;
+	public float worldStepFPS = 60;
 	
 	//Iluminação
 	RayHandler rayHandler;
