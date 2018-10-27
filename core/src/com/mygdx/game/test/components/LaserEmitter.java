@@ -22,13 +22,14 @@ public class LaserEmitter extends Platform{
 	public LaserEmitter(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 
+		tamanho = true;
 		body = get("body", Body.class);
 		body.setUserData(this);
 		state = (StateOne) getState();
 		
 		
 		laserSpeed = get("laserSpeed", Float.class);
-		emitDirection = Helper.newPolarVector(get("emitDirection", Float.class), laserSpeed);
+		emitDirection = Helper.newPolarVector(get("emitDirection", Float.class), 1);
 		frequency = get("frequency", Float.class);
 		
 	}
@@ -41,7 +42,7 @@ public class LaserEmitter extends Platform{
 		if(laserTimer > frequency / state.getWorldSpeed()) {
 			laserTimer -= frequency / state.getWorldSpeed();
 			Vector2 sz = new Vector2(get("width", Float.class) / 2f / State.PHYS_SCALE, get("height", Float.class) / 2f / State.PHYS_SCALE);
-			Laser laser = new Laser(info, body.getWorldCenter().cpy().add(sz).scl(State.PHYS_SCALE), emitDirection);
+			Laser laser = new Laser(info, body.getWorldCenter().cpy().add(sz).scl(State.PHYS_SCALE), emitDirection, laserSpeed);
 			getState().putInScene(laser);
 		}
 		

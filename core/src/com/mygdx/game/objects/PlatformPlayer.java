@@ -88,7 +88,6 @@ public abstract class PlatformPlayer extends GameObject{
 			direction = 1;
 		}
 		if(keycode == keyJump) {
-			System.out.println("jumps: " + jumps);
 			if(jumps > 0) {
 				body.setLinearVelocity(body.getLinearVelocity().x, 0);
 				body.applyLinearImpulse(new Vector2(0, body.getMass() * jumpStrength), body.getWorldCenter(), true);
