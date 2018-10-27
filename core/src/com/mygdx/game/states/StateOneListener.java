@@ -1,6 +1,5 @@
 package com.mygdx.game.states;
 
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Manifold;
@@ -12,8 +11,6 @@ import com.mygdx.game.test.components.DeathCompo;
 import com.mygdx.game.test.components.Laser;
 import com.mygdx.game.test.components.LaserEmitter;
 import com.mygdx.game.test.components.LaserReceiver;
-import com.mygdx.game.test.components.Platform;
-import com.mygdx.game.test.components.Reflector;
 
 public class StateOneListener extends EmptyContact{
 
@@ -24,14 +21,6 @@ public class StateOneListener extends EmptyContact{
 
 	public void beginContact(Contact contact) {
 		PlatformPlayer.beginContact(contact, this);
-		
-		if(compareCollision(contact, Laser.class, Reflector.class)) {
-			Laser laser = getInstanceFromContact(contact, Laser.class);
-			float ang  = laser.getVelocity().scl(-1).nor().angle(contact.getWorldManifold().getNormal());
-			Vector2 result= contact.getWorldManifold().getNormal().rotate(ang);
-			
-			laser.setVelocity(result);
-		}
 		
 		if(compareCollision(contact, MyPlayer.class, DeathCompo.class)) {
 			MyPlayer player = getInstanceFromContact(contact, MyPlayer.class);
@@ -53,16 +42,6 @@ public class StateOneListener extends EmptyContact{
 		
 		if(compareCollision(contact, Laser.class, LaserEmitter.class)) {
 			contact.setEnabled(false);
-		}
-		
-		if(compareCollision(contact, Laser.class, Platform.class)) {
-			if(!
-				(getInstanceFromContact(contact, Platform.class) instanceof LaserEmitter)
-				&& !(getInstanceFromContact(contact, Platform.class) instanceof Reflector)) {
-				Laser laser = getInstanceFromContact(contact, Laser.class);
-				state.removeObject(laser);
-				state.deleteBody(laser.getBody());
-			}
 		}
 	}
 

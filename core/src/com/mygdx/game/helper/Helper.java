@@ -97,26 +97,6 @@ public class Helper {
 	public static void renderTex(SpriteBatch sb, Texture tex, Transform transform, boolean flipX, boolean flipY) {
 		renderTex(sb, tex, transform.getPosition(), transform.getAngle(), transform.getScale(), flipX, flipY);
 	}
-	
-	public static void renderTex(SpriteBatch sb, Texture tex, Vector2 position, Vector2 rectSize) {
-		sb.draw(tex,
-				position.x,
-				position.y,
-				0,
-				0,
-				rectSize.x,
-				rectSize.y,
-				1,
-				1,
-				0,
-				0,
-				0,
-				(int)(rectSize.x / (float)tex.getWidth()),
-				(int)(rectSize.y / (float)tex.getHeight()),
-				false,
-				false);
-	}
-	
 	//sem transform
 	public static void renderTex(SpriteBatch sb, Texture tex, Vector2 position, float angle, Vector2 size, boolean flipX, boolean flipY) {
 		sb.draw(

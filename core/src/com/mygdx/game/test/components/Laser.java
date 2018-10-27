@@ -17,8 +17,6 @@ public class Laser extends GameObject{
 
 	static Texture ball;
 	
-	float laserSpeed;
-	
 	static {
 		ball = new Texture("laser.png");
 	}
@@ -26,19 +24,14 @@ public class Laser extends GameObject{
 	private Body body;
 	Vector2 velocity;
 	
-	public Laser(ObjectInfo info, Vector2 position, Vector2 velocity, float laserSpeed) {
+	public Laser(ObjectInfo info, Vector2 position, Vector2 velocity) {
 		super(info, new MapProperties());
-		this.laserSpeed = laserSpeed;
 		transform.setPosition(Vector2.Zero.cpy());
 		setBody(Helper.PhysHelp.createDynamicCircleBody(getState().getWorld(), position.cpy(), 5));
 		body.setGravityScale(0);
 		this.velocity = velocity.cpy();
 		getBody().setUserData(this);
 		
-	}
-	
-	public void setVelocity(Vector2 velocity) {
-		this.velocity = velocity.cpy();
 	}
 
 	public void create() {
@@ -55,7 +48,7 @@ public class Laser extends GameObject{
 
 	public boolean update(float delta) {
 		StateOne state = (StateOne) getState();
-		getBody().setLinearVelocity(velocity.cpy().scl(state.getWorldSpeed() * laserSpeed));
+		getBody().setLinearVelocity(velocity.cpy().scl(state.getWorldSpeed()));
 		return false;
 	}
 
@@ -65,10 +58,6 @@ public class Laser extends GameObject{
 
 	public void setBody(Body body) {
 		this.body = body;
-	}
-
-	public Vector2 getVelocity() {
-		return velocity;
 	}
 
 }

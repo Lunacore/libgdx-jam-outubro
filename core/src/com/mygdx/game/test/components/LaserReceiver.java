@@ -20,7 +20,6 @@ public class LaserReceiver extends Platform{
 	float currentCapacity;
 	float fillStep;
 	float decaySpeed;
-	boolean reversed;
 	
 	ArrayList<Door> connections;
 	
@@ -28,14 +27,13 @@ public class LaserReceiver extends Platform{
 		super(info, properties);
 		this.body = get("body", Body.class);
 		body.setUserData(this);
-		tamanho = true;
+		
 		capacity = get("capacity", Float.class);
 		fillStep = get("fillStep", Float.class);
 		decaySpeed = get("decaySpeed", Float.class);
 		currentCapacity = 0;
 		targetCapacity = 0;
 		connections  = new ArrayList<Door>();
-		reversed = get("reversed", Boolean.class);
 	}
 	
 	public void create() {
@@ -51,8 +49,6 @@ public class LaserReceiver extends Platform{
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
 		super.render(sb, sr, camera);
 		
-		sb.end();
-		
 		sr.setAutoShapeType(true);
 		sr.begin();
 		
@@ -65,8 +61,6 @@ public class LaserReceiver extends Platform{
 		sr.end();
 		
 		sr.setAutoShapeType(false);
-		
-		sb.begin();
 	}
 	
 	public void activate() {
@@ -78,12 +72,7 @@ public class LaserReceiver extends Platform{
 	@Override
 	public boolean update(float delta) {
 		super.update(delta);
-		
-		if(!reversed)
-			targetCapacity -= delta * decaySpeed;
-		else
-			targetCapacity += delta * decaySpeed;
-			
+		targetCapacity -= delta * decaySpeed;
 		if(targetCapacity < 0) {
 			targetCapacity = 0;
 		}
@@ -92,18 +81,12 @@ public class LaserReceiver extends Platform{
 			targetCapacity = 0;
 			activate();
 		}
-
 		currentCapacity += (targetCapacity - currentCapacity)/5f;
 		return false;
 	}
 
 	public void fill() {
-		if(!reversed) {
-			targetCapacity += fillStep;
-		}
-		else {
-			targetCapacity -= fillStep;
-		}
+		targetCapacity += fillStep;
 	}
 
 }

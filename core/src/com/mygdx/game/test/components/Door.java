@@ -20,7 +20,6 @@ public class Door extends Platform {
 	
 	public Door(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
-		//tamanho = true;
 		originalHeight = get("height", Float.class) / State.PHYS_SCALE;
 		currentHeight = originalHeight;
 		body.setUserData(this);
