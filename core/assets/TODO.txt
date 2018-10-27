@@ -1,0 +1,25 @@
+Alterar shape dos bodies [OK]
+Player de modulo xm ou it
+canvas redimensionável [OK]
+
+definir o que é o final do level
+definir quantos levels vao ser
+fazer o loader de level pra tudo ficar mais facil no tiled [SEMI OK]
+
+componentes de fase
+
+Bloco de espaço [OK]
+bloco de posição [OK]
+
+lançador de laser
+receptor de laser
+
+porta
+botão com tempo
+espelho em 45o
+
+Timer
+
+Objetos colecionaveis
+
+Menu com fases
