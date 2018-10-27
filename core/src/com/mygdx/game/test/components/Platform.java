@@ -1,4 +1,4 @@
-package com.mygdx.game.test;
+package com.mygdx.game.test.components;
 
 import java.awt.geom.Rectangle2D;
 
@@ -16,10 +16,13 @@ import com.mygdx.game.states.State;
 public class Platform extends GameObject{
 
 	Body body;
+	boolean tamanho;
 	
 	public Platform(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 		body = get("body", Body.class);
+	
+		tamanho = get("tamanho") != null ? get("tamanho", Boolean.class) : false;
 	}
 
 	public void create() {
@@ -27,7 +30,7 @@ public class Platform extends GameObject{
 	}
 
 	public void dispose() {
-		
+		getState().deleteBody(body);
 	}
 
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
@@ -42,7 +45,7 @@ public class Platform extends GameObject{
 	
 		//Tamanho
 		
-		if(get("tamanho", Boolean.class)) {
+		if(tamanho) {
 			float relativeWidth = (float) (get("width", Float.class) / oldRect.getWidth());
 			float newWidth = (float) (relativeWidth * newRect.getWidth());
 			

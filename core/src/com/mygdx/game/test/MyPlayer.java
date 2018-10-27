@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.objects.PlatformPlayer;
+import com.mygdx.game.states.StateOne;
 
 public class MyPlayer extends PlatformPlayer{
 
@@ -31,12 +32,16 @@ public class MyPlayer extends PlatformPlayer{
 		
 	}
 
-	public void dispose() {
+	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
 		
 	}
 
-	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-		
+	public void kill() {
+		((StateOne)getState()).kill();
+	}
+
+	public void dispose() {
+		getState().deleteBody(body);
 	}
 
 }

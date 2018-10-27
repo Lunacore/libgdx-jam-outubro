@@ -8,7 +8,6 @@ import com.mygdx.game.helper.Helper;
 import com.mygdx.game.states.StateManager;
 
 import io.anuke.gif.GifRecorder;
-import ozmod.OZMod;
 
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;

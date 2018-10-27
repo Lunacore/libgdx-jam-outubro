@@ -17,6 +17,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.GameParticle;
@@ -64,8 +65,9 @@ public abstract class State{
 	}
 	
 	public void removeObject(GameObject obj) {
-		gos.remove(obj);
 		obj.dispose();
+		gos.remove(obj);
+		
 	}
 	
 	public ArrayList<GameObject> getByClass(Class clazz){
@@ -142,8 +144,6 @@ public abstract class State{
 		
 		forRemoval = new ArrayList<Body>();
 		gos = new ArrayList<GameObject>();
-		
-		
 	}
 	
 	public void enablePhysics(ContactListener listener) {
@@ -225,7 +225,11 @@ public abstract class State{
 		if(getWorld() != null) {
 			if(!pause) {
 				for(int i = forRemoval.size() -1; i >= 0; i --) {
-					getWorld().destroyBody(forRemoval.get(i));
+					Array<Body> bodies = new Array<Body>();
+					getWorld().getBodies(bodies);
+					if(bodies.contains(forRemoval.get(i), true)) {
+						getWorld().destroyBody(forRemoval.get(i));
+					}
 				}
 				forRemoval.clear();
 				
@@ -249,7 +253,14 @@ public abstract class State{
 	}
 	
 	public abstract void update(float delta);
-	public abstract void dispose();
+	
+	public void dispose() {
+		if(gos != null) {
+			for(int i = gos.size() - 1; i >= 0; i --) {
+				removeObject(gos.get(i));
+			}
+		}
+	}
 
 	public boolean keyDown(int keycode) {
 		for(int i = gos.size() - 1; i>= 0; i --) {

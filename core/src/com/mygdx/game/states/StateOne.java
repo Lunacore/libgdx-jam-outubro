@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.GameObject;
-import com.mygdx.game.test.Platform;
+import com.mygdx.game.test.components.Platform;
 
 public class StateOne extends State{
 
@@ -24,11 +24,15 @@ public class StateOne extends State{
 	Sound musicTest;
 	long musicID;
 	
+	boolean playerDead;
+	
 	public StateOne(StateManager manager) {
 		super(manager);
 	}
 	
 	public void create() {
+		dispose();
+		playerDead = false;
 		enablePhysics(new StateOneListener(this));
 		enableDebugDraw();
 		setGravity(new Vector2(0, -20));
@@ -70,7 +74,11 @@ public class StateOne extends State{
 		}
 		
 		float a = (float) ((canvasBox.getHeight() - 100f) / 500f);
-		worldStepFPS = Helper.lerp(30, 100, a);
+		
+		if(!playerDead)
+			worldStepFPS = Helper.lerp(30, 100, a);
+		else
+			worldStepFPS = 100000000f;
 		
 		musicTest.setPitch(musicID, Helper.lerp(0.5f, 1.7f, 1-a));
 
@@ -84,10 +92,6 @@ public class StateOne extends State{
 	public void update(float delta) {		
 	
 	}
-
-	public void dispose() {
-		
-	}
 	
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
@@ -97,6 +101,14 @@ public class StateOne extends State{
 		}
 		return super.touchDragged(screenX, screenY, pointer);
 	}
-	
 
+	public float getWorldSpeed() {
+		float a = (float) ((canvasBox.getHeight() - 100f) / 500f);
+		return Helper.lerp(0.5f, 1.7f, 1-a);
+	}
+
+	public void kill() {
+		playerDead = true;
+		manager.changeState(0);
+	}
 }

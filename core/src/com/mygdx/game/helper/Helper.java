@@ -295,6 +295,16 @@ public class Helper {
 			
 			return b;
 		}
+		
+		public static Body createCircleBody(World world, Vector2 position, float radius, BodyType type) {
+			BodyDef def = new BodyDef();
+			def.type = type;
+			def.position.set(position.cpy().scl(1/State.PHYS_SCALE));
+			Body b =  world.createBody(def);
+			createCircleFixture(b, Vector2.Zero, radius);
+			return b;
+		}
+		
 		//FIXTURES
 		
 		public static Fixture createCircleFixture(Body body, Vector2 relative, float radius) {

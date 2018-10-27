@@ -1,5 +1,5 @@
 Alterar shape dos bodies [OK]
-Player de modulo xm ou it
+Player de modulo xm ou it [nao deu]
 canvas redimension√°vel [OK]
 
 definir o que √© o final do level
@@ -23,3 +23,13 @@ Timer
 Objetos colecionaveis
 
 Menu com fases
+
+=====
+O player n„o È afetado pelo tempo
+o fill down do receiver n„o È afetado pelo tempo
+
+Coisas que s„o afetadas pelo tempo:
+	tempo de fechamento de abertura de portas
+	
+	frequencia de disparo de laser
+	velocidade dos lasers

@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Vector3;
+import com.mygdx.game.helper.Helper;
 import com.mygdx.game.utils.FrameBufferStack;
 import com.mygdx.game.utils.ScreenSize;
 
@@ -26,7 +27,7 @@ public class StateManager implements InputProcessor, ControllerListener{
 	
 	FrameBuffer stateBuffer;
 	
-	float seconds = 0.1f;
+	float seconds = 1f;
 	float transitionSpeed = 1 / seconds;
 	
 	
@@ -71,11 +72,13 @@ public class StateManager implements InputProcessor, ControllerListener{
 			states.get(nextState).render(sb);
 			FrameBufferStack.end();
 			
+			Helper.enableBlend();
 			sb.begin();
 			sb.setColor(1, 1, 1, alpha);
 			sb.draw(FrameBufferStack.getTexture(), 0, 0, ScreenSize.getWidth(),ScreenSize.getHeight(),
 					0, 0, ScreenSize.getWidth(), ScreenSize.getHeight(), false, true);
 			sb.end();
+			Helper.disableBlend();
 			
 			alpha += Gdx.graphics.getDeltaTime() * transitionSpeed;
 			if(alpha > 1) {
