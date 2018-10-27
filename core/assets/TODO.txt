@@ -11,12 +11,12 @@ componentes de fase
 Bloco de espaço [OK]
 bloco de posição [OK]
 
-lançador de laser
-receptor de laser
+lançador de laser [OK]
+receptor de laser [OK]
 
-porta
-botão com tempo
-espelho em 45o
+porta [OK]
+botão com tempo [OK]
+espelho em 45o [OK]
 
 Timer
 

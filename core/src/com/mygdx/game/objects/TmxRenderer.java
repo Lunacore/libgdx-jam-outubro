@@ -191,7 +191,13 @@ public class TmxRenderer{
 
 				String objClass = props.get("class", String.class);
 				if(objClass != null) {
-					instanceSingle(mos.get(k), layer, layerCount);
+					try {
+						instanceSingle(mos.get(k), layer, layerCount);
+					}
+					catch(Exception e) {
+						System.err.println("Erro ao instanciar objeto da classe " + objClass);
+						//Gdx.app.exit();
+					}
 				}
 				else if(mos.get(k) instanceof TiledMapTileMapObject){
 					instanceImage(mos.get(k), layer, layerCount);

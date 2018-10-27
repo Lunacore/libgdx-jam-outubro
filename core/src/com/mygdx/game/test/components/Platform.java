@@ -21,7 +21,8 @@ public class Platform extends GameObject{
 	public Platform(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 		body = get("body", Body.class);
-	
+		body.setUserData(this);
+		
 		tamanho = get("tamanho") != null ? get("tamanho", Boolean.class) : false;
 	}
 
