@@ -4,9 +4,12 @@ Versão 0.1
 
 >>#! Equipe !#
 Rotciv - Game Design, Level Design, Programação
-Titoncio - Level Design, Marketing
 Alex - Art, Animation
-Geovanna - UX Design <<
+Brownie - Apoio emocional
+Caio Gagliardi - Sons e efeitos sonoros
+Geovanna - UX Design
+Titoncio - Level Design, Marketing
+Taco Bell e Bubblekill - Alimentação <<
 
 >>#! Sobre !#
 
