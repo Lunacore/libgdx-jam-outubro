@@ -39,7 +39,7 @@ public class StateOne extends State{
 		platforms = new ArrayList<GameObject>();
 		canvasBox = new Rectangle2D.Double(0, 0, 800, 600);
 		targetCanvasBox = (Rectangle2D) canvasBox.clone();
-		setTmxMap("maps/fase1.tmx", 1);
+		setTmxMap("maps/tito/fase1.tmx", 1);
 				
 		camera.position.set(400 / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
 		platforms = getByClass(Platform.class);
