@@ -30,6 +30,8 @@ import com.mygdx.game.objects.ParallaxBackground;
 import com.mygdx.game.test.components.Platform;
 import com.mygdx.game.utils.FrameBufferStack;
 
+import de.quippy.jflac.frame.Frame;
+
 public class Canvas extends GameObject{
 
 	Rectangle2D canvasBox;
@@ -37,9 +39,11 @@ public class Canvas extends GameObject{
 	ArrayList<GameObject> platforms;
 	float tween = 15f;
 	
+	static float musicCurrentPitch;
+	
 	public static String levelToLoad = "maps/fase1.tmx";
 	
-	Sound musicTest;
+	static Sound musicTest;
 	long musicID;
 	
 	boolean playerDead;
@@ -50,6 +54,7 @@ public class Canvas extends GameObject{
 	
 	FrameBuffer fbo;
 	FrameBuffer fbo2;
+	FrameBuffer fboplats;
 	
 	ShaderProgram shader;
 	
@@ -64,13 +69,19 @@ public class Canvas extends GameObject{
 		
 		platforms = getState().getByClass(Platform.class);
 		
+		for(int i = platforms.size() -1 ; i >= 0; i --) {
+			platforms.get(i).setToRender(false);
+		}
+		
 		//resizeBox(new Vector2(800, 350));
 		
-		musicTest = Gdx.audio.newSound(Gdx.files.internal("music/ingame-normal.ogg"));
-		musicID = musicTest.play();
-		musicTest.setLooping(musicID, true);
+		if(musicTest == null) {
+			musicTest = Gdx.audio.newSound(Gdx.files.internal("music/ingame-normal.ogg"));
+			musicID = musicTest.play();
+			musicTest.setLooping(musicID, true);
+		}
 		
-		frame = new CanvasFrame(new ObjectInfo(getState(), 3, 1f), canvasBox);
+		frame = new CanvasFrame(new ObjectInfo(getState(), 4, 1f), canvasBox);
 		
 		bg = new ParallaxBackground(new ObjectInfo(getState(), -3, 1f), "wall_bg.png");
 		
@@ -78,6 +89,7 @@ public class Canvas extends GameObject{
 	
 		fbo = new FrameBuffer(Format.RGBA8888, 1280, 720, false);
 		fbo2 = new FrameBuffer(Format.RGBA8888, 1280, 720, false);
+		fboplats = new FrameBuffer(Format.RGBA8888, 1280, 720, false);
 
 		shader = new ShaderProgram(Gdx.files.internal("shaders/default.vs"), Gdx.files.internal("shaders/blur.fs"));
 		ShaderProgram.pedantic = false;
@@ -148,6 +160,38 @@ public class Canvas extends GameObject{
 		sb.setShader(null);
 
 		sb.draw(tex, 0, 720, 1280, -720);
+		
+		sb.setProjectionMatrix(camera.combined);
+		//Desenha os blocos recortados
+		
+		FrameBufferStack.begin(fboplats);
+		Gdx.gl.glClearColor(17/255f, 26/255f, 36/255f, 0f);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		for(int i = platforms.size() -1 ; i >= 0; i --) {
+			platforms.get(i).render(sb, sr, camera);
+		}
+		
+		FrameBufferStack.end();
+		
+		Texture plats = FrameBufferStack.getTexture();
+		TextureRegion partialplats = new TextureRegion(plats,
+				(int)canvasBox.getX() + 80,
+				(int)canvasBox.getY() + 30,
+				(int)canvasBox.getWidth() + 160,
+				(int)canvasBox.getHeight() + 60
+				);
+		
+		sb.setProjectionMatrix(Helper.getDefaultProjection());
+		
+		sb.draw(partialplats,
+				(float)canvasBox.getX() + 80,
+				720 -  (float)canvasBox.getY() - 30,
+				(float)canvasBox.getWidth() + 160,
+				-(float)canvasBox.getHeight() - 60
+				);
+		
+		sb.setProjectionMatrix(camera.combined);
 }
 	
 	
@@ -180,7 +224,9 @@ public class Canvas extends GameObject{
 		else
 			getState().worldStepFPS = 100000000f;
 		
-		musicTest.setPitch(musicID, Helper.lerp(0.5f, 1.7f, 1-a));
+		musicCurrentPitch += (Helper.lerp(0.5f, 1.7f, 1-a) - musicCurrentPitch)/15f;
+		
+		musicTest.setPitch(musicID, musicCurrentPitch);
 		return false;
 	}
 	
