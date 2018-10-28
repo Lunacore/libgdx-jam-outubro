@@ -4,20 +4,19 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.controllers.Controller;
-import com.badlogic.gdx.controllers.ControllerListener;
-import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.PovDirection;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.helper.Helper;
+import com.mygdx.game.objects.KeyMapper;
+import com.mygdx.game.objects.KeyMapper.Device;
 import com.mygdx.game.utils.FrameBufferStack;
 import com.mygdx.game.utils.ScreenSize;
 
-public class StateManager implements InputProcessor, ControllerListener{
+public class StateManager{
 	
 	ArrayList<State> states;
 	int currentState = 2;
@@ -30,12 +29,14 @@ public class StateManager implements InputProcessor, ControllerListener{
 	float seconds = 0.01f;
 	float transitionSpeed = 1 / seconds;
 	
-	
+	KeyMapper keyMapper;
 	
 	public StateManager() {
 		
-		Gdx.input.setInputProcessor(this);
-		Controllers.addListener(this);
+		keyMapper = new KeyMapper(this);
+		
+		keyMapper.registerKeyMap("Left", Device.KEYBOARD, Keys.A);
+		//keyMapper.registerKeyMap("Left", Device.CONTROLLER, );
 		
 		states = new ArrayList<State>();
 		states.add(new StateOne(this));
@@ -110,6 +111,7 @@ public class StateManager implements InputProcessor, ControllerListener{
 	}
 
 	public boolean buttonDown(Controller controller, int buttonCode) {
+		
 		return current().buttonDown(controller, buttonCode);
 	}
 
@@ -118,6 +120,8 @@ public class StateManager implements InputProcessor, ControllerListener{
 	}
 
 	public boolean axisMoved(Controller controller, int axisCode, float value) {
+		if(Math.abs(value) > 0.5f)
+		System.out.println("Axis code movido: " + axisCode + ", value: " + value);
 		return current().axisMoved(controller, axisCode, value);
 	}
 
@@ -170,6 +174,14 @@ public class StateManager implements InputProcessor, ControllerListener{
 
 	public boolean scrolled(int amount) {
 		return current().scrolled(amount);
+	}
+
+	public void inputIn(KeyMapper.Device device, String mapName) {
+		current().inputIn(device, mapName);
+	}
+	
+	public void inputOut(KeyMapper.Device device, String mapName) {
+		current().inputOut(device, mapName);
 	}
 
 }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.helper.Helper.Game;
 import com.mygdx.game.helper.Helper.Position;
+import com.mygdx.game.objects.KeyMapper.Device;
 
 public class IntroState extends State{
 
@@ -78,5 +79,4 @@ public class IntroState extends State{
 			}
 		}
 	}
-
 }

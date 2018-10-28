@@ -18,6 +18,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.mygdx.game.helper.Helper;
+import com.mygdx.game.objects.KeyMapper.Device;
 import com.mygdx.game.states.State;
 import com.mygdx.game.structs.Transform;
 
@@ -304,6 +305,15 @@ public abstract class GameObject {
 
 	public boolean accelerometerMoved(Controller controller, int accelerometerCode, Vector3 value) {
 		return false;
+	}
+	
+	public void inputIn(Device device, String mapName) {	
+	}
+	
+	public void inputOut(Device device, String mapName) {
+	}
+	
+	public void inputAxis(Device device, String axisName, float value) {
 	}
 
 }
