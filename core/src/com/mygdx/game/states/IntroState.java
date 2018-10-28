@@ -76,7 +76,7 @@ public class IntroState extends State{
 			alpha1 = fadeout;
 			
 			if(alpha1 <= 0) {
-				manager.changeState(0);
+				manager.changeState(3);
 			}
 		}
 	}

@@ -74,7 +74,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="47" name="Parede7" type="object" x="520" y="400" width="86" height="160">
+  <object id="47" name="Parede7" type="object" x="520" y="400" width="256" height="160">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>

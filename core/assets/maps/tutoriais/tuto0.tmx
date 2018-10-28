@@ -61,14 +61,14 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="41" name="Parede4" type="object" x="300" y="400" width="105.333" height="158.667">
+  <object id="41" name="Parede4" type="object" x="300" y="400" width="105.333" height="81.3337">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="42" name="Parede5" type="object" x="650" y="260" width="150" height="307.334">
+  <object id="42" name="Parede5" type="object" x="650" y="260" width="150" height="306.001">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
@@ -82,7 +82,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="44" name="Parede7" type="object" x="470" y="310" width="105.333" height="248.667">
+  <object id="44" name="Parede7" type="object" x="470" y="310" width="105.333" height="88.667">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>

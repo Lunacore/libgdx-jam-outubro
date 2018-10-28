@@ -42,6 +42,7 @@ public class StateManager{
 		states.add(new StateOne(this));
 		states.add(new TransitionState(this));
 		states.add(new IntroState(this));
+		states.add(new OpeningCutsceneState(this));
 		
 		nextState = currentState;
 		
