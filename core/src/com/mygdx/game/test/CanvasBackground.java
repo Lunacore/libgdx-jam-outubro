@@ -16,10 +16,11 @@ public class CanvasBackground extends GameObject{
 	Texture image;
 	Rectangle2D rect;
 	
-	public CanvasBackground(ObjectInfo info, Rectangle2D rect) {
+	public CanvasBackground(ObjectInfo info, Rectangle2D rect, String imagem) {
 		super(info, new MapProperties());
 		this.rect = rect;
-		image = new Texture("painting.png");
+		image = new Texture(imagem);
+		//image = new Texture("maps/quadros/o-grito-de-luna.jpg");
 	}
 
 	public void create() {

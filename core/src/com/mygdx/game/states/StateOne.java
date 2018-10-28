@@ -25,7 +25,7 @@ public class StateOne extends State{
 				
 		camera.position.set(400 / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
 		
-		canvas = new Canvas(new ObjectInfo(this, 0,1f));
+		canvas = new Canvas(new ObjectInfo(this, 0,1f),tmxRenderer.getTiledMap().getProperties().get("fundo", String.class));
 		putInScene(canvas);
 		
 	}

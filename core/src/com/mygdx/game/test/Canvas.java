@@ -41,7 +41,7 @@ public class Canvas extends GameObject{
 	
 	static float musicCurrentPitch;
 	
-	public static String levelToLoad = "maps/fase1.tmx";
+	public static String levelToLoad = "maps/fase5.tmx";
 	
 	static Sound musicTest;
 	long musicID;
@@ -59,7 +59,7 @@ public class Canvas extends GameObject{
 	ShaderProgram shader;
 	
 	
-	public Canvas(ObjectInfo info) {
+	public Canvas(ObjectInfo info, String imagem) {
 		super(info, new MapProperties());
 		
 		playerDead = false;
@@ -85,7 +85,7 @@ public class Canvas extends GameObject{
 		
 		bg = new ParallaxBackground(new ObjectInfo(getState(), -3, 1f), "wall_bg.png");
 		
-		canvas_bg = new CanvasBackground(new ObjectInfo(getState(), 2, 1f), canvasBox);
+		canvas_bg = new CanvasBackground(new ObjectInfo(getState(), 2, 1f), canvasBox, imagem);
 	
 		fbo = new FrameBuffer(Format.RGBA8888, 1280, 720, false);
 		fbo2 = new FrameBuffer(Format.RGBA8888, 1280, 720, false);
