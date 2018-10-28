@@ -21,6 +21,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.GameParticle;
+import com.mygdx.game.objects.KeyMapper.Device;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.objects.TmxRenderer;
 
@@ -69,6 +70,8 @@ public abstract class State{
 		gos.remove(obj);
 		
 	}
+	
+	
 	
 	@SuppressWarnings("rawtypes")
 	public ArrayList<GameObject> getByClass(Class clazz){
@@ -379,6 +382,24 @@ public abstract class State{
 		}
 		return false;
 	}
+	
+
+	public void inputIn(Device device, String mapName) {
+		for(int i = gos.size() - 1; i>= 0; i --) {
+			gos.get(i).inputIn(device, mapName);
+		}
+	}
+	public void inputOut(Device device, String mapName) {
+		for(int i = gos.size() - 1; i>= 0; i --) {
+			gos.get(i).inputOut(device, mapName);
+		}
+	}
+			
+	public void inputAxis(Device device, String axisName, float value) {
+		for(int i = gos.size() - 1; i>= 0; i --) {
+			gos.get(i).inputAxis(device, axisName, value);
+		}
+	}
 
 	public World getWorld() {
 		return world;
@@ -395,5 +416,6 @@ public abstract class State{
 	public RayHandler getRayHandler() {
 		return rayHandler;
 	}
+
 	
 }

@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.mygdx.game.helper.Helper;
+import com.mygdx.game.objects.KeyMapper.Device;
 import com.mygdx.game.states.State;
 
 public abstract class PlatformPlayer extends GameObject{
@@ -24,10 +25,6 @@ public abstract class PlatformPlayer extends GameObject{
 	protected int jumps;
 	protected int totalJumps;
 	protected float speed = 10;
-	
-	int keyLeft = Keys.LEFT;
-	int keyRight = Keys.RIGHT;
-	int keyJump = Keys.UP;
 	
 	public PlatformPlayer(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
@@ -45,6 +42,14 @@ public abstract class PlatformPlayer extends GameObject{
 		body.setUserData(this);
 		setJumpStrength(20);
 		setTotalJumps(2);
+		
+		getState().manager.registerKey("Left", Device.KEYBOARD, Keys.A);
+		getState().manager.registerKey("Right", Device.KEYBOARD, Keys.D);
+		getState().manager.registerKey("Jump", Device.KEYBOARD, Keys.W);
+		
+		getState().manager.registerKey("Left", Device.CONTROLLER, XBoxController.POV_LEFT);
+		getState().manager.registerKey("Right", Device.CONTROLLER, XBoxController.POV_RIGHT);
+		getState().manager.registerKey("Jump", Device.CONTROLLER, XBoxController.POV_UP);
 	}
 	
 	public PlatformPlayer(ObjectInfo info, Vector2 position, Vector2 size) {
@@ -77,36 +82,68 @@ public abstract class PlatformPlayer extends GameObject{
 		}
 		return false;
 	}
-
-	public boolean keyDown(int keycode) {
-		if(keycode == keyLeft) {
+	
+	@Override
+	public void inputIn(Device device, String mapName) {
+		if(mapName.equals("Left")) {
 			left = true;
 			direction = -1;
 		}
-		if(keycode == keyRight) {
+		if(mapName.equals("Right")) {
 			right = true;
 			direction = 1;
 		}
-		if(keycode == keyJump) {
+		if(mapName.equals("Jump")) {
 			if(jumps > 0) {
 				body.setLinearVelocity(body.getLinearVelocity().x, 0);
 				body.applyLinearImpulse(new Vector2(0, body.getMass() * jumpStrength), body.getWorldCenter(), true);
 				jumps --;
 			}
 		}
-
-		return false;
+		super.inputIn(device, mapName);
 	}
-
-	public boolean keyUp(int keycode) {
-		if(keycode == keyLeft) {
+	
+	public void inputOut(Device device, String mapName) {
+		if(mapName.equals("Left")) {
 			left = false;
 		}
-		if(keycode == keyRight) {
+		if(mapName.equals("Right")) {
 			right = false;
 		}
-		return false;
+		super.inputOut(device, mapName);
 	}
+	
+	
+
+//	public boolean keyDown(int keycode) {
+//		if(keycode == keyLeft) {
+//			left = true;
+//			direction = -1;
+//		}
+//		if(keycode == keyRight) {
+//			right = true;
+//			direction = 1;
+//		}
+//		if(keycode == keyJump) {
+//			if(jumps > 0) {
+//				body.setLinearVelocity(body.getLinearVelocity().x, 0);
+//				body.applyLinearImpulse(new Vector2(0, body.getMass() * jumpStrength), body.getWorldCenter(), true);
+//				jumps --;
+//			}
+//		}
+//
+//		return false;
+//	}
+
+//	public boolean keyUp(int keycode) {
+//		if(keycode == keyLeft) {
+//			left = false;
+//		}
+//		if(keycode == keyRight) {
+//			right = false;
+//		}
+//		return false;
+//	}
 
 	public void setOnFloor(boolean b) {
 		onFloor = b;
@@ -169,30 +206,5 @@ public abstract class PlatformPlayer extends GameObject{
 	public void setBodyPosition(Vector2 position) {
 		body.setTransform(position.x, position.y, 0);
 	}
-
-	public int getKeyLeft() {
-		return keyLeft;
-	}
-
-	public void setKeyLeft(int keyLeft) {
-		this.keyLeft = keyLeft;
-	}
-
-	public int getKeyRight() {
-		return keyRight;
-	}
-
-	public void setKeyRight(int keyRight) {
-		this.keyRight = keyRight;
-	}
-
-	public int getKeyJump() {
-		return keyJump;
-	}
-
-	public void setKeyJump(int keyJump) {
-		this.keyJump = keyJump;
-	}
-
 	
 }

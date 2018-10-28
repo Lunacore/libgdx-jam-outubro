@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.game.helper.Helper;
+import com.mygdx.game.objects.KeyMapper.Device;
 
 public class TransitionState extends State{
 
@@ -55,5 +56,4 @@ public class TransitionState extends State{
 		if ((t/=d/2) < 1) return c/2*t*t + b;
 		return -c/2 * ((--t)*(t-2) - 1) + b;
 	}
-
 }
