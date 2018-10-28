@@ -9,6 +9,7 @@ import com.mygdx.game.objects.PlatformPlayer;
 import com.mygdx.game.test.MyPlayer;
 import com.mygdx.game.test.components.Button;
 import com.mygdx.game.test.components.DeathCompo;
+import com.mygdx.game.test.components.EndLevel;
 import com.mygdx.game.test.components.Laser;
 import com.mygdx.game.test.components.LaserEmitter;
 import com.mygdx.game.test.components.LaserReceiver;
@@ -24,6 +25,11 @@ public class StateOneListener extends EmptyContact{
 
 	public void beginContact(Contact contact) {
 		PlatformPlayer.beginContact(contact, this);
+		
+		if(compareCollision(contact, MyPlayer.class, EndLevel.class)) {
+			MyPlayer player = getInstanceFromContact(contact, MyPlayer.class);
+			player.nextLevel();
+		}
 		
 		if(compareCollision(contact, Laser.class, Reflector.class)) {
 			Laser laser = getInstanceFromContact(contact, Laser.class);

@@ -5,17 +5,24 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
+import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.ObjectInfo;
@@ -42,6 +49,7 @@ public class Canvas extends GameObject{
 	CanvasBackground canvas_bg;
 	
 	FrameBuffer fbo;
+	FrameBuffer fbo2;
 	
 	ShaderProgram shader;
 	
@@ -56,9 +64,9 @@ public class Canvas extends GameObject{
 		
 		platforms = getState().getByClass(Platform.class);
 		
-		resizeBox(new Vector2(800, 350));
+		//resizeBox(new Vector2(800, 350));
 		
-		musicTest = Gdx.audio.newSound(Gdx.files.internal("music/badvibes.wav"));
+		musicTest = Gdx.audio.newSound(Gdx.files.internal("music/ingame-normal.ogg"));
 		musicID = musicTest.play();
 		musicTest.setLooping(musicID, true);
 		
@@ -69,9 +77,14 @@ public class Canvas extends GameObject{
 		canvas_bg = new CanvasBackground(new ObjectInfo(getState(), 2, 1f), canvasBox);
 	
 		fbo = new FrameBuffer(Format.RGBA8888, 1280, 720, false);
-		
-		shader = new ShaderProgram(Gdx.files.internal("shaders/default.vs"), Gdx.files.internal("shaders/blacken.fs"));
+		fbo2 = new FrameBuffer(Format.RGBA8888, 1280, 720, false);
+
+		shader = new ShaderProgram(Gdx.files.internal("shaders/default.vs"), Gdx.files.internal("shaders/blur.fs"));
 		ShaderProgram.pedantic = false;
+		
+		if(shader.getLog().length() > 0) {
+			System.err.println(shader.getLog());
+		}
 	}
 
 	public void create() {
@@ -97,23 +110,45 @@ public class Canvas extends GameObject{
 		FrameBufferStack.end();
 		
 		Texture tex = FrameBufferStack.getTexture();
+		tex.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		sb.flush();
+		
+		FrameBufferStack.begin(fbo2);
+		Gdx.gl.glClearColor(17/255f, 26/255f, 36/255f, 0f);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		sb.setShader(shader);
+		shader.setUniformf("dir", 1f, 0f);
+		shader.setUniformf("radius", 5f);
+		shader.setUniformf("resolution", 1920);
+		
+		
+		sb.setProjectionMatrix(Helper.getDefaultProjection());
+		sb.draw(tex, 0, 720, 1280, -720);
+		sb.setShader(null);
+		sb.setProjectionMatrix(camera.combined);
+		
+		FrameBufferStack.end();
 		
 		sb.flush();
 		
-		shader.begin();
-		shader.setUniformf("pass", 4);
-		shader.setUniformf("strength", 0.003f);
-		
-		sb.setShader(shader);
-		sb.setProjectionMatrix(Helper.getDefaultProjection());
+		Texture tex2 = FrameBufferStack.getTexture();
+		tex2.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
-			sb.draw(tex, 0, 720, 1280, -720);
-			
-		sb.setShader(null);
-		shader.end();
-		sb.setProjectionMatrix(camera.combined);
+		sb.setShader(shader);
+		shader.setUniformf("dir", 0f, 1f);
+		shader.setUniformf("radius", 5f);
+		shader.setUniformf("resolution", 1920);
 		
-	}
+		
+		sb.setProjectionMatrix(Helper.getDefaultProjection());
+		sb.setColor(Color.BLACK);
+			sb.draw(tex2, 10, 720 - 10, 1280, -720);
+		sb.setColor(Color.WHITE);
+		sb.setShader(null);
+
+		sb.draw(tex, 0, 720, 1280, -720);
+}
 	
 	
 	public void resizeBox(Vector2 newSize) {
@@ -167,5 +202,10 @@ public class Canvas extends GameObject{
 	public void kill() {
 		playerDead = true;
 		getState().manager.changeState(0);
+	}
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		return super.keyDown(keycode);
 	}
 }

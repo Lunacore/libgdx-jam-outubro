@@ -75,6 +75,8 @@ public class CanvasFrame extends GameObject{
 				(float)(rect.getY() + r) / State.PHYS_SCALE + cima.getHeight()*0.5f/State.PHYS_SCALE/2f,
 				(b-a),  - (cima.getHeight()*0.5f/State.PHYS_SCALE));
 		
+		
+		
 		//Esquerda
 		sb.draw(esq, 
 				(float)(rect.getX() + r) / State.PHYS_SCALE - cima.getWidth()*0.5f/State.PHYS_SCALE/2f,
@@ -87,7 +89,7 @@ public class CanvasFrame extends GameObject{
 				(float)(rect.getY() + r) / State.PHYS_SCALE + cima.getHeight()*0.5f/State.PHYS_SCALE/2f,
 				-(cima.getWidth()*0.5f/State.PHYS_SCALE), (d-c));
 
-		
+		sb.flush();
 	}
 
 	public boolean update(float delta) {

@@ -27,7 +27,7 @@ public class StateManager implements InputProcessor, ControllerListener{
 	
 	FrameBuffer stateBuffer;
 	
-	float seconds = 1f;
+	float seconds = 0.01f;
 	float transitionSpeed = 1 / seconds;
 	
 	
@@ -39,6 +39,7 @@ public class StateManager implements InputProcessor, ControllerListener{
 		
 		states = new ArrayList<State>();
 		states.add(new StateOne(this));
+		states.add(new TransitionState(this));
 				
 		stateBuffer = new FrameBuffer(Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
 	}

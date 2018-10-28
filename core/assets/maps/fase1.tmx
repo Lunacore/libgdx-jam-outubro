@@ -111,7 +111,7 @@
     <property name="tamanho" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="33" name="EndLevel" type="object" x="814" y="453" width="167" height="112">
+  <object id="33" name="EndLevel" type="object" x="876.667" y="449.667" width="167" height="112">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
