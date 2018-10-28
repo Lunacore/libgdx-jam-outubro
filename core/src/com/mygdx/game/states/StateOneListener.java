@@ -35,7 +35,7 @@ public class StateOneListener extends EmptyContact{
 			EndLevel endLevel = getInstanceFromContact(contact, EndLevel.class);
 			TransitionState.nextPhase = endLevel.nextLevel;
 			Canvas.levelToLoad = endLevel.nextLevel;
-			player.nextLevel();
+			((StateOne)state).nextLevel();
 		}
 		
 		//Laser reflete

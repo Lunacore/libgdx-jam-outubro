@@ -16,12 +16,12 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="48.3333" y="523.333" width="15" height="20">
+  <object id="12" name="Player" x="50" y="510" width="30" height="40">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
     <property name="speed" type="float" value="7"/>
-    <property name="strength" type="float" value="10"/>
+    <property name="strength" type="float" value="13"/>
    </properties>
   </object>
   <object id="16" name="Parede1" type="object" x="0" y="0" width="28" height="560">
@@ -67,14 +67,14 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="45" name="Parede3" type="object" x="110" y="450" width="86" height="110">
+  <object id="45" name="Parede3" type="object" x="110" y="480" width="86" height="80">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="47" name="Parede7" type="object" x="520" y="340" width="86" height="220">
+  <object id="47" name="Parede7" type="object" x="520" y="400" width="86" height="160">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>

@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.test.Canvas;
+import com.mygdx.game.utils.ScreenSize;
 
 public class TransitionState extends State{
 
@@ -22,10 +23,8 @@ public class TransitionState extends State{
 	public static String nextPhase;
 
 	public TransitionState(StateManager manager) {
-		super(manager);
-		
-		print = new Texture("print.png");
-		
+		super(manager);		
+		print = new Texture("wall_bg.png");
 	}
 	
 	public String proximo() {
@@ -45,9 +44,9 @@ public class TransitionState extends State{
 		sb.setProjectionMatrix(Helper.getDefaultProjection());
 		
 		sb.begin();
-		sb.draw(lastPrint, -offset, 0, 1280, 720);
-		sb.draw(print, 1280 - offset, 0, 1280, 720);
-		sb.draw(nextPhaseBG, 1280 - offset + (1280 - 800)/2f, (720 - 600)/2f, 800, 600);
+		sb.draw(lastPrint, -offset, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
+		sb.draw(print, ScreenSize.getWidth() - offset, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
+		sb.draw(nextPhaseBG, ScreenSize.getWidth() - offset + (ScreenSize.getWidth() - 800)/2f, (ScreenSize.getHeight() - 600)/2f, 800, 600);
 		sb.end();
 		
 		sb.setProjectionMatrix(camera.combined);
@@ -59,7 +58,7 @@ public class TransitionState extends State{
 		timer = Math.min(timer, 2);
 		
 		
-		offset = easeInOut(timer/2f, 0, 1280, 1);
+		offset = easeInOut(timer/2f, 0, ScreenSize.getWidth(), 1);
 		
 		if(timer >= 2) {
 			manager.changeState(0);

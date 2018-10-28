@@ -11,6 +11,7 @@ import com.mygdx.game.helper.Helper;
 import com.mygdx.game.helper.Helper.Game;
 import com.mygdx.game.helper.Helper.Position;
 import com.mygdx.game.objects.KeyMapper.Device;
+import com.mygdx.game.utils.ScreenSize;
 
 public class IntroState extends State{
 
@@ -40,7 +41,7 @@ public class IntroState extends State{
 		
 		sb.begin();
 		sb.setColor(1, 1, 1, alpha2);
-		sb.draw(logo, (1280 - logo.getWidth()* 0.5f)/2f , (720 - logo.getHeight()* 0.5f)/2f - 20, logo.getWidth()* 0.5f, logo.getHeight()* 0.5f);
+		sb.draw(logo, (ScreenSize.getWidth() - logo.getWidth()* 0.5f)/2f , (ScreenSize.getHeight() - logo.getHeight()* 0.5f)/2f - 20, logo.getWidth()* 0.5f, logo.getHeight()* 0.5f);
 				
 		sb.setColor(Color.WHITE);
 		Helper.renderTex(sb, gear, Position.CENTER.cpy().add(135, -10), Game.globalTimer * 50, new Vector2(0.5f, 0.5f), false, false);
@@ -53,7 +54,7 @@ public class IntroState extends State{
 		sr.begin(ShapeType.Filled);
 		
 		sr.setColor(0, 0, 0, 1-alpha1);
-		sr.rect(0, 0, 1280, 720);
+		sr.rect(0, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
 		
 		
 		sr.end();

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.states.StateManager;
+import com.mygdx.game.utils.ScreenSize;
 
 import io.anuke.gif.GifRecorder;
 
@@ -21,6 +22,8 @@ public class MyGdxGame extends ApplicationAdapter {
 		manager = new StateManager();
 		manager.create();
 		gifRecorder = new GifRecorder(batch);
+		ScreenSize.setDynamicScreen(true);
+		System.out.println(ScreenSize.getWidth());
 	}
 
 	@Override

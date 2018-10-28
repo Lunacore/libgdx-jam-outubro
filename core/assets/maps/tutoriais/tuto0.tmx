@@ -17,12 +17,12 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="48.3333" y="523.333" width="15" height="20">
+  <object id="12" name="Player" x="48.3333" y="507.333" width="30" height="40">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
     <property name="speed" type="float" value="7"/>
-    <property name="strength" type="float" value="10"/>
+    <property name="strength" type="float" value="13"/>
    </properties>
   </object>
   <object id="16" name="Parede1" type="object" x="0" y="0" width="28" height="560">

@@ -10,6 +10,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.ObjectInfo;
+import com.mygdx.game.utils.ScreenSize;
 
 public class CanvasBackground extends GameObject{
 
@@ -37,8 +38,8 @@ public class CanvasBackground extends GameObject{
 		
 		sb.draw(
 				image,
-				(float)rect.getX() + 240,
-				(float)rect.getY() + 60,
+				(float)rect.getX() + (ScreenSize.getWidth() - 800)/2f,
+				(float)rect.getY() + (ScreenSize.getHeight() - 600)/2f,
 				(float)rect.getWidth(),
 				(float)rect.getHeight()
 				);
