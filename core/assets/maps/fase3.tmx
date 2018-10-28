@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="4" nextobjectid="35">
+ <tileset firstgid="1" source="sheet.tsx"/>
+ <objectgroup id="1" name="Guia" locked="1">
+  <object id="7" x="0" y="0" width="800" height="600"/>
+ </objectgroup>
+ <objectgroup id="2" name="Objetos">
+  <object id="1" name="Chao" type="object" x="-1" y="560" width="969" height="40">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="12" name="Player" x="83" y="54" width="15" height="20">
+   <properties>
+    <property name="class" value="com.mygdx.game.test.MyPlayer"/>
+    <property name="jumps" type="int" value="1"/>
+    <property name="speed" type="float" value="7"/>
+    <property name="strength" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="16" name="Parede1" type="object" x="0" y="0" width="28" height="560">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="17" name="Parede2" type="object" x="760" y="0" width="40" height="458">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="19" name="Porta" type="object" x="630" y="460" width="30" height="100">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Door"/>
+    <property name="timeOpen" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="21" name="Botao" type="object" x="30" y="510" width="30" height="50">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Button"/>
+    <property name="conn0" value="{body}_Porta_"/>
+   </properties>
+  </object>
+  <object id="22" name="Emitter" type="object" x="100.667" y="356.667" width="30" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
+    <property name="emitDirection" type="float" value="-90"/>
+    <property name="frequency" type="float" value="1"/>
+    <property name="laserSpeed" type="float" value="5"/>
+   </properties>
+  </object>
+  <object id="23" name="Receiver" type="object" x="730" y="50" width="30" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="capacity" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+    <property name="conn0" value="{body}_Porta_"/>
+    <property name="decaySpeed" type="float" value="1"/>
+    <property name="fillStep" type="float" value="50"/>
+   </properties>
+  </object>
+  <object id="24" name="Morte" type="object" x="453.333" y="512.667" width="60" height="44">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.DeathCompo"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="25" name="Parede3" type="object" x="30" y="100" width="260" height="20">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="27" name="Reflector" type="object" x="490" y="430">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="tamanho" type="bool" value="false"/>
+   </properties>
+   <polygon points="0,0 0,30 -30,30"/>
+  </object>
+  <object id="29" name="Teto" type="object" x="0" y="0" width="800" height="20">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="30" name="P1" type="object" x="630" y="440" width="130" height="20">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="31" name="Parede4" type="object" x="30" y="320" width="260" height="20">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="32" name="Parede5" type="object" x="320.61" y="384.667" width="21.4476" height="175.333">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="33" name="Reflector2" type="object" x="136" y="432">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="tamanho" type="bool" value="false"/>
+   </properties>
+   <polygon points="-36,28 -6,28 -36,-2"/>
+  </object>
+  <object id="34" name="Reflector3" type="object" x="490" y="50">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="tamanho" type="bool" value="false"/>
+   </properties>
+   <polygon points="-4.66667,-2.66667 -34.6667,-2.66667 -34.6667,27.3333"/>
+  </object>
+ </objectgroup>
+</map>
