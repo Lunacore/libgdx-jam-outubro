@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="41">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="46">
  <properties>
-  <property name="fundo" value="maps/quadros/piet-mondriluna.jpg"/>
+  <property name="fundo" value="maps/quadros/paintinciv.png"/>
   <property name="xLocked" type="bool" value="true"/>
   <property name="yLocked" type="bool" value="true"/>
  </properties>
  <tileset firstgid="1" source="sheet.tsx"/>
  <tileset firstgid="137" source="quadros.tsx"/>
- <objectgroup id="1" name="Guia" locked="1">
+ <objectgroup id="1" name="Guia">
   <object id="7" x="0" y="0" width="800" height="600"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
@@ -18,7 +18,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="241.667" y="62" width="15" height="20">
+  <object id="12" name="Player" x="40.667" y="535" width="15" height="20">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
@@ -40,20 +40,6 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="21" name="Botao" type="object" x="146" y="388.667" width="30" height="50">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Button"/>
-    <property name="conn0" value="{body}_Door_"/>
-   </properties>
-  </object>
-  <object id="25" name="Parede3" type="object" x="140" y="109" width="120" height="150">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Platform"/>
-    <property name="tamanho" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="29" name="Teto" type="object" x="0" y="0" width="800" height="20">
    <properties>
     <property name="body" value="{body}"/>
@@ -68,20 +54,6 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="31" name="Parede4" type="object" x="142" y="441.333" width="118" height="58.6667">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Platform"/>
-    <property name="tamanho" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="32" name="Parede5" type="object" x="460" y="110" width="225.333" height="150">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Platform"/>
-    <property name="tamanho" type="bool" value="false"/>
-   </properties>
-  </object>
   <object id="33" name="EndLevel" type="object" x="870" y="0" width="97" height="562">
    <properties>
     <property name="body" value="{body}"/>
@@ -94,6 +66,25 @@
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Door"/>
     <property name="timeOpen" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="44" name="Receptor" type="object" x="730" y="90" width="30" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="capacity" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+    <property name="conn0" value="{body}_Door_"/>
+    <property name="decaySpeed" type="float" value="20"/>
+    <property name="fillStep" type="float" value="30"/>
+   </properties>
+  </object>
+  <object id="45" name="Emitter" type="object" x="30" y="90" width="30" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
+    <property name="emitDirection" type="float" value="0"/>
+    <property name="frequency" type="float" value="1"/>
+    <property name="laserSpeed" type="float" value="5"/>
    </properties>
   </object>
  </objectgroup>
