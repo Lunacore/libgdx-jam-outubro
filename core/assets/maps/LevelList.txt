@@ -1,0 +1,54 @@
+>>#! Rotciv Ocnarb !#
+>>## Painting ##
+--fase7.tmx-- - Fácil
+--paintinciv.png-- <<
+<<
+
+>>#! Piet Mondrian !#
+>>## ? ##
+--fase5.tmx-- - Fácil
+--piet-mondriluna.jpg-- <<
+<<
+
+>>#! Barnett Newman !#
+>>## Voice of Fire ##
+--fase6.tmx-- - Fácil
+--voice-of-luna.jpg-- <<
+<<
+
+
+
+>>#! Romero Britto !#
+>>## A New Day ##
+--fase8.tmx-- - Fácil/Médio
+--romero-luna.jpg-- <<
+<<
+
+>>#! Elías García Martínez !#
+>>## Ecce Homo ##
+--fase9.tmx-- - Fácil/Médio
+--ecce-homo.jpg-- <<
+<<
+
+
+
+>>#! Edvard Munch !#
+>>## O Grito ##
+--fase1.tmx-- - Médio/Difícil
+--o-grito-de-luna.jpg-- <<
+<<
+
+>>#! Leonardo Da Vinci !#
+>>## A Última Ceia ##
+--fase2.tmx-- - Médio/Difícil
+--a-ultima-ceia-de-luna.jpg-- <<
+>>## Monalisa ##
+--fase4.tmx-- - Médio/Difícil
+--lunalisa.jpg-- <<
+<<
+
+>>#! Salvador Dalí !#
+>>## A Persistência da Memória ##
+--fase3.tmx-- - Médio/Difícil
+--salvador-daluna.jpg-- <<
+<<
