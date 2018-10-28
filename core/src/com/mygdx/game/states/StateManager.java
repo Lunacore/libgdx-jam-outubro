@@ -20,7 +20,7 @@ import com.mygdx.game.utils.ScreenSize;
 public class StateManager implements InputProcessor, ControllerListener{
 	
 	ArrayList<State> states;
-	int currentState;
+	int currentState = 2;
 	int nextState;
 	
 	float alpha = 0;
@@ -40,7 +40,10 @@ public class StateManager implements InputProcessor, ControllerListener{
 		states = new ArrayList<State>();
 		states.add(new StateOne(this));
 		states.add(new TransitionState(this));
-				
+		states.add(new IntroState(this));
+		
+		nextState = currentState;
+		
 		stateBuffer = new FrameBuffer(Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
 	}
 	

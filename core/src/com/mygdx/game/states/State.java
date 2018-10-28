@@ -70,6 +70,7 @@ public abstract class State{
 		
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public ArrayList<GameObject> getByClass(Class clazz){
 		ArrayList<GameObject> result = new ArrayList<GameObject>();
 		for(GameObject go : gos) {
