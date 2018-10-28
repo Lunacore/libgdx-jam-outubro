@@ -26,10 +26,6 @@ public class MyPlayer extends PlatformPlayer{
 		setTotalJumps(get("jumps", Integer.class));
 		setSpeed(get("speed", Float.class));
 		setJumpStrength(get("strength", Float.class));
-		
-		setKeyLeft(Keys.A);
-		setKeyRight(Keys.D);
-		setKeyJump(Keys.W);
 	}
 	
 	public void create() {

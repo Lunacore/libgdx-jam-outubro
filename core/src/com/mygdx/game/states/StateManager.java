@@ -48,6 +48,10 @@ public class StateManager{
 		stateBuffer = new FrameBuffer(Format.RGBA8888, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
 	}
 	
+	public void registerKey(String mapName, Device device, int keycode) {
+		keyMapper.registerKeyMap(mapName, device, keycode);
+	}
+	
 	public void setTransitionSpeed(float seconds) {
 		this.seconds = seconds;
 	}
@@ -120,12 +124,11 @@ public class StateManager{
 	}
 
 	public boolean axisMoved(Controller controller, int axisCode, float value) {
-		if(Math.abs(value) > 0.5f)
-		System.out.println("Axis code movido: " + axisCode + ", value: " + value);
 		return current().axisMoved(controller, axisCode, value);
 	}
 
 	public boolean povMoved(Controller controller, int povCode, PovDirection value) {
+		System.out.println("Pov code: " + value);
 		return current().povMoved(controller, povCode, value);
 	}
 

@@ -119,10 +119,75 @@ public class KeyMapper implements InputProcessor, ControllerListener{
 		manager.axisMoved(controller, axisCode, value);
 		return false;
 	}
+	
+	int lastPovPressed = XBoxController.POV_CENTER;
 
 	public boolean povMoved(Controller controller, int povCode, PovDirection value) {
+		
+		if(
+			value == PovDirection.north ||
+			value == PovDirection.south ||
+			value == PovDirection.east ||
+			value == PovDirection.west) {
+			
+			handlePov(getPov(value));
+		}
+		
+		else {
+			
+			if(value == PovDirection.northEast) {
+				handlePov(getPov(PovDirection.north));
+				handlePov(getPov(PovDirection.east));
+			}
+			if(value == PovDirection.northWest) {
+				handlePov(getPov(PovDirection.north));
+				handlePov(getPov(PovDirection.west));
+			}
+			if(value == PovDirection.southEast) {
+				handlePov(getPov(PovDirection.south));
+				handlePov(getPov(PovDirection.east));
+			}
+			if(value == PovDirection.southWest) {
+				handlePov(getPov(PovDirection.south));
+				handlePov(getPov(PovDirection.west));
+			}
+			
+		}
+		
 		manager.povMoved(controller, povCode, value);
 		return false;
+	}
+	
+	public void handlePov(int povcode) {
+		if(povcode != lastPovPressed && lastPovPressed != XBoxController.POV_CENTER) {
+			
+			//Dispara os keymaps que usam esse codigo
+			for(String key : findKeyMaps(Device.CONTROLLER, lastPovPressed)) {
+				inputOut(Device.CONTROLLER, key);
+			}
+			
+			
+		}
+		else{
+			//Dispara os keymaps que usam esse codigo
+			for(String key : findKeyMaps(Device.CONTROLLER, povcode)) {
+				inputIn(Device.CONTROLLER, key);
+			}
+		}
+		
+		lastPovPressed = povcode;
+		
+		
+	}
+	
+	public int getPov(PovDirection pov) {
+		if (pov == PovDirection.north) return XBoxController.POV_UP;
+		if (pov == PovDirection.south) return XBoxController.POV_DOWN;
+		if (pov == PovDirection.west) return XBoxController.POV_LEFT;
+		if (pov == PovDirection.east) return XBoxController.POV_RIGHT;
+		if (pov == PovDirection.center) return XBoxController.POV_CENTER;
+		
+		return -1;
 	}
 
 	public boolean xSliderMoved(Controller controller, int sliderCode, boolean value) {

@@ -17,11 +17,20 @@ public class XBoxController {
 	static final int BUTTON_LEFT_AXIS = 8;
 	static final int BUTTON_RIGHT_AXIS = 9;
 	
-	//Axis
+	static final int POV_UP = 15;
+	static final int POV_DOWN = 16;
+	static final int POV_LEFT = 17;
+	static final int POV_RIGHT = 18;
+	static final int POV_CENTER = 19;
 	
+	//Axis
 	static final int AXIS_LEFT_Y = 0;
 	static final int AXIS_LEFT_X = 1;
 	static final int AXIS_RIGHT_Y = 2;
 	static final int AXIS_RIGHT_X = 3;
+	
+	//Povs
+	
+	
 	
 }
