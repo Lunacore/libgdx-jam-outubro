@@ -38,7 +38,7 @@ public class LaserReceiver extends Platform{
 		currentCapacity = 0;
 		targetCapacity = 0;
 		connections  = new ArrayList<Door>();
-		reversed = get("reversed", Boolean.class);
+		reversed = get("reversed") == null ? false : get("reversed", Boolean.class);
 	}
 	
 	public void create() {
