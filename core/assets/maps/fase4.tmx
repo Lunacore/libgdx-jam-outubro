@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="8" nextobjectid="52">
+ <properties>
+  <property name="fundo" value="badlogic.jpg"/>
+ </properties>
  <tileset firstgid="1" source="sheet.tsx"/>
  <tileset firstgid="137" source="quadros.tsx"/>
  <objectgroup id="1" name="Guia" locked="1">
   <object id="7" x="0" y="0" width="800" height="600"/>
  </objectgroup>
- <objectgroup id="7" name="Imagens" locked="1">
-  <object id="38" gid="137" x="1.33333" y="601.333" width="800" height="600"/>
- </objectgroup>
+ <objectgroup id="7" name="Imagens" locked="1"/>
  <objectgroup id="2" name="Objetos">
   <object id="1" name="Chao" type="object" x="-1" y="560" width="969" height="40">
    <properties>
@@ -16,7 +17,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="136.333" y="118" width="15" height="20">
+  <object id="12" name="Player" x="100.333" y="328" width="15" height="20">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
@@ -38,7 +39,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="19" name="Porta" type="object" x="630" y="460" width="30" height="100">
+  <object id="19" name="Porta" type="object" x="600" y="364" width="30" height="100">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Door"/>
@@ -113,6 +114,7 @@
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
+    <property name="next" value="maps/fase5.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>

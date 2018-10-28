@@ -8,41 +8,39 @@ import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.states.State;
 import com.mygdx.game.states.StateOne;
 
-public class LaserEmitter extends Platform{
+public class Cannon extends Platform{
 	
 	float frequency;
-	float laserTimer = 0;
-	float laserSpeed = 1;
-	
+	Vector2 direction;
+	float strength;
 	StateOne state;
-	Vector2 emitDirection;
+	
 	Body body;
+	
+	float timer;
 
-	public LaserEmitter(ObjectInfo info, MapProperties properties) {
+	public Cannon(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
-
-		tamanho = true;
+		
 		body = get("body", Body.class);
 		body.setUserData(this);
 		state = (StateOne) getState();
 		
-		
-		laserSpeed = get("laserSpeed", Float.class);
-		emitDirection = Helper.newPolarVector(get("emitDirection", Float.class), 1);
+		strength = get("strength", Float.class);
+		direction = Helper.newPolarVector(get("direction", Float.class), 1);
 		frequency = get("frequency", Float.class);
-		
 	}
 	
 	public boolean update(float delta) {
 		super.update(delta);
 	
-		laserTimer += delta * ((StateOne)getState()).getWorldSpeed();
+		timer += delta * ((StateOne)getState()).getWorldSpeed();
 		
-		if(laserTimer > frequency / state.getWorldSpeed()) {
-			laserTimer -= frequency / state.getWorldSpeed();
+		if(timer > frequency / state.getWorldSpeed()) {
+			timer -= frequency / state.getWorldSpeed();
 			Vector2 sz = new Vector2(get("width", Float.class) / 2f / State.PHYS_SCALE, get("height", Float.class) / 2f / State.PHYS_SCALE);
-			Laser laser = new Laser(info, body.getWorldCenter().cpy().add(sz).scl(State.PHYS_SCALE), emitDirection, laserSpeed);
-			getState().putInScene(laser);
+			CannonBall ball = new CannonBall(info, body.getWorldCenter().cpy().add(sz).scl(State.PHYS_SCALE), direction.cpy().scl(strength));
+			getState().putInScene(ball);
 		}
 		
 		return false;

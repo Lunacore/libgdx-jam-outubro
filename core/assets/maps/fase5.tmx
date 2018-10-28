@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="8" nextobjectid="54">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="8" nextobjectid="57">
  <properties>
   <property name="fundo" value="laser.png"/>
  </properties>
@@ -9,7 +9,7 @@
   <object id="7" x="0" y="0" width="800" height="600"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
-  <object id="1" name="Chao" type="object" x="-1" y="560" width="969" height="40">
+  <object id="1" name="Chao" type="object" x="344.333" y="560" width="623.667" height="40">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
@@ -62,7 +62,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="27" name="Reflector" type="object" x="60" y="350">
+  <object id="27" name="Reflector" type="object" x="378.667" y="316.667">
    <properties>
     <property name="body" value="{body}"/>
     <property name="bodyType" value="DynamicBody"/>
@@ -90,10 +90,34 @@
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
+    <property name="next" value="maps/fase4.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
   <object id="47" name="Parede4" type="object" x="28" y="380" width="328" height="7.66667">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="54" name="Botao" type="object" x="500" y="520" width="40" height="40">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Button"/>
+    <property name="conn0" value="{body}_Porta_"/>
+   </properties>
+  </object>
+  <object id="55" name="Cannon" type="object" x="713.333" y="146.667" width="30.6667" height="30.6667">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Cannon"/>
+    <property name="direction" type="float" value="180"/>
+    <property name="frequency" type="float" value="1"/>
+    <property name="strength" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="56" name="Chao2" type="object" x="0" y="560" width="250" height="40">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>

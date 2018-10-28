@@ -3,8 +3,10 @@ package com.mygdx.game.states;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.mygdx.game.helper.Helper;
-import com.mygdx.game.objects.KeyMapper.Device;
+import com.mygdx.game.test.Canvas;
 
 public class TransitionState extends State{
 
@@ -14,6 +16,10 @@ public class TransitionState extends State{
 	
 	float offset = 0;
 	float timer = 0;
+	
+	Texture nextPhaseBG;
+	
+	public static String nextPhase;
 
 	public TransitionState(StateManager manager) {
 		super(manager);
@@ -21,10 +27,18 @@ public class TransitionState extends State{
 		print = new Texture("print.png");
 		
 	}
+	
+	public String proximo() {
+		TiledMap t = new TmxMapLoader().load(Canvas.levelToLoad);
+		String ret = t.getProperties().get("fundo", String.class);
+		t.dispose();
+		return ret;
+	}
 
 	public void create() {
 		offset  = 0;
 		timer = 0;
+		nextPhaseBG = new Texture(proximo());
 	}
 
 	public void render(SpriteBatch sb) {
@@ -33,6 +47,7 @@ public class TransitionState extends State{
 		sb.begin();
 		sb.draw(lastPrint, -offset, 0, 1280, 720);
 		sb.draw(print, 1280 - offset, 0, 1280, 720);
+		sb.draw(nextPhaseBG, 1280 - offset + (1280 - 800)/2f, (720 - 600)/2f, 800, 600);
 		sb.end();
 		
 		sb.setProjectionMatrix(camera.combined);

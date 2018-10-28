@@ -42,7 +42,7 @@ public class StateOne extends State{
 	}
 
 	public void kill() {
-		
+		canvas.kill();
 	}
 
 	public float getWorldSpeed() {

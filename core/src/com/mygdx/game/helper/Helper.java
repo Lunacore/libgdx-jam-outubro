@@ -117,6 +117,25 @@ public class Helper {
 				false);
 	}
 	
+	public static void renderTex(SpriteBatch sb, Texture tex, Vector2 position, Vector2 rectSize, float scale) {
+		sb.draw(tex,
+				position.x,
+				position.y,
+				0,
+				0,
+				rectSize.x,
+				rectSize.y,
+				1,
+				1,
+				0,
+				0,
+				0,
+				(int)(rectSize.x / ((float)tex.getWidth()*scale)),
+				(int)(rectSize.y / ((float)tex.getHeight()*scale)),
+				false,
+				false);
+	}
+	
 	//sem transform
 	public static void renderTex(SpriteBatch sb, Texture tex, Vector2 position, float angle, Vector2 size, boolean flipX, boolean flipY) {
 		sb.draw(

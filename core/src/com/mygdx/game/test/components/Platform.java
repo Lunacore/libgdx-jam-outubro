@@ -35,6 +35,7 @@ public class Platform extends GameObject{
 		
 		if(bloco == null)
 		bloco = new Texture("bloco.png");
+		
 		alpha = 0;
 	}
 
@@ -57,9 +58,6 @@ public class Platform extends GameObject{
 		Helper.disableBlend();
 		
 		sb.flush();
-	
-		
-		
 	}
 
 	public boolean update(float delta) {

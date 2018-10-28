@@ -79,4 +79,11 @@ public class IntroState extends State{
 			}
 		}
 	}
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		if(fadeout > 1)
+		fadeout = 1;
+		return super.keyDown(keycode);
+	}
 }

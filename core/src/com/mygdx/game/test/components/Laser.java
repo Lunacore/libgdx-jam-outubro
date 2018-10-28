@@ -16,7 +16,6 @@ import com.mygdx.game.states.StateOne;
 public class Laser extends GameObject{
 
 	static Texture ball;
-	
 	float laserSpeed;
 	
 	static {
