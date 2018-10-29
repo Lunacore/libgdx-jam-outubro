@@ -251,13 +251,6 @@ public class Canvas extends GameObject{
 		
 		sb.setProjectionMatrix(Helper.getDefaultProjection());
 		
-//		sb.draw(partialplats,
-//				(float)canvasBox.getX(),
-//				ScreenSize.getHeight() -  (float)canvasBox.getY() - 80,
-//				(float)canvasBox.getWidth(),
-//				-(float)canvasBox.getHeight()
-//				);
-		
 		sb.draw(partialplats,
 				(int)canvasBox.getX() + (ScreenSize.getWidth() - 800)/2f,
 				ScreenSize.getHeight() - (int)canvasBox.getY() - (ScreenSize.getHeight() - 600)/2f,
