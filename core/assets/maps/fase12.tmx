@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="8" nextobjectid="41">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="8" nextobjectid="48">
  <properties>
   <property name="fundo" value="maps/quadros/romero-luna.jpg"/>
  </properties>
@@ -16,7 +16,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="45.6667" y="470" width="15" height="20">
+  <object id="12" name="Player" x="45.6667" y="470" width="30" height="40">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
@@ -45,34 +45,6 @@
     <property name="timeOpen" type="float" value="1"/>
    </properties>
   </object>
-  <object id="22" name="Emitter" type="object" x="102" y="47.3336" width="30" height="30">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
-    <property name="emitDirection" type="float" value="-90"/>
-    <property name="frequency" type="float" value="1"/>
-    <property name="laserSpeed" type="float" value="5"/>
-   </properties>
-  </object>
-  <object id="23" name="Receiver" type="object" x="730" y="50" width="30" height="30">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="capacity" type="float" value="100"/>
-    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
-    <property name="conn0" value="{body}_Porta_"/>
-    <property name="decaySpeed" type="float" value="20"/>
-    <property name="fillStep" type="float" value="35"/>
-    <property name="reversed" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="27" name="Reflector" type="object" x="490" y="430">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
-    <property name="tamanho" type="bool" value="false"/>
-   </properties>
-   <polygon points="0,0 0,30 -30,30"/>
-  </object>
   <object id="29" name="Teto" type="object" x="0" y="0" width="800" height="20">
    <properties>
     <property name="body" value="{body}"/>
@@ -94,28 +66,80 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="33" name="Reflector2" type="object" x="136" y="432">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
-    <property name="tamanho" type="bool" value="false"/>
-   </properties>
-   <polygon points="-36,28 -6,28 -36,-2"/>
-  </object>
-  <object id="34" name="Reflector3" type="object" x="490" y="50">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
-    <property name="tamanho" type="bool" value="false"/>
-   </properties>
-   <polygon points="-4.66667,-2.66667 -34.6667,-2.66667 -34.6667,27.3333"/>
-  </object>
-  <object id="40" name="EndLevel" type="object" x="870" y="0" width="97" height="562">
+  <object id="40" name="EndLevel" type="object" x="810" y="0" width="97" height="562">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
-    <property name="next" value="maps/fase9.tmx"/>
+    <property name="next" value="maps/fase13.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="42" name="Reflector" type="object" x="450" y="50">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="imageAngle" type="float" value="180"/>
+    <property name="imagem" value="componentes/refletor_.png"/>
+    <property name="offsetX" type="float" value="18.7"/>
+    <property name="offsetY" type="float" value="-17.8"/>
+    <property name="scale" type="float" value="0.1"/>
+    <property name="tamanho" type="bool" value="false"/>
+   </properties>
+   <polygon points="0,0 40,0 0,40"/>
+  </object>
+  <object id="44" name="Reflector3" type="object" x="490" y="460">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="imageAngle" type="float" value="0"/>
+    <property name="imagem" value="componentes/refletor_.png"/>
+    <property name="offsetX" type="float" value="-18.7"/>
+    <property name="offsetY" type="float" value="17.8"/>
+    <property name="scale" type="float" value="0.1"/>
+    <property name="tamanho" type="bool" value="false"/>
+   </properties>
+   <polygon points="0,0 -40,0 0,-40"/>
+  </object>
+  <object id="45" name="Reflector_" type="object" x="100" y="460">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="imageAngle" type="float" value="0"/>
+    <property name="imagem" value="componentes/refletor.png"/>
+    <property name="offsetX" type="float" value="18.7"/>
+    <property name="offsetY" type="float" value="17.8"/>
+    <property name="scale" type="float" value="0.1"/>
+    <property name="tamanho" type="bool" value="false"/>
+   </properties>
+   <polygon points="0,0 40,0 0,-40"/>
+  </object>
+  <object id="46" name="Emitter" type="object" x="100" y="60" width="38.9" height="23.6">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
+    <property name="emitDirection" type="float" value="-90"/>
+    <property name="frequency" type="float" value="0.5"/>
+    <property name="imageAngle" type="float" value="-90"/>
+    <property name="imagem" value="componentes/emissor 1.png"/>
+    <property name="laserSpeed" type="float" value="15"/>
+    <property name="offsetX" type="float" value="19.95"/>
+    <property name="offsetY" type="float" value="11.8"/>
+    <property name="scale" type="float" value="0.1"/>
+   </properties>
+  </object>
+  <object id="47" name="Receptor" type="object" x="730" y="50" width="31.6" height="60.6">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="capacity" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+    <property name="conn0" value="{body}_Porta_"/>
+    <property name="decaySpeed" type="float" value="1"/>
+    <property name="fillStep" type="float" value="30"/>
+    <property name="imageAngle" type="float" value="180"/>
+    <property name="imagem" value="componentes/receptor 2.png"/>
+    <property name="offsetX" type="float" value="15.8"/>
+    <property name="offsetY" type="float" value="30.3"/>
+    <property name="scale" type="float" value="0.1"/>
    </properties>
   </object>
  </objectgroup>

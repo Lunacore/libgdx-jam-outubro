@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="42">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="43">
  <properties>
   <property name="fundo" value="maps/quadros/piet-mondriluna.jpg"/>
   <property name="xLocked" type="bool" value="true"/>
@@ -40,13 +40,6 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="21" name="Botao" type="object" x="510" y="510" width="30" height="50">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Button"/>
-    <property name="conn0" value="{body}_Door_"/>
-   </properties>
-  </object>
   <object id="25" name="Parede3" type="object" x="140" y="109" width="120" height="150">
    <properties>
     <property name="body" value="{body}"/>
@@ -82,11 +75,11 @@
     <property name="tamanho" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="33" name="EndLevel" type="object" x="870" y="0" width="97" height="562">
+  <object id="33" name="EndLevel" type="object" x="810" y="0" width="97" height="562">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
-    <property name="next" value="maps/fase6.tmx"/>
+    <property name="next" value="maps/fase4.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
@@ -95,6 +88,17 @@
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Door"/>
     <property name="timeOpen" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="42" name="Botao" type="object" x="530" y="540" width="45.7" height="21">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Button"/>
+    <property name="conn0" value="{body}_Door_"/>
+    <property name="imagem" value="componentes/botao 2.png"/>
+    <property name="offsetX" type="float" value="22.85"/>
+    <property name="offsetY" type="float" value="10.5"/>
+    <property name="scale" type="float" value="0.1"/>
    </properties>
   </object>
  </objectgroup>

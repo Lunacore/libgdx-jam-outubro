@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="54">
  <properties>
-  <property name="fundo" value="painting.png"/>
+  <property name="fundo" value="maps/quadros/paintinciv.png"/>
   <property name="yLocked" type="bool" value="true"/>
  </properties>
  <tileset firstgid="1" source="sheet.tsx"/>
@@ -45,11 +45,11 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="45" name="EndLevel" type="object" x="827.333" y="420" width="176.333" height="178.667">
+  <object id="45" name="EndLevel" type="object" x="810" y="380" width="176.333" height="178.667">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
-    <property name="next" value="maps/fase16.tmx"/>
+    <property name="next" value="maps/fase7.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>

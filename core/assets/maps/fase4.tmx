@@ -18,7 +18,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="40.667" y="535" width="15" height="20">
+  <object id="12" name="Player" x="44.667" y="457.667" width="30" height="40">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
@@ -54,7 +54,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="33" name="EndLevel" type="object" x="870" y="0" width="97" height="562">
+  <object id="33" name="EndLevel" type="object" x="810" y="0" width="97" height="562">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
@@ -69,23 +69,32 @@
     <property name="timeOpen" type="float" value="1"/>
    </properties>
   </object>
-  <object id="44" name="Receptor" type="object" x="730" y="90" width="30" height="30">
+  <object id="44" name="Receptor" type="object" x="700" y="70" width="31.6" height="60.6">
    <properties>
     <property name="body" value="{body}"/>
     <property name="capacity" type="float" value="100"/>
     <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
     <property name="conn0" value="{body}_Door_"/>
-    <property name="decaySpeed" type="float" value="2"/>
+    <property name="decaySpeed" type="float" value="1"/>
     <property name="fillStep" type="float" value="30"/>
+    <property name="imageAngle" type="float" value="180"/>
+    <property name="imagem" value="componentes/receptor 2.png"/>
+    <property name="offsetX" type="float" value="15.8"/>
+    <property name="offsetY" type="float" value="30.3"/>
+    <property name="scale" type="float" value="0.1"/>
    </properties>
   </object>
-  <object id="45" name="Emitter" type="object" x="30" y="90" width="30" height="30">
+  <object id="45" name="Emitter" type="object" x="31.5333" y="91.3" width="23.6" height="38.9">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
     <property name="emitDirection" type="float" value="0"/>
-    <property name="frequency" type="float" value="3"/>
+    <property name="frequency" type="float" value="0.5"/>
+    <property name="imagem" value="componentes/emissor 1.png"/>
     <property name="laserSpeed" type="float" value="15"/>
+    <property name="offsetX" type="float" value="11.8"/>
+    <property name="offsetY" type="float" value="19.95"/>
+    <property name="scale" type="float" value="0.1"/>
    </properties>
   </object>
  </objectgroup>

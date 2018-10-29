@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="47">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="48">
  <properties>
-  <property name="fundo" value="painting.png"/>
+  <property name="fundo" value="maps/quadros/paintinciv.png"/>
   <property name="startHeight" type="float" value="300"/>
   <property name="startWidth" type="float" value="800"/>
   <property name="xLocked" type="bool" value="true"/>
@@ -52,7 +52,7 @@
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
-    <property name="next" value="maps/fase14.tmx"/>
+    <property name="next" value="maps/fase8.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
@@ -73,24 +73,19 @@
   <object id="45" name="Parede4" type="object" x="650" y="420" width="150" height="30">
    <properties>
     <property name="body" value="{body}"/>
-<<<<<<< HEAD
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
-=======
-    <property name="capacity" type="float" value="100"/>
-    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
-    <property name="conn0" value="{body}_Door_"/>
-    <property name="decaySpeed" type="float" value="20"/>
-    <property name="fillStep" type="float" value="30"/>
-    <property name="imagem" value="componentes/receptor 2.png"/>
->>>>>>> origin/master
    </properties>
   </object>
-  <object id="46" name="Botao" type="object" x="100" y="520" width="40" height="40">
+  <object id="47" name="Botao" type="object" x="110" y="540" width="45.7" height="21">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Button"/>
     <property name="conn0" value="{body}_Door_"/>
+    <property name="imagem" value="componentes/botao 2.png"/>
+    <property name="offsetX" type="float" value="22.85"/>
+    <property name="offsetY" type="float" value="10.5"/>
+    <property name="scale" type="float" value="0.1"/>
    </properties>
   </object>
  </objectgroup>

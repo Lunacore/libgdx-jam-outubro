@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="44">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="46">
  <properties>
   <property name="fundo" value="maps/quadros/voice-of-luna.jpg"/>
   <property name="xLocked" type="bool" value="true"/>
@@ -7,7 +7,7 @@
  </properties>
  <tileset firstgid="1" source="sheet.tsx"/>
  <tileset firstgid="137" source="quadros.tsx"/>
- <objectgroup id="1" name="Guia">
+ <objectgroup id="1" name="Guia" locked="1">
   <object id="7" x="0" y="0" width="800" height="600"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
@@ -18,7 +18,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="40.667" y="535" width="15" height="20">
+  <object id="12" name="Player" x="39.3337" y="491" width="30" height="40">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
@@ -40,11 +40,15 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="21" name="Botao" type="object" x="379" y="507.667" width="30" height="50">
+  <object id="21" name="Botao" type="object" x="372" y="540" width="45.7" height="21">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Button"/>
     <property name="conn0" value="{body}_Door_"/>
+    <property name="imagem" value="componentes/botao 2.png"/>
+    <property name="offsetX" type="float" value="22.85"/>
+    <property name="offsetY" type="float" value="10.5"/>
+    <property name="scale" type="float" value="0.1"/>
    </properties>
   </object>
   <object id="29" name="Teto" type="object" x="0" y="0" width="800" height="20">
@@ -61,11 +65,11 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="33" name="EndLevel" type="object" x="870" y="0" width="97" height="562">
+  <object id="33" name="EndLevel" type="object" x="810" y="0" width="97" height="562">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
-    <property name="next" value="maps/fase8.tmx"/>
+    <property name="next" value="maps/fase3.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
