@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="48">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="47">
  <properties>
   <property name="fundo" value="painting.png"/>
+  <property name="xLocked" type="bool" value="true"/>
   <property name="yLocked" type="bool" value="true"/>
  </properties>
- <tileset firstgid="1" source="../sheet.tsx"/>
- <objectgroup id="1" name="Guia">
+ <tileset firstgid="1" source="sheet.tsx"/>
+ <objectgroup id="1" name="Guia" locked="1">
   <object id="7" x="0" y="0" width="800" height="600"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
@@ -31,7 +32,7 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="17" name="Parede2" type="object" x="760" y="0" width="40" height="132.667">
+  <object id="17" name="Parede2" type="object" x="760" y="0" width="40" height="420">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
@@ -45,40 +46,40 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="33" name="EndLevel" type="object" x="847.333" y="117" width="176.333" height="178.667">
+  <object id="33" name="EndLevel" type="object" x="837.333" y="420" width="176.333" height="178.667">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
-    <property name="next" value="maps/tutoriais/tuto2.tmx"/>
+    <property name="next" value="maps/fase13.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="42" name="Parede5" type="object" x="760" y="260" width="40" height="307.334">
+  <object id="43" name="Parede6" type="object" x="790" y="563" width="209.333" height="37">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="43" name="Parede6" type="object" x="800" y="260" width="209.333" height="16.6673">
+  <object id="44" name="Door" type="object" x="650" y="450" width="30" height="110">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Door"/>
+    <property name="timeOpen" type="float" value="3"/>
+   </properties>
+  </object>
+  <object id="45" name="Parede4" type="object" x="650" y="420" width="150" height="30">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="45" name="Parede3" type="object" x="110" y="480" width="86" height="80">
+  <object id="46" name="Botao" type="object" x="570" y="520" width="40" height="40">
    <properties>
     <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Platform"/>
-    <property name="tamanho" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="47" name="Parede7" type="object" x="520" y="400" width="256" height="160">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Platform"/>
-    <property name="tamanho" type="bool" value="true"/>
+    <property name="class" value="com.mygdx.game.test.components.Button"/>
+    <property name="conn0" value="{body}_Door_"/>
    </properties>
   </object>
  </objectgroup>

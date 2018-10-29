@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="8" nextobjectid="41">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="61">
  <properties>
-  <property name="fundo" value="maps/quadros/ecce-homo.jpg"/>
+  <property name="fundo" value="painting.png"/>
+  <property name="yLocked" type="bool" value="true"/>
  </properties>
  <tileset firstgid="1" source="sheet.tsx"/>
- <tileset firstgid="137" source="quadros.tsx"/>
  <objectgroup id="1" name="Guia" locked="1">
   <object id="7" x="0" y="0" width="800" height="600"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
-  <object id="1" name="Chao" type="object" x="-1" y="560" width="969" height="40">
+  <object id="1" name="Chao" type="object" x="-1" y="560" width="587.667" height="40">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="45.6667" y="470" width="15" height="20">
+  <object id="12" name="Player" x="48.3333" y="523.333" width="30" height="40">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
     <property name="speed" type="float" value="7"/>
-    <property name="strength" type="float" value="10"/>
+    <property name="strength" type="float" value="13"/>
    </properties>
   </object>
   <object id="16" name="Parede1" type="object" x="0" y="0" width="28" height="560">
@@ -31,49 +31,6 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="17" name="Parede2" type="object" x="760" y="0" width="40" height="458">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Platform"/>
-    <property name="tamanho" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="19" name="Porta" type="object" x="630" y="460" width="30" height="100">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Door"/>
-    <property name="timeOpen" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="22" name="Emitter" type="object" x="102" y="47.3336" width="30" height="30">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
-    <property name="emitDirection" type="float" value="0"/>
-    <property name="frequency" type="float" value="1"/>
-    <property name="laserSpeed" type="float" value="5"/>
-    <property name="tamanho" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="23" name="Receiver" type="object" x="400" y="60" width="30" height="30">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="capacity" type="float" value="100"/>
-    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
-    <property name="conn0" value="{body}_Porta_"/>
-    <property name="decaySpeed" type="float" value="20"/>
-    <property name="fillStep" type="float" value="35"/>
-    <property name="reversed" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="27" name="Reflector" type="object" x="430" y="530">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
-    <property name="tamanho" type="bool" value="false"/>
-   </properties>
-   <polygon points="0,0 0,30 -30,30"/>
-  </object>
   <object id="29" name="Teto" type="object" x="0" y="0" width="800" height="20">
    <properties>
     <property name="body" value="{body}"/>
@@ -81,40 +38,76 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="30" name="P1" type="object" x="630" y="440" width="130" height="20">
+  <object id="44" name="Parede2" type="object" x="760" y="0" width="40" height="430.667">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="32" name="Parede5" type="object" x="300" y="50" width="37.4476" height="33.9997">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
-    <property name="tamanho" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="33" name="Reflector2" type="object" x="77.3333" y="526.667">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
-    <property name="tamanho" type="bool" value="false"/>
-   </properties>
-   <polygon points="-36,28 -6,28 -36,-2"/>
-  </object>
-  <object id="34" name="Reflector3" type="object" x="70" y="50">
-   <properties>
-    <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
-    <property name="tamanho" type="bool" value="false"/>
-   </properties>
-   <polygon points="-4.66667,-2.66667 -34.6667,-2.66667 -34.6667,27.3333"/>
-  </object>
-  <object id="40" name="EndLevel" type="object" x="870" y="0" width="97" height="562">
+  <object id="45" name="EndLevel" type="object" x="827.333" y="420" width="176.333" height="178.667">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
+    <property name="next" value="maps/fase17.tmx"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="52" name="Chao2" type="object" x="620" y="560" width="211" height="40">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="55" name="Parede6" type="object" x="684" y="420" width="295.333" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Platform"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="56" name="Door" type="object" x="680" y="450" width="30" height="110">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Door"/>
+    <property name="timeOpen" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="57" name="Emitter" type="object" x="150" y="30" width="30" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
+    <property name="emitDirection" type="float" value="-90"/>
+    <property name="frequency" type="float" value="0.3"/>
+    <property name="laserSpeed" type="float" value="20"/>
+   </properties>
+  </object>
+  <object id="58" name="Receiver" type="object" x="730" y="130" width="30" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="capacity" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+    <property name="conn0" value="{body}_Door_"/>
+    <property name="decaySpeed" type="float" value="30"/>
+    <property name="fillStep" type="float" value="30"/>
+    <property name="reversed" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="59" name="Reflector" type="object" x="180" y="130">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="image" value="componentes/refletor.png"/>
+    <property name="imageAngle" type="float" value="0"/>
+    <property name="tamanho" type="bool" value="false"/>
+   </properties>
+   <polygon points="0,30 -30,30 -30,0"/>
+  </object>
+  <object id="60" name="Morte" type="object" x="7.4545" y="675.697" width="769.091" height="104.606">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.DeathCompo"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="54">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="6" nextobjectid="61">
  <properties>
   <property name="fundo" value="painting.png"/>
-  <property name="yLocked" type="bool" value="true"/>
+  <property name="yLocked" type="bool" value="false"/>
  </properties>
- <tileset firstgid="1" source="../sheet.tsx"/>
+ <tileset firstgid="1" source="sheet.tsx"/>
  <objectgroup id="1" name="Guia" locked="1">
   <object id="7" x="0" y="0" width="800" height="600"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
-  <object id="1" name="Chao" type="object" x="-1" y="560" width="121" height="40">
+  <object id="1" name="Chao" type="object" x="-1" y="560" width="837" height="40">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" name="Player" x="50" y="520" width="30" height="40">
+  <object id="12" name="Player" x="50" y="510" width="30" height="40">
    <properties>
     <property name="class" value="com.mygdx.game.test.MyPlayer"/>
     <property name="jumps" type="int" value="1"/>
@@ -49,23 +49,50 @@
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
-    <property name="next" value="maps/tutoriais/tuto6.tmx"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="52" name="Chao2" type="object" x="620" y="560" width="211" height="40">
+  <object id="55" name="Parede6" type="object" x="684" y="420" width="295.333" height="30">
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="53" name="Morte" type="object" x="18.4848" y="671.939" width="769.091" height="104.606">
+  <object id="56" name="Door" type="object" x="680" y="450" width="30" height="110">
    <properties>
     <property name="body" value="{body}"/>
-    <property name="class" value="com.mygdx.game.test.components.DeathCompo"/>
-    <property name="tamanho" type="bool" value="true"/>
+    <property name="class" value="com.mygdx.game.test.components.Door"/>
+    <property name="timeOpen" type="float" value="1"/>
    </properties>
+  </object>
+  <object id="57" name="Emitter" type="object" x="150" y="30" width="30" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
+    <property name="emitDirection" type="float" value="-90"/>
+    <property name="frequency" type="float" value="0.3"/>
+    <property name="laserSpeed" type="float" value="20"/>
+   </properties>
+  </object>
+  <object id="58" name="Receiver" type="object" x="730" y="130" width="30" height="30">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="capacity" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+    <property name="conn0" value="{body}_Door_"/>
+    <property name="decaySpeed" type="float" value="30"/>
+    <property name="fillStep" type="float" value="30"/>
+    <property name="reversed" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="59" name="Reflector" type="object" x="180" y="130">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="tamanho" type="bool" value="false"/>
+   </properties>
+   <polygon points="0,30 -30,30 -30,0"/>
   </object>
  </objectgroup>
 </map>

@@ -1,54 +1,147 @@
+--fase1.tmx-- //pulo
+--fase2.tmx-- //pulo e botao
+--fase3.tmx-- //pulo e botao
+--fase4.tmx-- //laser, esperar encher barra
+--fase5.tmx-- //pulo, alterar tamanho X
+--fase6.tmx-- //pulo, alterar tamanho X
+--fase7.tmx-- //botao, alterar Y para desacelerar
+--fase8.tmx-- //laser, alterar Y para acelerar
+--fase9.tmx-- //laser, alterar tamanho X
+--fase10.tmx-- //laser, reflector e empurrar
+--fase11.tmx-- //laser, reflector e empurrar
+--fase12.tmx-- //laser, diminuir e aumentar Y para passar
+--fase13.tmx-- //laser, achar posição exata
+--fase14.tmx-- //laser, movimentar constantemente
+
 >>#! Rotciv Ocnarb !#
 >>## Painting ##
---fase7.tmx-- - Fácil
---paintinciv.png-- <<
+--fase7.tmx-- //OK
+--paintinciv.png--
+--Ensina a usar o Laser--
+--Sem X nem Y-- <<
 <<
 
 >>#! Piet Mondrian !#
 >>## ? ##
---fase5.tmx-- - Fácil
---piet-mondriluna.jpg-- <<
+--fase5.tmx-- //OK
+--piet-mondriluna.jpg--
+--Ensina a usar botão e pular--
+--Sem X nem Y-- <<
 <<
 
 >>#! Barnett Newman !#
 >>## Voice of Fire ##
---fase6.tmx-- - Fácil
---voice-of-luna.jpg-- <<
+--fase6.tmx-- //OK
+--voice-of-luna.jpg--
+--Ensina a usar botão sem pular--
+--Sem X nem Y-- << 
 <<
-
-
 
 >>#! Romero Britto !#
 >>## A New Day ##
---fase8.tmx-- - Fácil/Médio
---romero-luna.jpg-- <<
+--fase8.tmx-- //OK
+--romero-luna.jpg--
+--Ensina sobre refletores--
+--Sem X com Y-- <<
 <<
 
 >>#! Elías García Martínez !#
 >>## Ecce Homo ##
---fase9.tmx-- - Fácil/Médio
---ecce-homo.jpg-- <<
+--fase9.tmx-- 
+--ecce-homo.jpg-- 
+SEM IDEIAS<< //Descartado
 <<
-
-
 
 >>#! Edvard Munch !#
 >>## O Grito ##
---fase1.tmx-- - Médio/Difícil
---o-grito-de-luna.jpg-- <<
+--fase1.tmx-- //OK
+--o-grito-de-luna.jpg--
+--Ensina sobre objetos empurráveis--
+--Sem X com Y-- <<
 <<
 
 >>#! Leonardo Da Vinci !#
 >>## A Última Ceia ##
---fase2.tmx-- - Médio/Difícil
---a-ultima-ceia-de-luna.jpg-- <<
+--fase2.tmx-- //OK
+--a-ultima-ceia-de-luna.jpg--
+--Ensina sobre empurrar refletores--
+--Com X e Y-- <<
+
 >>## Monalisa ##
---fase4.tmx-- - Médio/Difícil
---lunalisa.jpg-- <<
+--fase4.tmx--  //OK
+--lunalisa.jpg--
+--Level difícil quase pixel perfect com posição exata de X e Y--
+--Com X e Y-- <<
 <<
 
 >>#! Salvador Dalí !#
 >>## A Persistência da Memória ##
---fase3.tmx-- - Médio/Difícil
---salvador-daluna.jpg-- <<
+--fase3.tmx-- //OK
+--salvador-daluna.jpg--
+--Level difícil pixel perfect com movimentação ativa de Y--
+--Sem X com Y-- <<
+<<
+
+>>#!  !#
+>>##  ##
+--fase10.tmx-- //OK
+--X.jpg--
+--Ensina a pular--
+--Sem X nem Y-- << 
+<<
+
+>>#!  !#
+>>##  ##
+--fase11.tmx--
+--X.jpg--
+--Ensina a alterar o tamanho usando o eixo X--
+--Com X sem Y-- <<
+<<
+
+>>#!  !#
+>>##  ##
+--fase12.tmx--
+--X.jpg--
+--Ensina a a usar o botão-- //Descartado, igual level 6
+--Sem X nem Y-- <<
+<<
+
+>>#!  !#
+>>##  ##
+--fase13.tmx--
+--X.jpg--
+--Ensina a reduzir a velocidade usando o eixo Y--
+--Sem X com Y-- <<
+<<
+
+>>#!  !#
+>>##  ##
+--fase14.tmx--
+--X.jpg--
+--Ensina a aumentar a velocidade usando o eixo Y--
+--Sem X com Y-- <<
+<<
+
+>>#!  !#
+>>##  ##
+--fase15.tmx--
+--X.jpg--
+--Ensina a alterar o tamanho usando o eixo X--
+--Com X sem Y-- <<
+<<
+
+>>#!  !#
+>>##  ##
+--fase16.tmx--
+--X.jpg--
+--Ensina a alterar o eixo X para o emissor chegar mais rapido--
+--Com X sem Y-- <<
+<<
+
+>>#!  !#
+>>##  ##
+--fase17.tmx--
+--X.jpg--
+--Igual a fase 16-- //Descartado
+--Com X sem Y-- <<
 <<
