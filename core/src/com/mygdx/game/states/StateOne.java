@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.objects.KeyMapper.Device;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.test.Canvas;
+import com.mygdx.game.utils.ScreenSize;
 
 public class StateOne extends State{
 
@@ -32,13 +33,15 @@ public class StateOne extends State{
 	}
 	
 	@Override
-	public void preRender(SpriteBatch sb) {
+	public void postRender(SpriteBatch sb) {
+		super.postRender(sb);
 		if(nextLevel) {
-			TransitionState.lastPrint = ScreenUtils.getFrameBufferTexture();
+			TransitionState.lastPrint = ScreenUtils.getFrameBufferTexture(0, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
+			System.out.println("TIROU PRINT");
 			manager.changeState(1);
 			nextLevel = false;
 		}
-		super.preRender(sb);
+		
 	}
 
 	public void render(SpriteBatch sb) {
@@ -46,11 +49,7 @@ public class StateOne extends State{
 	}
 
 	public void update(float delta) {		
-		if(nextLevel) {
-			TransitionState.lastPrint = ScreenUtils.getFrameBufferTexture();
-			manager.changeState(1);
-			nextLevel = false;
-		}
+		
 	}
 
 	public void kill() {
