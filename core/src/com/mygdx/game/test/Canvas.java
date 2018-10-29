@@ -50,7 +50,7 @@ public class Canvas extends GameObject{
 	
 	static float musicCurrentPitch;
 	
-	public static String levelToLoad = "maps/tutoriais/tuto0.tmx";
+	public static String levelToLoad = "maps/tutoriais/tuto6.tmx";
 	
 	static Sound musicTest;
 	long musicID;
@@ -98,7 +98,7 @@ public class Canvas extends GameObject{
 		canvasBox = new Rectangle2D.Double(0, 0, 800, 600);
 		targetCanvasBox = (Rectangle2D) canvasBox.clone();
 		
-		platforms = getState().getByClass(Platform.class);
+		platforms.addAll(getState().getByClass(Platform.class));
 		platforms.addAll(getState().getByClass(MyPlayer.class));
 		
 		for(int i = platforms.size() -1 ; i >= 0; i --) {
