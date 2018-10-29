@@ -20,7 +20,7 @@ public class StateOne extends State{
 	public void create() {
 		dispose();
 		enablePhysics(new StateOneListener(this));
-		enableDebugDraw();
+		//enableDebugDraw();
 		setGravity(new Vector2(0, -40));
 		
 		setTmxMap(Canvas.levelToLoad, 1);

@@ -3,7 +3,10 @@ package com.mygdx.game.test.components;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -21,11 +24,15 @@ public class Button extends Platform{
 
 	float timerToPressAgain = 0;
 	
+	Vector2 normalScale;
+	
 	public Button(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 		connections = new ArrayList<Door>();
 		//body.getFixtureList().get(0).setSensor(true);
 		font = Helper.newFont("Allan-Bold.ttf", 18);
+		
+		normalScale = customTransform.getScale().cpy();
 	}
 	
 	public void create() {
@@ -41,6 +48,8 @@ public class Button extends Platform{
 	}
 	
 	
+	
+	
 	public void activate() {
 		for(Door d : connections) {
 			d.toggle();
@@ -51,6 +60,14 @@ public class Button extends Platform{
 	public boolean update(float delta) {
 		super.update(delta);
 		timerToPressAgain -= delta;
+		
+		if(pressed) {
+			customTransform.setScale(normalScale.cpy().scl(1, 0.5f));
+		}
+		else {
+			customTransform.setScale(normalScale);
+		}
+		
 		return super.update(delta);
 	}
 

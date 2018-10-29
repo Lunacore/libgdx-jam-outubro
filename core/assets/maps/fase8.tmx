@@ -73,7 +73,7 @@
     <property name="capacity" type="float" value="100"/>
     <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
     <property name="conn0" value="{body}_Door_"/>
-    <property name="decaySpeed" type="float" value="1"/>
+    <property name="decaySpeed" type="float" value="15"/>
     <property name="fillStep" type="float" value="30"/>
     <property name="imageAngle" type="float" value="-90"/>
     <property name="imagem" value="componentes/receptor 2.png"/>

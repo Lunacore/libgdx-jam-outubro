@@ -102,8 +102,8 @@ public class OpeningCutsceneState extends State{
 	public void update(float delta) {
 		if(delta > 1/15f) delta = 1/60f;
 		
-		blackAlpha += delta/2f;
-		timer += delta;
+		blackAlpha += 1/60f/2f;
+		timer += 1/60f;
 		
 		sceneIndex = (int)(timer/9f);
 		
@@ -114,7 +114,7 @@ public class OpeningCutsceneState extends State{
 		}
 		
 		if(intro) {
-			introAlpha -= delta;
+			introAlpha -= 1/60f;
 			if(introAlpha < 0) {
 				introAlpha = 0;
 				intro = false;
@@ -122,7 +122,7 @@ public class OpeningCutsceneState extends State{
 		}
 		
 		if(outro) {
-			introAlpha += delta;
+			introAlpha += 1/60f;
 			music.setVolume(1 - introAlpha);
 			if(introAlpha >= 1) {
 				introAlpha = 1;
