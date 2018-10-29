@@ -98,6 +98,8 @@
    <properties>
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="image" value="componentes/refletor.png"/>
+    <property name="imageAngle" type="float" value="0"/>
     <property name="tamanho" type="bool" value="false"/>
    </properties>
    <polygon points="0,30 -30,30 -30,0"/>

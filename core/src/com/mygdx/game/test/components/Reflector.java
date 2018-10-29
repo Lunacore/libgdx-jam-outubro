@@ -16,9 +16,7 @@ public class Reflector extends Platform{
 		
 		posicao = get("posicao") != null ? get("posicao", Boolean.class) : true;
 		
-		body.setFixedRotation(false);
 		
-		body.applyAngularImpulse(40, true);
 	}
 	
 	@Override

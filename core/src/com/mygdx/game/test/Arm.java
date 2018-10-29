@@ -17,7 +17,7 @@ public class Arm extends GameObject{
 	Texture arm;
 	
 	float length = 100;
-	float scale = 3;
+	float scale = 0.25f;
 	
 	Vector2 armStart, armEnd;
 	

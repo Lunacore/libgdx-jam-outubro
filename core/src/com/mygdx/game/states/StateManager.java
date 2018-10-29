@@ -35,9 +35,6 @@ public class StateManager{
 		
 		keyMapper = new KeyMapper(this);
 		
-		keyMapper.registerKeyMap("Left", Device.KEYBOARD, Keys.A);
-		//keyMapper.registerKeyMap("Left", Device.CONTROLLER, );
-		
 		states = new ArrayList<State>();
 		states.add(new StateOne(this));
 		states.add(new TransitionState(this));

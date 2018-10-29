@@ -26,15 +26,34 @@ public class Platform extends GameObject{
 	
 	float alpha;
 	
+	Texture imagem;
+	
+	boolean bl;
+	
 	public Platform(ObjectInfo info, MapProperties properties) {
 		super(info.withZ(3), properties);
 		body = get("body", Body.class);
 		body.setUserData(this);
 		
+		//transform.setScale(new Vector2(0.1f, 0.1f));
+		//transform.setPosition(Vector2.Zero);
+		
 		tamanho = get("tamanho") != null ? get("tamanho", Boolean.class) : false;
 		
 		if(bloco == null)
 		bloco = new Texture("bloco.png");
+		
+		if(get("imagem") == null) {
+			imagem = bloco;
+			bl = true;
+		}
+		else {
+			imagem = new Texture(get("imagem", String.class));
+		}
+		
+		if(get("imageAngle") != null) {
+			transform.setAngle(get("imageAngle", Float.class));
+		}
 		
 		alpha = 0;
 	}
@@ -52,7 +71,17 @@ public class Platform extends GameObject{
 		Helper.enableBlend();
 		
 		sb.setColor(1, 1, 1, alpha);
-		sb.draw(bloco, body.getWorldCenter().x, body.getWorldCenter().y, get("width", Float.class) / State.PHYS_SCALE, get("height", Float.class)/State.PHYS_SCALE);
+		
+		if(bl)
+			sb.draw(bloco, body.getWorldCenter().x, body.getWorldCenter().y, get("width", Float.class) / State.PHYS_SCALE, get("height", Float.class)/State.PHYS_SCALE);
+		else {
+			
+			sb.draw(imagem, body.getWorldCenter().x, body.getWorldCenter().y, imagem.getWidth() / State.PHYS_SCALE, imagem.getHeight() / State.PHYS_SCALE);
+
+//			sb.setProjectionMatrix(camera.combined);
+//			renderBodyTexture(sb, imagem, body);
+		}
+		
 		sb.setColor(Color.WHITE);
 		
 		Helper.disableBlend();

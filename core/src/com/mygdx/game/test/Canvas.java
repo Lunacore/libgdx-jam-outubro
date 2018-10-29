@@ -47,7 +47,7 @@ public class Canvas extends GameObject{
 	
 	static float musicCurrentPitch;
 	
-	public static String levelToLoad = "maps/tutoriais/tuto0.tmx";
+	public static String levelToLoad = "maps/tutoriais/tuto6.tmx";
 	
 	static Sound musicTest;
 	long musicID;
@@ -80,6 +80,8 @@ public class Canvas extends GameObject{
 	float introTimer = 0;
 	float outroTimer = 0;
 
+	Texture bear_canto;
+	
 	public Canvas(ObjectInfo info, String imagem) {
 		super(info, new MapProperties());
 		
@@ -110,6 +112,7 @@ public class Canvas extends GameObject{
 			resizeBox(new Vector2((Float)wob, (Float) hob));
 		}
 		
+		bear_canto = new Texture("arm/bear.png");
 		//resizeBox(new Vector2(800, 350));
 		
 		if(musicTest == null) {
@@ -261,10 +264,18 @@ public class Canvas extends GameObject{
 				(int)canvasBox.getWidth(),
 				-(int)canvasBox.getHeight());
 		
+		sb.draw(bear_canto,
+				0,
+				ScreenSize.getHeight() - bear_canto.getHeight() * 0.35f,
+				bear_canto.getWidth() * 0.35f,
+				bear_canto.getHeight() * 0.35f);
+		
 		if(!xLocked)
 		armX.render(sb, sr, camera);
 		if(!yLocked)
 		armY.render(sb, sr, camera);
+		
+		
 
 		
 		sb.setProjectionMatrix(camera.combined);
@@ -331,7 +342,8 @@ public class Canvas extends GameObject{
 		}
 		else {
 			armX.setArmEnd(armXcurrent);
-			armX.setArmStart(armXcurrent.cpy().scl(0, 1));
+			armX.setArmStart(new Vector2((-50) / State.PHYS_SCALE, (ScreenSize.getHeight() - 300) / State.PHYS_SCALE));
+			//armX.setArmStart(armXcurrent.cpy().scl(0, 1));
 		}
 		
 		
@@ -362,7 +374,8 @@ public class Canvas extends GameObject{
 		}
 		else {
 			armY.setArmEnd(armYcurrent);
-			armY.setArmStart(armYcurrent.cpy().scl(1, 0).add(0, ScreenSize.getHeight() / State.PHYS_SCALE));
+			armY.setArmStart(new Vector2((200) / State.PHYS_SCALE, (ScreenSize.getHeight() + 100) / State.PHYS_SCALE));
+			//armY.setArmStart(armYcurrent.cpy().scl(1, 0).add(0, ScreenSize.getHeight() / State.PHYS_SCALE));
 		}
 		
 		canvasBox.setRect(

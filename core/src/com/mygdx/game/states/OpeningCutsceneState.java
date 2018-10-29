@@ -95,5 +95,11 @@ public class OpeningCutsceneState extends State{
 			manager.changeState(0);
 		}
 	}
+	@Override
+	public boolean keyDown(int keycode) {
+		manager.changeState(0);
+		music.stop();
+		return super.keyDown(keycode);
+	}
 
 }
