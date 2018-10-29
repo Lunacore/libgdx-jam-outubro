@@ -84,6 +84,7 @@
     <property name="conn0" value="{body}_Door_"/>
     <property name="decaySpeed" type="float" value="30"/>
     <property name="fillStep" type="float" value="30"/>
+    <property name="imagem" value="componentes/receptor 2.png"/>
     <property name="reversed" type="bool" value="false"/>
    </properties>
   </object>

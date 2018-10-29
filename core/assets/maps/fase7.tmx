@@ -76,6 +76,7 @@
     <property name="conn0" value="{body}_Door_"/>
     <property name="decaySpeed" type="float" value="20"/>
     <property name="fillStep" type="float" value="30"/>
+    <property name="imagem" value="componentes/receptor 2.png"/>
    </properties>
   </object>
   <object id="45" name="Emitter" type="object" x="30" y="90" width="30" height="30">
