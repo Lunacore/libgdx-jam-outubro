@@ -1,6 +1,7 @@
 package com.mygdx.game.objects;
 
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -113,38 +114,41 @@ public abstract class PlatformPlayer extends GameObject{
 		super.inputOut(device, mapName);
 	}
 	
+	public boolean buttonDown(Controller controller, int buttonCode) {
+		if(buttonCode == XBoxController.BUTTON_A) {
+			if(jumps > 0) {
+				body.setLinearVelocity(body.getLinearVelocity().x, 0);
+				body.applyLinearImpulse(new Vector2(0, body.getMass() * jumpStrength), body.getWorldCenter(), true);
+				jumps --;
+			}
+		}
+		
+		return super.buttonDown(controller, buttonCode);
+	}
 	
-
-//	public boolean keyDown(int keycode) {
-//		if(keycode == keyLeft) {
-//			left = true;
-//			direction = -1;
-//		}
-//		if(keycode == keyRight) {
-//			right = true;
-//			direction = 1;
-//		}
-//		if(keycode == keyJump) {
-//			if(jumps > 0) {
-//				body.setLinearVelocity(body.getLinearVelocity().x, 0);
-//				body.applyLinearImpulse(new Vector2(0, body.getMass() * jumpStrength), body.getWorldCenter(), true);
-//				jumps --;
-//			}
-//		}
-//
-//		return false;
-//	}
-
-//	public boolean keyUp(int keycode) {
-//		if(keycode == keyLeft) {
-//			left = false;
-//		}
-//		if(keycode == keyRight) {
-//			right = false;
-//		}
-//		return false;
-//	}
-
+	public boolean axisMoved(Controller controller, int axisCode, float value) {
+		
+		if(axisCode == XBoxController.AXIS_LEFT_X) {
+			if(Math.abs(value) > 0.5f) {
+				if(value > 0) {
+					right = true;
+					direction = 1;
+				}
+				else {
+					left = true;
+					direction = -1;
+				}
+				
+			}
+			else {
+				right = false;
+				left = false;
+			}
+		}
+		
+		return super.axisMoved(controller, axisCode, value);
+	}
+	
 	public void setOnFloor(boolean b) {
 		onFloor = b;
 		if(b) {

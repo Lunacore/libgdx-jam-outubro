@@ -7,6 +7,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.controllers.Controller;
+import com.badlogic.gdx.controllers.mappings.Xbox;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -31,6 +33,7 @@ import com.mygdx.game.helper.Helper.Size;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.objects.ParallaxBackground;
+import com.mygdx.game.objects.XBoxController;
 import com.mygdx.game.states.State;
 import com.mygdx.game.test.components.Platform;
 import com.mygdx.game.utils.FrameBufferStack;
@@ -268,9 +271,6 @@ public class Canvas extends GameObject{
 		if(!yLocked)
 		armY.render(sb, sr, camera);
 		
-		
-
-		
 		sb.setProjectionMatrix(camera.combined);
 }
 	
@@ -393,6 +393,29 @@ public class Canvas extends GameObject{
 		
 		musicTest.setPitch(musicID, musicCurrentPitch);
 		return false;
+	}
+	
+	float contScale = 5;
+	
+	@Override
+	public boolean axisMoved(Controller controller, int axisCode, float value) {
+		
+		float nw = (float) canvasBox.getWidth();
+		float nh = (float) canvasBox.getHeight();
+		
+		if(axisCode == XBoxController.AXIS_RIGHT_X) {
+			nw = (float) (canvasBox.getWidth() - value*contScale);
+		}
+		if(axisCode == XBoxController.AXIS_RIGHT_Y) {
+			nh = (float) (canvasBox.getHeight() - value*contScale);
+		}
+		
+		if(xLocked) nw = 800;
+		if(yLocked) nh = 600;
+		
+		resizeBox(new Vector2(nw, nh));
+		
+		return super.axisMoved(controller, axisCode, value);
 	}
 	
 

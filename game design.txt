@@ -1,4 +1,4 @@
---Nome do Jogo--
+﻿--Nome do Jogo--
 © Lunacore 2018
 Versão 0.1
 
@@ -18,11 +18,11 @@ Mais informações: https://bigbass1997.com/libgdx/jam/home.php
 
 >>## Personagem ##
 
-A personagem se chama Luna, tem 10 anos de idade, 1,30m de altura, cabelos castanhos, olhos azuis claros e seu pijama favorito é rosa claro. <<
+A personagem se chama Luna, tem 10 anos de idade, 1.30m de altura, cabelos castanhos, olhos azuis claros e seu pijama favorito é rosa claro. <<
 
 >>## História ##
 
-Em um mundo mágico, a Luna está curtindo a brisa da manhã, o sol, agrama, subitamente, ela recebe uma mensagem de suas amigas, ele está atrasada para a festa da pijama com suas amigas. Na casa de sua amiga, havia um Ursinho mágico. Certo dia esse ursinho sugou Luna e suas amigas para dentro de um quadro que havia no quarto. Elas estavam em uma festa de pijama mas agora tem até as 9h da manhã para voltar ao quarto antes que os pais de Luna cheguem para buscá-la. <<
+Luna está curtindo uma festa do pijama na casa de uma de suas amigas, ela havia levado um Ursinho mágico. Certo dia esse ursinho sugou Luna e suas amigas para dentro de um quadro que havia no quarto. Elas estavam em uma festa de pijama mas agora tem até as 9h da manhã para voltar ao quarto antes que os pais de Luna cheguem para buscá-la. <<
 
 >>## Características ##
 
@@ -31,7 +31,7 @@ Gráficos 2D: Os gráficos do jogo foram feitos em duas dimensões <<
 
 >>## Gameplay ##
 
---Nome do jogo-- tem como controles WASD para movimentar o personagem e o mouse para movimentar o cenário. <<
+--Nome do jogo-- tem como controles WASD para movimentar o personagem e o mouse para movimentar o tamanho da moldura, alterando o espaço e o tempo<<
 
 >>## Informações técnicas ##
 
@@ -40,5 +40,6 @@ Eclipse Java Oxygen
 LibGDX
 Tiled
 Paint Tool SAI
+Photoshop
 <<
 << 
