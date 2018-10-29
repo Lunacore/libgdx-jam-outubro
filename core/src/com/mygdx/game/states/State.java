@@ -152,7 +152,10 @@ public abstract class State{
 	
 	public void enablePhysics(ContactListener listener) {
 		setWorld(new World(new Vector2(0, -4f), false));
+		
+		if(listener != null)
 		getWorld().setContactListener(listener);
+		
 		b2dr = new Box2DDebugRenderer();
 		camera.zoom = 1/PHYS_SCALE;
 		camera.position.set(new Vector3(Helper.Position.CENTER.cpy().scl(1/PHYS_SCALE), 0));

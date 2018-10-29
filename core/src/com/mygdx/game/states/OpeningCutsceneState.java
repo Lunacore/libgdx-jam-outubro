@@ -2,8 +2,10 @@ package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.utils.ScreenSize;
 
@@ -21,8 +23,13 @@ public class OpeningCutsceneState extends State{
 	float blackAlpha = -5f;
 	
 	float timer = 0;
+
 	
 	Music music;
+	
+	float introAlpha = 1;
+	boolean intro;
+	boolean outro;
 	
 	public OpeningCutsceneState(StateManager manager) {
 		super(manager);
@@ -41,8 +48,9 @@ public class OpeningCutsceneState extends State{
 
 	public void create() {
 		sceneIndex = 0;
-		
-		
+		intro = true;
+		outro = false;
+
 		camera.position.set(ScreenSize.getWidth() /2f + ScreenSize.getWidth()*sceneLerp, ScreenSize.getHeight()/2f, 0);
 	
 		music = Gdx.audio.newMusic(Gdx.files.internal("music/intro.ogg"));
@@ -79,26 +87,55 @@ public class OpeningCutsceneState extends State{
 		sb.end();
 		
 		Helper.disableBlend();
+		
+		Helper.enableBlend();
+				
+		sr.setProjectionMatrix(Helper.getDefaultProjection());
+		sr.begin(ShapeType.Filled);
+		sr.setColor(new Color(0, 0, 0, introAlpha));
+		sr.rect(0, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
+		sr.end();
+		
+		Helper.disableBlend();
 	}
 
 	public void update(float delta) {
-		blackAlpha += 1/60f/2f;
+		if(delta > 1/15f) delta = 1/60f;
 		
-		timer += 1/60f;
+		blackAlpha += delta/2f;
+		timer += delta;
 		
 		sceneIndex = (int)(timer/9f);
 		
 		sceneLerp += (sceneIndex - sceneLerp)/15f;
 		
 		if(sceneIndex > 5) {
-			music.stop();
-			manager.changeState(0);
+			outro = true;
+		}
+		
+		if(intro) {
+			introAlpha -= delta;
+			if(introAlpha < 0) {
+				introAlpha = 0;
+				intro = false;
+			}
+		}
+		
+		if(outro) {
+			introAlpha += delta;
+			music.setVolume(1 - introAlpha);
+			if(introAlpha >= 1) {
+				introAlpha = 1;
+				manager.changeState(0);
+				music.stop();
+				outro = false;
+			}
 		}
 	}
 	@Override
 	public boolean keyDown(int keycode) {
-		manager.changeState(0);
-		music.stop();
+		outro = true;
+		intro = false;
 		return super.keyDown(keycode);
 	}
 

@@ -73,8 +73,17 @@
   <object id="45" name="Parede4" type="object" x="650" y="420" width="150" height="30">
    <properties>
     <property name="body" value="{body}"/>
+<<<<<<< HEAD
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
+=======
+    <property name="capacity" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+    <property name="conn0" value="{body}_Door_"/>
+    <property name="decaySpeed" type="float" value="20"/>
+    <property name="fillStep" type="float" value="30"/>
+    <property name="imagem" value="componentes/receptor 2.png"/>
+>>>>>>> origin/master
    </properties>
   </object>
   <object id="46" name="Botao" type="object" x="100" y="520" width="40" height="40">

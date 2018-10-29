@@ -84,9 +84,11 @@ public class Canvas extends GameObject{
 	float outroTimer = 0;
 
 	Texture bear_canto;
+	float ursoPos = 0;
 	
 	public Canvas(ObjectInfo info, String imagem) {
 		super(info, new MapProperties());
+		
 		
 		intro = true;
 		outro = false;
@@ -96,7 +98,7 @@ public class Canvas extends GameObject{
 		canvasBox = new Rectangle2D.Double(0, 0, 800, 600);
 		targetCanvasBox = (Rectangle2D) canvasBox.clone();
 		
-		platforms = getState().getByClass(Platform.class);
+		platforms.addAll(getState().getByClass(Platform.class));
 		platforms.addAll(getState().getByClass(MyPlayer.class));
 		
 		for(int i = platforms.size() -1 ; i >= 0; i --) {
@@ -116,6 +118,7 @@ public class Canvas extends GameObject{
 		}
 		
 		bear_canto = new Texture("arm/bear.png");
+		ursoPos = -bear_canto.getWidth() * 0.35f;
 		//resizeBox(new Vector2(800, 350));
 		
 		if(musicTest == null) {
@@ -126,7 +129,7 @@ public class Canvas extends GameObject{
 		
 		frame = new CanvasFrame(new ObjectInfo(getState(), 4, 1f), canvasBox);
 		
-		wall_bg = new Texture("wall_bg.png");
+		wall_bg = new Texture("fundo.jpg");
 		//bg = new ParallaxBackground(new ObjectInfo(getState(), -3, 1f), "wall_bg.png");
 		
 		canvas_bg = new CanvasBackground(new ObjectInfo(getState(), 2, 1f), canvasBox, imagem);
@@ -152,7 +155,7 @@ public class Canvas extends GameObject{
 
 	public void create() {
 		
-
+		
 	}
 
 	public void dispose() {
@@ -260,8 +263,10 @@ public class Canvas extends GameObject{
 				(int)canvasBox.getWidth(),
 				-(int)canvasBox.getHeight());
 		
+		ursoPos += (0 - ursoPos)/5f;
+		
 		sb.draw(bear_canto,
-				0,
+				ursoPos,
 				ScreenSize.getHeight() - bear_canto.getHeight() * 0.35f,
 				bear_canto.getWidth() * 0.35f,
 				bear_canto.getHeight() * 0.35f);
@@ -336,7 +341,6 @@ public class Canvas extends GameObject{
 		else {
 			armX.setArmEnd(armXcurrent);
 			armX.setArmStart(new Vector2((-50) / State.PHYS_SCALE, (ScreenSize.getHeight() - 300) / State.PHYS_SCALE));
-			//armX.setArmStart(armXcurrent.cpy().scl(0, 1));
 		}
 		
 		
@@ -395,7 +399,7 @@ public class Canvas extends GameObject{
 		return false;
 	}
 	
-	float contScale = 5;
+	float contScale = 15;
 	
 	@Override
 	public boolean axisMoved(Controller controller, int axisCode, float value) {
@@ -418,16 +422,31 @@ public class Canvas extends GameObject{
 		return super.axisMoved(controller, axisCode, value);
 	}
 	
+	float lastScreenX;
+	float lastScreenY;
 
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
-			float nw = (float)Math.abs((screenX - Gdx.graphics.getWidth()/2f)) * 2f;
-			float nh = (float)Math.abs((screenY - Gdx.graphics.getHeight()/2f)) * 2f;
 			
+			int fx = 1;
+			int fy = 1;
+			
+			if(screenX > ScreenSize.getWidth()/2f) fx = -1;
+			if(screenY > ScreenSize.getHeight()/2f) fy = -1;
+			
+			float nw = (float) (canvasBox.getWidth() - (screenX - lastScreenX)*contScale*fx);
+			float nh = (float) (canvasBox.getHeight() - (screenY - lastScreenY)*contScale*fy);
+
+//			float nw = (float)Math.abs((screenX - Gdx.graphics.getWidth()/2f)) * 2f;
+//			float nh = (float)Math.abs((screenY - Gdx.graphics.getHeight()/2f)) * 2f;
+//			
 			if(xLocked) nw = 800;
 			if(yLocked) nh = 600;
 			
 			resizeBox(new Vector2(nw, nh));
+			
+			lastScreenX = screenX;
+			lastScreenY = screenY;
 		}
 		return super.touchDragged(screenX, screenY, pointer);
 	}

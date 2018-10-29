@@ -185,6 +185,9 @@ public abstract class GameObject {
 	protected void renderBodyTexture(SpriteBatch sb, Texture texture, Body body, Transform customTransform) {
 		Helper.renderTex(sb, texture, body.getWorldCenter().add(customTransform.getPosition()), (float)Math.toDegrees(body.getAngle()) + customTransform.getAngle(), customTransform.getScale().cpy().scl(1/State.PHYS_SCALE), false, false);
 	}
+	protected void renderBodyTexture(SpriteBatch sb, Texture texture, Body body, Transform customTransform, boolean flipX, boolean flipY) {
+		Helper.renderTex(sb, texture, body.getWorldCenter().add(customTransform.getPosition()), (float)Math.toDegrees(body.getAngle()) + customTransform.getAngle(), customTransform.getScale().cpy().scl(1/State.PHYS_SCALE), flipX, flipY);
+	}
 	/**Renders the texture to match the body transform (except scale). The transform of the object is used as a relative transform
 	 * (if you want to draw at the exact center, be sure to set the transform position to (0, 0)
 	 * 

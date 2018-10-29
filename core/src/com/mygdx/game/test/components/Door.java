@@ -47,6 +47,13 @@ public class Door extends Platform {
 		}
 	}
 	
+	public void open() {
+		if(!open) {
+			open = true;
+			openTimer = timeOpen;
+		}
+	}
+	
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
 
 		Helper.enableBlend();

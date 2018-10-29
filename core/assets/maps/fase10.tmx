@@ -84,6 +84,7 @@
   <object id="29" name="Teto" type="object" x="0" y="0" width="800" height="20">
    <properties>
     <property name="body" value="{body}"/>
+<<<<<<< HEAD:core/assets/maps/fase10.tmx
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
    </properties>
@@ -93,13 +94,51 @@
     <property name="body" value="{body}"/>
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
+=======
+    <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
+    <property name="emitDirection" type="float" value="-90"/>
+    <property name="frequency" type="float" value="0.3"/>
+    <property name="imagem" value="componentes/emissor 1.png"/>
+    <property name="laserSpeed" type="float" value="20"/>
+    <property name="offsetX" type="float" value="10"/>
+    <property name="offsetY" type="float" value="30"/>
+    <property name="scale" type="float" value="0.15"/>
+   </properties>
+  </object>
+  <object id="58" name="Receiver" type="object" x="730" y="130" width="30" height="60">
+   <properties>
+    <property name="body" value="{body}"/>
+    <property name="capacity" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+    <property name="conn0" value="{body}_Door_"/>
+    <property name="decaySpeed" type="float" value="30"/>
+    <property name="fillStep" type="float" value="30"/>
+    <property name="flipX" type="bool" value="true"/>
+    <property name="imagem" value="componentes/receptor 2.png"/>
+    <property name="offsetX" type="float" value="20"/>
+    <property name="offsetY" type="float" value="30"/>
+    <property name="reversed" type="bool" value="false"/>
+    <property name="scale" type="float" value="0.1"/>
+>>>>>>> origin/master:core/assets/maps/tutoriais/tuto6.tmx
    </properties>
   </object>
   <object id="31" name="Parede4" type="object" x="93" y="400" width="667" height="20">
    <properties>
     <property name="body" value="{body}"/>
+<<<<<<< HEAD:core/assets/maps/fase10.tmx
     <property name="class" value="com.mygdx.game.test.components.Platform"/>
     <property name="tamanho" type="bool" value="true"/>
+=======
+    <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+    <property name="flipX" type="bool" value="false"/>
+    <property name="flipY" type="bool" value="false"/>
+    <property name="imageAngle" type="float" value="0"/>
+    <property name="imagem" value="componentes/refletor.png"/>
+    <property name="offsetX" type="float" value="-20"/>
+    <property name="offsetY" type="float" value="-10"/>
+    <property name="scale" type="float" value="0.2"/>
+    <property name="tamanho" type="bool" value="false"/>
+>>>>>>> origin/master:core/assets/maps/tutoriais/tuto6.tmx
    </properties>
   </object>
   <object id="35" name="EndLevel" type="object" x="877.833" y="6.6665" width="88.3333" height="554.667">

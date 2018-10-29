@@ -31,6 +31,8 @@ public class LaserEmitter extends Platform{
 		emitDirection = Helper.newPolarVector(get("emitDirection", Float.class), 1);
 		frequency = get("frequency", Float.class);
 		
+		customTransform.setAngle(get("emitDirection", Float.class));
+
 	}
 	
 	public boolean update(float delta) {
