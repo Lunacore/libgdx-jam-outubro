@@ -14,77 +14,25 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.ObjectInfo;
+import com.mygdx.game.objects.TiledImageObject;
 import com.mygdx.game.states.State;
 import com.mygdx.game.structs.Transform;
 
-public class Platform extends GameObject{
+public class Platform extends TiledImageObject{
 
-	Body body;
 	boolean tamanho;
-	
-	static Texture bloco;
-	
 	float alpha;
 	
-	Texture imagem;
-	
-	boolean bl;
-	
-	float offsetX = 0;
-	float offsetY = 0;
-	boolean flipX = false;
-	boolean flipY = false;
-	
-	Transform customTransform;
+	float original_width;
+	float original_height;
 	
 	public Platform(ObjectInfo info, MapProperties properties) {
 		super(info.withZ(3), properties);
-		body = get("body", Body.class);
 		body.setUserData(this);
-		
-		tamanho = get("tamanho") != null ? get("tamanho", Boolean.class) : false;
-		
-		if(bloco == null)
-		bloco = new Texture("bloco.png");
-		
-		if(get("imagem") == null) {
-			imagem = bloco;
-			bl = true;
-		}
-		else {
-			imagem = new Texture(get("imagem", String.class));
-		}
-		
-		float rotation = 0;
-		if(get("imageAngle") != null) {
-			rotation = get("imageAngle", Float.class);
-		}
-		
-		if(get("offsetX") != null) {
-			offsetX = get("offsetX", Float.class);
-		}
-		if(get("offsetY") != null) {
-			offsetY = get("offsetY", Float.class);
-		}
-		
-		if(get("flipX") != null) {
-			flipX = get("flipX", Boolean.class);
-		}
-		if(get("flipY") != null) {
-			flipY = get("flipY", Boolean.class);
-		}
-		float scale = 1;
-		if(get("scale") != null) {
-			scale = get("scale", Float.class);
-		}
-		
-		customTransform = new Transform(
-				new Vector2(
-						offsetX / State.PHYS_SCALE,
-						offsetY / State.PHYS_SCALE),
-				rotation,
-				new Vector2(scale, scale)
-				);
+		tamanho = getNonNull("tamanho", Boolean.class, false);
+
+		original_width = get("width", Float.class);
+		original_height = get("height", Float.class);
 		
 		alpha = 0;
 	}
@@ -97,22 +45,6 @@ public class Platform extends GameObject{
 		getState().deleteBody(body);
 	}
 
-	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-
-		Helper.enableBlend();
-		sb.setColor(1, 1, 1, alpha);
-
-		if(bl)
-			sb.draw(imagem, body.getWorldCenter().x, body.getWorldCenter().y, get("width", Float.class) / State.PHYS_SCALE, get("height", Float.class)/State.PHYS_SCALE);
-		else {
-			renderBodyTexture(sb, imagem, body, customTransform, flipX, flipY);
-		}
-		
-		sb.setColor(Color.WHITE);
-		Helper.disableBlend();
-		sb.flush();
-	}
-
 	public boolean update(float delta) {
 		alpha += 1/60f;
 		alpha = Math.min(1, alpha);
@@ -122,7 +54,6 @@ public class Platform extends GameObject{
 	public void resizeBox(Rectangle2D oldRect, Rectangle2D newRect) {
 	
 		//Tamanho
-		
 		if(tamanho) {
 			float relativeWidth = (float) (get("width", Float.class) / oldRect.getWidth());
 			float newWidth = (float) (relativeWidth * newRect.getWidth());
@@ -140,6 +71,11 @@ public class Platform extends GameObject{
 							newHeight / State.PHYS_SCALE / 2f),
 					0);
 			
+			transform.setScale(new Vector2(
+					imgObj.getScaleX() * (newWidth / original_width),
+					imgObj.getScaleY() * (newHeight / original_height)
+					));
+						
 			properties.put("width", newWidth);
 			properties.put("height", newHeight);
 		}

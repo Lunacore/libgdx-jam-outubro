@@ -53,19 +53,7 @@ public class Door extends Platform {
 			openTimer = timeOpen;
 		}
 	}
-	
-	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
 
-		Helper.enableBlend();
-		
-		sb.setColor(1, 1, 1, alpha);
-		sb.draw(bloco, body.getWorldCenter().x, body.getWorldCenter().y, get("width", Float.class) / State.PHYS_SCALE, currentHeight);
-		sb.setColor(Color.WHITE);
-		
-		Helper.disableBlend();
-		
-		sb.flush();
-	}
 	
 	public boolean update(float delta) {
 		super.update(delta);

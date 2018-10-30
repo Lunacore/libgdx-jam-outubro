@@ -16,8 +16,6 @@ import com.mygdx.game.states.State;
 import com.mygdx.game.structs.Transform;
 
 public class LaserReceiver extends Platform{
-
-	Body body;
 	
 	float capacity;
 	float targetCapacity;
@@ -27,11 +25,9 @@ public class LaserReceiver extends Platform{
 	boolean reversed;
 	
 	ArrayList<Door> connections;
-	Texture imagem_fill;
 	
 	public LaserReceiver(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
-		this.body = get("body", Body.class);
 		body.setUserData(this);
 		tamanho = true;
 		capacity = get("capacity", Float.class);
@@ -41,8 +37,6 @@ public class LaserReceiver extends Platform{
 		targetCapacity = 0;
 		connections  = new ArrayList<Door>();
 		reversed = get("reversed") == null ? false : get("reversed", Boolean.class);
-		String pt = get("imagem", String.class);
-		imagem_fill = new Texture(pt.split("\\.")[0] + "_fill." + pt.split("\\.")[1]);
 	}
 	
 	public void create() {
@@ -54,21 +48,7 @@ public class LaserReceiver extends Platform{
 			i ++;
 		}
 	}
-	
-	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-		super.render(sb, sr, camera);
-		
-		Helper.enableBlend();
-		sb.setColor(1, 1, 1, alpha);
 
-	
-		renderBodyTexture2(sb, imagem_fill, body, customTransform, flipX, flipY);
-		
-		sb.setColor(Color.WHITE);
-		Helper.disableBlend();
-		sb.flush();
-
-	}
 	
 	public void activate() {
 		for(Door d : connections) {

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <object type="object" gid="10" width="54.5" height="51.3333">
+  <properties>
+   <property name="class" value="com.mygdx.game.test.components.Platform"/>
+   <property name="tamanho" type="bool" value="true"/>
+  </properties>
+ </object>
+</template>

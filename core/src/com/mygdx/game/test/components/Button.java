@@ -29,10 +29,8 @@ public class Button extends Platform{
 	public Button(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 		connections = new ArrayList<Door>();
-		//body.getFixtureList().get(0).setSensor(true);
 		font = Helper.newFont("Allan-Bold.ttf", 18);
 		
-		normalScale = customTransform.getScale().cpy();
 	}
 	
 	public void create() {
@@ -47,9 +45,6 @@ public class Button extends Platform{
 		}
 	}
 	
-	
-	
-	
 	public void activate() {
 		for(Door d : connections) {
 			d.toggle();
@@ -60,13 +55,6 @@ public class Button extends Platform{
 	public boolean update(float delta) {
 		super.update(delta);
 		timerToPressAgain -= delta;
-		
-		if(pressed) {
-			customTransform.setScale(normalScale.cpy().scl(1, 0.5f));
-		}
-		else {
-			customTransform.setScale(normalScale);
-		}
 		
 		return super.update(delta);
 	}
@@ -105,21 +93,21 @@ public class Button extends Platform{
 	
 	public void press() {
 
-		if(!pressed && timerToPressAgain <= 0) {
-		PolygonShape shape = (PolygonShape) body.getFixtureList().get(0).getShape();
-		
-		shape.setAsBox(
-				get("width", Float.class) /2f / State.PHYS_SCALE,
-				get("height", Float.class) /2f /2f / State.PHYS_SCALE,
-				
-				new Vector2(get("width", Float.class) /2f / State.PHYS_SCALE,
-				get("height", Float.class) /2f /2f / State.PHYS_SCALE), 0);
-		
-		properties.put("height", get("height", Float.class) /2f);
-		pressed = true;
-		activate();
-		
-		}
+//		if(!pressed && timerToPressAgain <= 0) {
+//		PolygonShape shape = (PolygonShape) body.getFixtureList().get(0).getShape();
+//		
+//		shape.setAsBox(
+//				get("width", Float.class) /2f / State.PHYS_SCALE,
+//				get("height", Float.class) /2f /2f / State.PHYS_SCALE,
+//				
+//				new Vector2(get("width", Float.class) /2f / State.PHYS_SCALE,
+//				get("height", Float.class) /2f /2f / State.PHYS_SCALE), 0);
+//		
+//		properties.put("height", get("height", Float.class) /2f);
+//		pressed = true;
+//		activate();
+//		
+//		}
 	}
 
 }

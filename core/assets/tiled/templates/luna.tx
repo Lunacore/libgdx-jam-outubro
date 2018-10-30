@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <object name="Luna" gid="11" width="60" height="80">
+  <properties>
+   <property name="class" value="com.mygdx.game.test.MyPlayer"/>
+   <property name="jumps" type="int" value="1"/>
+   <property name="speed" type="float" value="7"/>
+   <property name="strength" type="float" value="10"/>
+  </properties>
+ </object>
+</template>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <object type="object" gid="2" width="57.5991" height="29">
+  <properties>
+   <property name="class" value="com.mygdx.game.test.components.Button"/>
+   <property name="conn0" value="{body}_Door_"/>
+  </properties>
+ </object>
+</template>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <object type="object" gid="3" width="31.6697" height="52.2013">
+  <properties>
+   <property name="class" value="com.mygdx.game.test.components.LaserEmitter"/>
+   <property name="emitDirection" type="float" value="0"/>
+   <property name="frequency" type="float" value="1"/>
+   <property name="laserSpeed" type="float" value="10"/>
+  </properties>
+ </object>
+</template>

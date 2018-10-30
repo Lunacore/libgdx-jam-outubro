@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <object type="object" gid="12" width="54" height="100.667">
+  <properties>
+   <property name="class" value="com.mygdx.game.test.components.Door"/>
+   <property name="timeOpen" type="float" value="1"/>
+  </properties>
+ </object>
+</template>

@@ -16,13 +16,11 @@ public class LaserEmitter extends Platform{
 	
 	StateOne state;
 	Vector2 emitDirection;
-	Body body;
 
 	public LaserEmitter(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 
 		tamanho = true;
-		body = get("body", Body.class);
 		body.setUserData(this);
 		state = (StateOne) getState();
 		
@@ -31,8 +29,6 @@ public class LaserEmitter extends Platform{
 		emitDirection = Helper.newPolarVector(get("emitDirection", Float.class), 1);
 		frequency = get("frequency", Float.class);
 		
-		customTransform.setAngle(get("emitDirection", Float.class));
-
 	}
 	
 	public boolean update(float delta) {

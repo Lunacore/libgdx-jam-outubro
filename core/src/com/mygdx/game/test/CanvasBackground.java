@@ -2,6 +2,7 @@ package com.mygdx.game.test;
 
 import java.awt.geom.Rectangle2D;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -20,6 +21,13 @@ public class CanvasBackground extends GameObject{
 	public CanvasBackground(ObjectInfo info, Rectangle2D rect, String imagem) {
 		super(info, new MapProperties());
 		this.rect = rect;
+		
+		if(imagem == null) {
+			new Exception("Não tem imagem de fundo configurada nas propriedades do mapa!").printStackTrace();
+			Gdx.app.exit();
+		}
+
+		
 		image = new Texture(imagem);
 		//image = new Texture("maps/quadros/o-grito-de-luna.jpg");
 	}

@@ -43,6 +43,11 @@ public abstract class GameObject {
 		this.render = render;
 	}
 	
+	public <T> T getNonNull(String key, Class<T> cls, T ifnull) {
+		if(properties.get(key) == null) return ifnull;
+		return properties.get(key, cls);
+	}
+	
 	public <T> T get(String key, Class<T> cls) {
 		return properties.get(key, cls);
 	}
@@ -162,6 +167,10 @@ public abstract class GameObject {
 	 */
 	protected void renderTexture(SpriteBatch sb, Texture tex, boolean flipX, boolean flipY) {
 		Helper.renderTex(sb, tex, transform, flipX, flipY);
+	}
+	
+	protected void renderBodyRegionNoCenter(SpriteBatch sb, TextureRegion region, Body body, boolean flipX, boolean flipY) {
+		Helper.renderRegionNoCenter(sb, region, body.getWorldCenter().cpy().add(transform.getPosition().cpy().scl(1/State.PHYS_SCALE)), (float)Math.toDegrees(body.getAngle()) + transform.getAngle(), transform.getScale().cpy().scl(1/State.PHYS_SCALE), flipX, flipY);
 	}
 	
 	protected void renderBodyRegion(SpriteBatch sb, TextureRegion region, Body body) {

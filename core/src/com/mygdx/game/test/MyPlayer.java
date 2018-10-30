@@ -23,14 +23,14 @@ public class MyPlayer extends PlatformPlayer{
 	Animation<TextureRegion> idle;
 	
 	public MyPlayer(ObjectInfo info, Vector2 position, Vector2 size) {
-		super(info, position, size);
+		super(info, position, size.cpy().scl(1/2f));
 
 	}
 
 	public MyPlayer(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 				
-		float ratio = get("width", Float.class) / 30f;
+		float ratio = get("width", Float.class) / 60f;
 		
 		transform.setScale(new Vector2(0.4f * ratio , 0.4f * ratio));
 		transform.setPosition(new Vector2(0, 5));
