@@ -5,3 +5,7 @@ Ajustar o posicionamento dos gauges no laser receiver
 fazer merge dos Element ao carregar um template
 
 Refazer todas as fases e fazer mais mapas
+
+Ajustar saturação das imagens (para dar mais foco aos componentes)
+
+talvez colocar um shader de outline nos componentes (se necessário)
