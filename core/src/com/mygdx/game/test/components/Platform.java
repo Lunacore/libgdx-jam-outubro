@@ -55,6 +55,7 @@ public class Platform extends TiledImageObject{
 	
 		//Tamanho
 		if(tamanho) {
+			
 			float relativeWidth = (float) (get("width", Float.class) / oldRect.getWidth());
 			float newWidth = (float) (relativeWidth * newRect.getWidth());
 			
@@ -90,7 +91,7 @@ public class Platform extends TiledImageObject{
 		float newY = (float) (newRect.getY() / State.PHYS_SCALE + (newRect.getHeight() / State.PHYS_SCALE * relativeY));
 		
 		
-		body.setTransform(new Vector2(newX, newY), 0);
+		body.setTransform(new Vector2(newX, newY), body.getAngle());
 		
 	}
 

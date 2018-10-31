@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.mygdx.game.helper.Helper;
+import com.mygdx.game.objects.GameParticle;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.states.State;
 import com.mygdx.game.states.StateOne;
@@ -16,9 +17,8 @@ public class Door extends Platform {
 
 	boolean open;
 	
-	float originalHeight;
-	float currentHeight;
-	float targetHeight;
+	float currentWidth;
+	float targetWidth;
 	
 	float timeOpen;
 	float openTimer;
@@ -28,8 +28,7 @@ public class Door extends Platform {
 	public Door(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 		//tamanho = true;
-		originalHeight = get("height", Float.class) / State.PHYS_SCALE;
-		currentHeight = originalHeight;
+		currentWidth = original_width;
 		body.setUserData(this);
 		
 		timeOpen = get("timeOpen", Float.class);
@@ -40,10 +39,12 @@ public class Door extends Platform {
 	}
 	
 	public void toggle() {
-		open = !open;
-		
-		if(open) {
-			openTimer = timeOpen;
+		if(!open) {
+			open();
+		}
+		else {
+			open = false;
+			body.getFixtureList().get(0).setSensor(false);
 		}
 	}
 	
@@ -51,6 +52,7 @@ public class Door extends Platform {
 		if(!open) {
 			open = true;
 			openTimer = timeOpen;
+			body.getFixtureList().get(0).setSensor(true);
 		}
 	}
 
@@ -68,18 +70,25 @@ public class Door extends Platform {
 			}
 		}
 		
-		PolygonShape shape = (PolygonShape) body.getFixtureList().get(0).getShape();
-		shape.setAsBox(
-				get("width", Float.class) / State.PHYS_SCALE / 2f, currentHeight / 2f,
-				new Vector2(get("width", Float.class) / State.PHYS_SCALE / 2f, currentHeight / 2f),
-				0);
 		
 		if(open)
-			targetHeight = 0;
+			targetWidth = 54;
 		else
-			targetHeight = originalHeight;
+			targetWidth = original_width;
 		
-		currentHeight += (targetHeight - currentHeight)/5f;
+		PolygonShape shape = (PolygonShape) body.getFixtureList().get(0).getShape();
+		shape.setAsBox(
+				currentWidth / State.PHYS_SCALE / 2f, get("height", Float.class) / 2f / State.PHYS_SCALE,
+				new Vector2(currentWidth / State.PHYS_SCALE / 2f, get("height", Float.class) / 2f / State.PHYS_SCALE),
+				0);
+		
+		
+		currentWidth += (targetWidth - currentWidth)/5f;
+		
+		transform.setScale(new Vector2(
+				imgObj.getScaleX() * (currentWidth / original_width),
+				imgObj.getScaleY()
+				));
 		
 		return false;
 	}

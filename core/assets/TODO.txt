@@ -1,35 +1,7 @@
-Alterar shape dos bodies [OK]
-Player de modulo xm ou it [nao deu]
-canvas redimension√°vel [OK]
+Concertar cutscene de ending
 
-definir o que √© o final do level
-definir quantos levels vao ser
-fazer o loader de level pra tudo ficar mais facil no tiled [SEMI OK]
+Ajustar o posicionamento dos gauges no laser receiver
 
-componentes de fase
+fazer merge dos Element ao carregar um template
 
-Bloco de espa√ßo [OK]
-bloco de posi√ß√£o [OK]
-
-lan√ßador de laser [OK]
-receptor de laser [OK]
-
-porta [OK]
-bot√£o com tempo [OK]
-espelho em 45o [OK]
-
-Timer
-
-Objetos colecionaveis
-
-Menu com fases
-
-=====
-O player n„o È afetado pelo tempo
-o fill down do receiver n„o È afetado pelo tempo
-
-Coisas que s„o afetadas pelo tempo:
-	tempo de fechamento de abertura de portas
-	
-	frequencia de disparo de laser
-	velocidade dos lasers
+Refazer todas as fases e fazer mais mapas

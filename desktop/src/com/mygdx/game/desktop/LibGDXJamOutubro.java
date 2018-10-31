@@ -10,8 +10,7 @@ public class LibGDXJamOutubro {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		
-		
-		config.width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();;
+		config.width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 		config.height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();;
 		config.fullscreen = true;
 		new LwjglApplication(new MyGdxGame(), config);

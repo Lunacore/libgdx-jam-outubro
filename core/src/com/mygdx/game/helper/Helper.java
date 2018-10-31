@@ -249,10 +249,9 @@ public class Helper {
 		sb.setProjectionMatrix(lastProj);
 	}
 	
-	public static void drawUIFont(SpriteBatch sb, BitmapFont font, OrthographicCamera camera, String text, Vector2 position) {
+	public static void drawUIFont(SpriteBatch sb, BitmapFont font, String text, Vector2 position) {
 		Matrix4 lastProj = sb.getProjectionMatrix().cpy();
 		sb.setProjectionMatrix(Helper.getDefaultProjection());
-		
 		
 		font.draw(sb, text, position.x, position.y);
 		sb.setProjectionMatrix(lastProj);
@@ -281,6 +280,36 @@ public class Helper {
 	
 	public static class PhysHelp {
 		
+		public static Vector2 getFixtureRelativeSize(Fixture fix) {
+			
+			PolygonShape shape = (PolygonShape) fix.getShape();
+			
+			Vector2 min = new Vector2();
+			Vector2 max = new Vector2();
+			
+			for(int i = 0; i < shape.getVertexCount(); i ++) {
+				
+				Vector2 temp = new Vector2();
+				shape.getVertex(i, temp);
+				
+				if(temp.x < min.x) {
+					min.x = temp.x;
+				}
+				if(temp.y < min.y) {
+					min.y = temp.y;
+				}
+				if(temp.x < max.x) {
+					max.x = temp.x;
+				}
+				if(temp.y > max.y) {
+					max.y = temp.y;
+				}
+				
+			}
+			
+			return max.sub(min);
+			
+		}
 		
 		//BOXES
 		public static Body createDynamicBoxBody(World world, Vector2 position, Vector2 size) {

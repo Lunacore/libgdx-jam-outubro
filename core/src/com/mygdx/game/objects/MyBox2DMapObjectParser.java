@@ -513,6 +513,11 @@ public class MyBox2DMapObjectParser {
 	
 		float rotation = object.getProperties().get("rotation", 0f, Float.class);
 		body.setTransform(body.getWorldCenter(), -(float) Math.toRadians(rotation));
+		
+		if(rotation != 0) {
+			System.out.println(object.getName() + " tem uma rotação diferente de zero");
+		}
+		
 		return body;
 	}
 

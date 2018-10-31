@@ -1,32 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="3" nextobjectid="19">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="3" nextobjectid="25">
  <properties>
   <property name="fundo" value="maps/quadros/voice-of-luna.jpg"/>
  </properties>
  <tileset firstgid="1" source="../tileset/components.tsx"/>
  <objectgroup id="2" name="objs">
   <object id="2" template="../templates/botao.tx" type="object" x="189.5" y="578"/>
-  <object id="3" template="../templates/block.tx" x="1" y="598.167" width="802.5" height="20.6666"/>
+  <object id="3" template="../templates/block.tx" x="1" y="598.167" width="319.833" height="20.6666"/>
   <object id="5" template="../templates/luna.tx" x="43" y="578.333"/>
   <object id="6" template="../templates/block.tx" x="773.333" y="588" width="26.5" height="580.667"/>
   <object id="7" template="../templates/block.tx" x="0" y="26.6667" width="799.833" height="24.6666"/>
   <object id="9" template="../templates/block.tx" x="-1.25" y="587" width="26.5" height="580.667"/>
-  <object id="10" template="../templates/door.tx" name="Door" x="644.333" y="579"/>
-  <object id="12" template="../templates/level_end.tx" x="457.333" y="275.333"/>
-  <object id="14" template="../templates/botao.tx" gid="1" x="341.333" y="578"/>
-  <object id="15" template="../templates/emitter.tx" x="20" y="106.701">
+  <object id="10" template="../templates/door.tx" name="Door" gid="12" x="644.333" y="579" width="9" height="100.667" rotation="0"/>
+  <object id="12" name="End Level" type="object" gid="10" x="460.333" y="369.333" width="100" height="100">
    <properties>
-    <property name="frequency" type="float" value="0.2"/>
-    <property name="laserSpeed" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
+    <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="17" type="object" gid="6" x="748.333" y="110.034" width="26.264" height="50.3671">
+  <object id="15" template="../templates/emitter.tx" name="Emitidor 1" x="641.5" y="91.701">
+   <properties>
+    <property name="frequency" type="float" value="0.2"/>
+    <property name="laserSpeed" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="17" type="object" gid="6" x="721.024" y="94.3653" width="21.4458" height="50.3671">
    <properties>
     <property name="capacity" type="float" value="100"/>
     <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
     <property name="conn0" value="{body}_Door_"/>
-    <property name="decaySpeed" type="float" value="1"/>
+    <property name="decaySpeed" type="float" value="20"/>
     <property name="fillStep" type="float" value="10"/>
+    <property name="reversed" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="19" type="object" gid="15" x="308.667" y="620" width="182.667" height="33.3333">
+   <properties>
+    <property name="class" value="com.mygdx.game.test.components.DeathCompo"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="20" template="../templates/block.tx" x="481.417" y="600.333" width="319.833" height="20.6666"/>
+  <object id="21" template="../templates/block.tx" x="14.7502" y="408.333" width="166.5" height="20.6666"/>
+  <object id="22" template="../templates/emitter.tx" name="Emitidor 2" x="292.566" y="266.631" rotation="-270">
+   <properties>
+    <property name="frequency" type="float" value="0.2"/>
+    <property name="laserSpeed" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="23" type="object" gid="6" x="709.631" y="137.323" width="21.4458" height="50.3671" rotation="36.9264">
+   <properties>
+    <property name="capacity" type="float" value="100"/>
+    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+    <property name="conn0" value="{body}_Door_"/>
+    <property name="decaySpeed" type="float" value="20"/>
+    <property name="fillStep" type="float" value="10"/>
+    <property name="reversed" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="24" template="../templates/emitter.tx" name="Emitidor 1" x="643.665" y="151.399">
+   <properties>
+    <property name="frequency" type="float" value="0.2"/>
+    <property name="laserSpeed" type="float" value="10"/>
    </properties>
   </object>
  </objectgroup>

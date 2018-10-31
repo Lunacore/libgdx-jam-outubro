@@ -43,7 +43,7 @@ public class TiledImageObject extends GameObject{
 	}
 
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-		if(imgObj.getProperties().get("render") == null || imgObj.getProperties().get("render", Boolean.class) ) {
+		if(imgObj.getProperties().get("render", true, Boolean.class)) {
 			TextureRegion region = imgObj.getTile().getTextureRegion();
 			if(imgObj.getTile() instanceof AnimatedTiledMapTile) {
 				region = ((AnimatedTiledMapTile)imgObj.getTile()).getCurrentFrame().getTextureRegion();

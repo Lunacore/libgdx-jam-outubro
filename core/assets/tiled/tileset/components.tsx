@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.0" name="components" tilewidth="629" tileheight="630" tilecount="12" columns="0">
+<tileset version="1.2" tiledversion="1.2.0" name="components" tilewidth="629" tileheight="630" tilecount="13" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="431" height="217" source="../resources/botao 1.png"/>
@@ -12,16 +12,22 @@
  <tile id="1">
   <image width="457" height="210" source="../resources/botao 2.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="85.3333" y="12">
-    <polygon points="0.181818,-0.727273 284.606,-1.15152 312.545,60.303 366.97,60.2424 366.788,100.667 328.182,101.394 328.061,188.364 -42.6061,188.667 -42.8485,100.788 -81.3333,101.333 -80.9697,60.0606 -27.6364,59.6364"/>
-   </object>
+   <object id="2" x="0" y="70" width="452" height="128"/>
+   <object id="3" x="58" y="2" width="336" height="66"/>
   </objectgroup>
+  <animation>
+   <frame tileid="1" duration="500"/>
+   <frame tileid="13" duration="500"/>
+  </animation>
  </tile>
  <tile id="2">
   <image width="236" height="389" source="../resources/emissor 1.png"/>
   <objectgroup draworder="index">
    <object id="1" x="38" y="86">
     <polygon points="0,0 164,-75 164,285 2,213"/>
+   </object>
+   <object id="2" x="119" y="184">
+    <ellipse/>
    </object>
   </objectgroup>
  </tile>
@@ -36,19 +42,16 @@
  <tile id="4">
   <image width="629" height="545" source="../resources/receptor 1.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="18.1818" y="15.1515">
-    <polygon points="0,0 348.485,-3.0303 315.152,133.333 348.485,227.273 596.97,239.394 600,330.303 396.97,372.727 278.788,342.424 324.242,430.303 272.727,512.121 6.06061,512.121"/>
-   </object>
+   <object id="2" x="18" y="4" width="598" height="522"/>
+   <object id="3" x="60" y="112" width="106" height="196"/>
   </objectgroup>
  </tile>
  <tile id="5">
   <image width="316" height="606" source="../resources/receptor 2.png"/>
   <objectgroup draworder="index">
    <object id="1" x="15.1515" y="12.1212" width="272.727" height="569.697"/>
+   <object id="3" x="198" y="63" width="67" height="467"/>
   </objectgroup>
- </tile>
- <tile id="6">
-  <image width="316" height="606" source="../resources/receptor 2_fill.png"/>
  </tile>
  <tile id="7">
   <image width="374" height="356" source="../resources/refletor.png"/>
@@ -77,6 +80,15 @@
   <image width="367" height="611" source="../resources/porta 2.png"/>
   <objectgroup draworder="index">
    <object id="1" x="3.0303" y="-3.0303" width="366.667" height="609.091"/>
+  </objectgroup>
+ </tile>
+ <tile id="13">
+  <image width="457" height="210" source="../resources/botao 2_pressed.png"/>
+ </tile>
+ <tile id="14">
+  <image width="100" height="100" source="../resources/lava.png"/>
+  <objectgroup draworder="index">
+   <object id="1" x="-1" y="-1" width="101" height="102"/>
   </objectgroup>
  </tile>
 </tileset>

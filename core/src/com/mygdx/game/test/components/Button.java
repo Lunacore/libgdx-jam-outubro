@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.tiled.tiles.AnimatedTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.mygdx.game.helper.Helper;
+import com.mygdx.game.objects.GameParticle;
 import com.mygdx.game.objects.ObjectInfo;
-import com.mygdx.game.states.State;
 
 public class Button extends Platform{
 	
@@ -25,6 +28,8 @@ public class Button extends Platform{
 	float timerToPressAgain = 0;
 	
 	Vector2 normalScale;
+	
+	static Texture fumacinha = new Texture("fumacinha.png");
 	
 	public Button(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
@@ -45,11 +50,28 @@ public class Button extends Platform{
 		}
 	}
 	
-	public void activate() {
-		for(Door d : connections) {
-			d.toggle();
+	@Override
+	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
+		
+		if(imgObj.getTile() instanceof AnimatedTiledMapTile) {
+			AnimatedTiledMapTile tile = (AnimatedTiledMapTile) imgObj.getTile();
+			TextureRegion region = tile.getFrameTiles()[0].getTextureRegion();
+			
+			if(pressed) {
+				region = tile.getFrameTiles()[1].getTextureRegion();
+			}
+	
+			renderBodyRegionNoCenter(sb, region, body, imgObj.isFlipHorizontally(), imgObj.isFlipVertically());
 		}
 	}
+	
+	
+	public void activate() {
+		for(Door d : connections) {
+			d.open();
+		}
+	}
+
 	
 	@Override
 	public boolean update(float delta) {
@@ -76,38 +98,24 @@ public class Button extends Platform{
 
 	public void unPress() {
 		if(pressed) {
-			PolygonShape shape = (PolygonShape) body.getFixtureList().get(0).getShape();
-			
-			shape.setAsBox(
-					get("width", Float.class) /2f / State.PHYS_SCALE,
-					get("height", Float.class) *2f /2f / State.PHYS_SCALE,
-					
-					new Vector2(get("width", Float.class) /2f / State.PHYS_SCALE,
-					get("height", Float.class) *2f /2f / State.PHYS_SCALE), 0);
-			
-			properties.put("height", get("height", Float.class) *2f);
+			Fixture f = body.getFixtureList().get(1);
+			f.setSensor(false);
 			pressed = false;
 			timerToPressAgain = 0.4f;
 		}
 	}
 	
 	public void press() {
+		
+		if(timerToPressAgain < 0) {
+			pressed = true;
+			Fixture f = body.getFixtureList().get(1);
+			f.setSensor(true);
+			
+			activate();
+			timerToPressAgain = 0.4f;
+		}
 
-//		if(!pressed && timerToPressAgain <= 0) {
-//		PolygonShape shape = (PolygonShape) body.getFixtureList().get(0).getShape();
-//		
-//		shape.setAsBox(
-//				get("width", Float.class) /2f / State.PHYS_SCALE,
-//				get("height", Float.class) /2f /2f / State.PHYS_SCALE,
-//				
-//				new Vector2(get("width", Float.class) /2f / State.PHYS_SCALE,
-//				get("height", Float.class) /2f /2f / State.PHYS_SCALE), 0);
-//		
-//		properties.put("height", get("height", Float.class) /2f);
-//		pressed = true;
-//		activate();
-//		
-//		}
 	}
 
 }
