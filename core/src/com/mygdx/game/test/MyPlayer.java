@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.helper.Helper.Game;
 import com.mygdx.game.objects.AnimationLoader;
 import com.mygdx.game.objects.ObjectInfo;
@@ -76,6 +77,7 @@ public class MyPlayer extends PlatformPlayer{
 
 	public void kill() {
 		((StateOne)getState()).kill();
+		MyGdxGame.sendEvent("player_killed");
 	}
 
 	public void dispose() {
