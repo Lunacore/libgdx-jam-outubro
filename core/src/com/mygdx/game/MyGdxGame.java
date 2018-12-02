@@ -49,6 +49,11 @@ public class MyGdxGame extends ApplicationAdapter {
 		}
 	}
 	
+	private void printError(Exception e) {
+		e.printStackTrace();
+		
+	}
+
 	@Override
 	public void dispose () {
 		batch.dispose();
@@ -69,5 +74,13 @@ public class MyGdxGame extends ApplicationAdapter {
 	    gameAnalytics.setGameKey(appKey);
 	    gameAnalytics.setGameSecretKey(secret);
 	    gameAnalytics.startSession();
+	}
+
+	public static void sendEvent(String string) {
+		gameAnalytics.submitDesignEvent(string);
+	}
+
+	public static void setCustom1(String levelToLoad) {
+		gameAnalytics.setCustom1(levelToLoad);
 	}
 }
