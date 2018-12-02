@@ -21,7 +21,7 @@ public class StateOne extends State{
 	public void create() {
 		dispose();
 		enablePhysics(new StateOneListener(this));
-		enableDebugDraw();
+		//enableDebugDraw();
 		setGravity(new Vector2(0, -40));
 		
 		MyGdxGame.setCustom1(Canvas.levelToLoad);

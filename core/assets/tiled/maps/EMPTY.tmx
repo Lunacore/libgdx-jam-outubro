@@ -18,12 +18,12 @@
     <property name="laserSpeed" type="float" value="10"/>
    </properties>
   </object>
-  <object id="17" template="../templates/receiver.tx" x="721.024" y="94.3653">
+  <object id="17" template="../templates/receiver.tx" x="707.933" y="87.8198" width="34.5367" height="43.8216">
    <properties>
     <property name="reversed" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="19" type="object" gid="15" x="308.667" y="620" width="182.667" height="33.3333">
+  <object id="19" name="Lava" type="object" gid="15" x="308.667" y="620" width="182.667" height="33.3333">
    <properties>
     <property name="class" value="com.mygdx.game.test.components.DeathCompo"/>
     <property name="tamanho" type="bool" value="true"/>
@@ -31,13 +31,13 @@
   </object>
   <object id="20" template="../templates/block.tx" x="634.417" y="600.333" width="166.833" height="20.6666"/>
   <object id="21" template="../templates/block.tx" x="14.7502" y="408.333" width="166.5" height="20.6666"/>
-  <object id="22" template="../templates/emitter.tx" name="Emitidor 2" x="292.54" y="350.119" rotation="-450">
+  <object id="22" template="../templates/emitter.tx" name="Emitidor 2" x="278.274" y="334.183" rotation="-540">
    <properties>
     <property name="frequency" type="float" value="0.2"/>
     <property name="laserSpeed" type="float" value="10"/>
    </properties>
   </object>
-  <object id="23" type="object" gid="6" x="709.631" y="137.323" width="21.4458" height="50.3671" rotation="36.9264">
+  <object id="23" type="object" gid="6" x="702.368" y="132.858" width="35.5355" height="30.6805" rotation="36.9264">
    <properties>
     <property name="capacity" type="float" value="100"/>
     <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
@@ -53,9 +53,9 @@
     <property name="laserSpeed" type="float" value="10"/>
    </properties>
   </object>
-  <object id="26" template="../templates/reflector.tx" x="25.5" y="387"/>
+  <object id="26" template="../templates/reflector.tx" name="Refletor" x="87.5" y="389"/>
   <object id="29" template="../templates/end_level.tx" x="589" y="369"/>
-  <object id="35" type="object" gid="10" x="101.583" y="160.75" width="26" height="26">
+  <object id="35" name="CANHAO" type="object" gid="10" x="101.583" y="160.75" width="26" height="26">
    <properties>
     <property name="ballSize" type="float" value="10"/>
     <property name="class" value="com.mygdx.game.test.components.Cannon"/>

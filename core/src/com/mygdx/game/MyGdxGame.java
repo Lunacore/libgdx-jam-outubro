@@ -77,10 +77,12 @@ public class MyGdxGame extends ApplicationAdapter {
 	}
 
 	public static void sendEvent(String string) {
+		if(gameAnalytics != null)
 		gameAnalytics.submitDesignEvent(string);
 	}
 
 	public static void setCustom1(String levelToLoad) {
+		if(gameAnalytics != null)
 		gameAnalytics.setCustom1(levelToLoad);
 	}
 }
