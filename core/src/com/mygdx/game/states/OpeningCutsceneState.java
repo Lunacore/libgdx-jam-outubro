@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.utils.ScreenSize;
 
@@ -33,7 +34,7 @@ public class OpeningCutsceneState extends State{
 	float introAlpha = 1;
 	boolean intro;
 	boolean outro;
-	
+	boolean skipped = false;
 	BitmapFont font;
 	
 	public OpeningCutsceneState(StateManager manager) {
@@ -70,6 +71,8 @@ public class OpeningCutsceneState extends State{
 				finished = true;
 			}
 		});
+		skipped = false;
+		MyGdxGame.sendEvent("state_begin_CutsceneState");
 	}
 
 	public void render(SpriteBatch sb) {
@@ -159,6 +162,8 @@ public class OpeningCutsceneState extends State{
 	public boolean keyDown(int keycode) {
 		outro = true;
 		intro = false;
+		skipped = true;
+		MyGdxGame.sendEvent("cutscene_skip");
 				
 		return super.keyDown(keycode);
 	}

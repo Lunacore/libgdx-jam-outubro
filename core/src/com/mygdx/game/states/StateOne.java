@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.objects.KeyMapper.Device;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.test.Canvas;
 import com.mygdx.game.utils.ScreenSize;
@@ -23,8 +24,11 @@ public class StateOne extends State{
 		enableDebugDraw();
 		setGravity(new Vector2(0, -40));
 		
+		MyGdxGame.setCustom1(Canvas.levelToLoad);
+		MyGdxGame.sendEvent("state_begin_StateOne");
+		
+		
 		setTmxMap(Canvas.levelToLoad, 1);
-				
 		camera.position.set(400 / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
 		
 		canvas = new Canvas(new ObjectInfo(this, 0,1f),tmxRenderer.getTiledMap().getProperties().get("fundo", String.class));

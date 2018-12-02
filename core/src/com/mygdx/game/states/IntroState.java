@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.helper.Helper.Game;
 import com.mygdx.game.helper.Helper.Position;
@@ -30,7 +31,7 @@ public class IntroState extends State{
 	}
 
 	public void create() {
-		
+		MyGdxGame.sendEvent("state_begin_IntroState");
 	}
 
 	public void render(SpriteBatch sb) {
@@ -44,7 +45,7 @@ public class IntroState extends State{
 		sb.draw(logo, (ScreenSize.getWidth() - logo.getWidth()* 0.5f)/2f , (ScreenSize.getHeight() - logo.getHeight()* 0.5f)/2f - 20, logo.getWidth()* 0.5f, logo.getHeight()* 0.5f);
 				
 		sb.setColor(Color.WHITE);
-		Helper.renderTex(sb, gear, Position.CENTER.cpy().add(135, -10), Game.globalTimer * 50, new Vector2(0.5f, 0.5f), false, false);
+		Helper.renderTex(sb, gear, Position.CENTER.cpy().add(135, -10), Game.globalTimer * 500, new Vector2(0.5f, 0.5f), false, false);
 
 		sb.end();
 		
