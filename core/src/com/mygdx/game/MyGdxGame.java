@@ -58,6 +58,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		manager.dispose();
+		if(gameAnalytics != null)
 		gameAnalytics.closeSession();
 	}
 	

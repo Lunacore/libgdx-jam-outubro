@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="37">
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="38">
  <properties>
   <property name="fundo" value="maps/quadros/voice-of-luna.jpg"/>
  </properties>
@@ -64,5 +64,11 @@
    </properties>
   </object>
   <object id="36" template="../templates/block.tx" x="481.583" y="600.333" width="106.5" height="20.6666"/>
+  <object id="37" name="Lava" type="object" gid="15" x="487.166" y="692.833" width="250.167" height="76.8333">
+   <properties>
+    <property name="class" value="com.mygdx.game.test.components.DeathCompo"/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
