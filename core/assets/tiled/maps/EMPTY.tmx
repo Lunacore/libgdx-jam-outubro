@@ -1,37 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextlayerid="3" nextobjectid="25">
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="37">
  <properties>
   <property name="fundo" value="maps/quadros/voice-of-luna.jpg"/>
  </properties>
  <tileset firstgid="1" source="../tileset/components.tsx"/>
- <objectgroup id="2" name="objs">
-  <object id="2" template="../templates/botao.tx" type="object" x="189.5" y="578"/>
+ <objectgroup name="objs">
+  <object id="2" template="../templates/botao.tx" type="object" x="468.424" y="581.439"/>
   <object id="3" template="../templates/block.tx" x="1" y="598.167" width="319.833" height="20.6666"/>
   <object id="5" template="../templates/luna.tx" x="43" y="578.333"/>
   <object id="6" template="../templates/block.tx" x="773.333" y="588" width="26.5" height="580.667"/>
   <object id="7" template="../templates/block.tx" x="0" y="26.6667" width="799.833" height="24.6666"/>
   <object id="9" template="../templates/block.tx" x="-1.25" y="587" width="26.5" height="580.667"/>
   <object id="10" template="../templates/door.tx" name="Door" gid="12" x="644.333" y="579" width="9" height="100.667" rotation="0"/>
-  <object id="12" name="End Level" type="object" gid="10" x="460.333" y="369.333" width="100" height="100">
-   <properties>
-    <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
-    <property name="tamanho" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="15" template="../templates/emitter.tx" name="Emitidor 1" x="641.5" y="91.701">
    <properties>
     <property name="frequency" type="float" value="0.2"/>
     <property name="laserSpeed" type="float" value="10"/>
    </properties>
   </object>
-  <object id="17" type="object" gid="6" x="721.024" y="94.3653" width="21.4458" height="50.3671">
+  <object id="17" template="../templates/receiver.tx" x="721.024" y="94.3653">
    <properties>
-    <property name="capacity" type="float" value="100"/>
-    <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
-    <property name="conn0" value="{body}_Door_"/>
-    <property name="decaySpeed" type="float" value="20"/>
-    <property name="fillStep" type="float" value="10"/>
-    <property name="reversed" type="bool" value="true"/>
+    <property name="reversed" type="bool" value="false"/>
    </properties>
   </object>
   <object id="19" type="object" gid="15" x="308.667" y="620" width="182.667" height="33.3333">
@@ -40,9 +29,9 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="20" template="../templates/block.tx" x="481.417" y="600.333" width="319.833" height="20.6666"/>
+  <object id="20" template="../templates/block.tx" x="634.417" y="600.333" width="166.833" height="20.6666"/>
   <object id="21" template="../templates/block.tx" x="14.7502" y="408.333" width="166.5" height="20.6666"/>
-  <object id="22" template="../templates/emitter.tx" name="Emitidor 2" x="292.566" y="266.631" rotation="-270">
+  <object id="22" template="../templates/emitter.tx" name="Emitidor 2" x="292.54" y="350.119" rotation="-450">
    <properties>
     <property name="frequency" type="float" value="0.2"/>
     <property name="laserSpeed" type="float" value="10"/>
@@ -64,5 +53,16 @@
     <property name="laserSpeed" type="float" value="10"/>
    </properties>
   </object>
+  <object id="26" template="../templates/reflector.tx" x="25.5" y="387"/>
+  <object id="29" template="../templates/end_level.tx" x="589" y="369"/>
+  <object id="35" type="object" gid="10" x="101.583" y="160.75" width="26" height="26">
+   <properties>
+    <property name="ballSize" type="float" value="10"/>
+    <property name="class" value="com.mygdx.game.test.components.Cannon"/>
+    <property name="frequency" type="float" value="0.3"/>
+    <property name="strength" type="float" value="15"/>
+   </properties>
+  </object>
+  <object id="36" template="../templates/block.tx" x="481.583" y="600.333" width="106.5" height="20.6666"/>
  </objectgroup>
 </map>

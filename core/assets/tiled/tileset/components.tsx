@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.0" name="components" tilewidth="629" tileheight="630" tilecount="13" columns="0">
+<tileset name="components" tilewidth="629" tileheight="630" tilecount="13" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="431" height="217" source="../resources/botao 1.png"/>
@@ -56,8 +56,8 @@
  <tile id="7">
   <image width="374" height="356" source="../resources/refletor.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="18.1818" y="284.848">
-    <polygon points="3.0303,3.0303 106.061,-98.4848 145.455,-269.697 345.455,-9.09091 178.788,54.5455"/>
+   <object id="2" x="162.667" y="17.3333">
+    <polygon points="0,0 -142.667,278 206.667,277.333"/>
    </object>
   </objectgroup>
  </tile>

@@ -14,21 +14,19 @@ public class Cannon extends Platform{
 	Vector2 direction;
 	float strength;
 	StateOne state;
-	
-	Body body;
-	
+	float ballSize;
 	float timer;
 
 	public Cannon(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 		
-		body = get("body", Body.class);
 		body.setUserData(this);
 		state = (StateOne) getState();
 		
-		strength = get("strength", Float.class);
-		direction = Helper.newPolarVector(get("direction", Float.class), 1);
-		frequency = get("frequency", Float.class);
+		strength = get("strength", Float.class, 10f);
+		direction = Helper.newPolarVector(get("rotation", Float.class, 0f), 1);
+		frequency = get("frequency", Float.class, 1f);
+		ballSize = get("ballSize", Float.class, 10f);
 	}
 	
 	public boolean update(float delta) {
@@ -39,7 +37,7 @@ public class Cannon extends Platform{
 		if(timer > frequency / state.getWorldSpeed()) {
 			timer -= frequency / state.getWorldSpeed();
 			Vector2 sz = new Vector2(get("width", Float.class) / 2f / State.PHYS_SCALE, get("height", Float.class) / 2f / State.PHYS_SCALE);
-			CannonBall ball = new CannonBall(info, body.getWorldCenter().cpy().add(sz).scl(State.PHYS_SCALE), direction.cpy().scl(strength));
+			CannonBall ball = new CannonBall(info, body.getWorldCenter().cpy().add(sz).scl(State.PHYS_SCALE), direction.cpy().scl(strength), ballSize);
 			getState().putInScene(ball);
 		}
 		

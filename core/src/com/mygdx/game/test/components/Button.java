@@ -55,10 +55,10 @@ public class Button extends Platform{
 		
 		if(imgObj.getTile() instanceof AnimatedTiledMapTile) {
 			AnimatedTiledMapTile tile = (AnimatedTiledMapTile) imgObj.getTile();
-			TextureRegion region = tile.getFrameTiles()[0].getTextureRegion();
+			TextureRegion region = tile.getFrameTiles()[0].getTextureRegion(); //This gets the first frame (not pressed)
 			
 			if(pressed) {
-				region = tile.getFrameTiles()[1].getTextureRegion();
+				region = tile.getFrameTiles()[1].getTextureRegion(); //This gets the second frame (pressed)
 			}
 	
 			renderBodyRegionNoCenter(sb, region, body, imgObj.isFlipHorizontally(), imgObj.isFlipVertically());

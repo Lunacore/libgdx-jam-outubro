@@ -513,11 +513,6 @@ public class MyBox2DMapObjectParser {
 	
 		float rotation = object.getProperties().get("rotation", 0f, Float.class);
 		body.setTransform(body.getWorldCenter(), -(float) Math.toRadians(rotation));
-		
-		if(rotation != 0) {
-			System.out.println(object.getName() + " tem uma rotação diferente de zero");
-		}
-		
 		return body;
 	}
 
@@ -635,6 +630,7 @@ public class MyBox2DMapObjectParser {
 			assignProperties(fixtureDef, mapProperties);
 			assignProperties(fixtureDef, layerProperties);
 			assignProperties(fixtureDef, properties);
+			fixtureDef.density = 1f;
 	
 			Fixture fixture = body.createFixture(fixtureDef);
 			fixture.setUserData(findProperty(aliases.userData, fixture.getUserData(), heritage, mapProperties, layerProperties, properties));
@@ -663,7 +659,6 @@ public class MyBox2DMapObjectParser {
 		if((mapObject = listener.createFixtures(mapObject)) == null)
 			return null;
 		
-		String tabs = ""; for(int i = 0; i < level; i ++) tabs+="\t";
 		
 		/* CUSTOM ROTCIV INSERTION */
 		if(mapObject instanceof TiledMapTileMapObject) {

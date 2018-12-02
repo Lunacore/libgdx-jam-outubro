@@ -23,7 +23,6 @@ public class MyGdxGame extends ApplicationAdapter {
 		manager.create();
 		gifRecorder = new GifRecorder(batch);
 		ScreenSize.setDynamicScreen(true);
-		System.out.println(ScreenSize.getWidth());
 	}
 
 	@Override

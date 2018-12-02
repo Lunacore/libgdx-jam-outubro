@@ -37,7 +37,6 @@ public class StateOne extends State{
 		super.postRender(sb);
 		if(nextLevel) {
 			TransitionState.lastPrint = ScreenUtils.getFrameBufferTexture(0, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
-			System.out.println("TIROU PRINT");
 			manager.changeState(1);
 			nextLevel = false;
 		}

@@ -127,7 +127,6 @@ public class StateManager{
 	}
 
 	public boolean povMoved(Controller controller, int povCode, PovDirection value) {
-		System.out.println("Pov code: " + value);
 		return current().povMoved(controller, povCode, value);
 	}
 

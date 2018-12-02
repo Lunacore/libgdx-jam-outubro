@@ -1,5 +1,6 @@
 package com.mygdx.game.test.components;
 
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.states.State;
 import com.mygdx.game.structs.Transform;
@@ -29,7 +31,7 @@ public class LaserReceiver extends Platform{
 	
 	Vector2 gaugeMin;
 	Vector2 gaugeMax;
-	
+	Vector2 gaugeOriginalSize;
 	public LaserReceiver(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 		body.setUserData(this);
@@ -42,10 +44,11 @@ public class LaserReceiver extends Platform{
 		connections  = new ArrayList<Door>();
 		reversed = get("reversed") == null ? false : get("reversed", Boolean.class);
 	
+		gaugeMin = new Vector2();
+		gaugeMax = new Vector2();
 		
-		
+		gaugeOriginalSize = Helper.PhysHelp.getFixtureRelativeSize(body.getFixtureList().get(1));
 
-			
 	}
 	
 	public void create() {
@@ -67,14 +70,14 @@ public class LaserReceiver extends Platform{
 	
 	@Override
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-		super.render(sb, sr, camera);
+		
 		
 		sb.end();
 		
 		sr.begin(ShapeType.Filled);
 		sr.setProjectionMatrix(camera.combined);
 		
-
+		float factor = get("height", Float.class) / original_height;
 
 		sr.setColor(Color.RED);
 		sr.rect(
@@ -85,6 +88,7 @@ public class LaserReceiver extends Platform{
 				(gaugeMax.x - gaugeMin.x), (gaugeMax.y - gaugeMin.y),
 				1, 1, (float)Math.toDegrees(body.getAngle()));
 		
+				
 		sr.setColor(Color.GREEN);
 		sr.rect(
 				gaugeMin.x,
@@ -92,12 +96,12 @@ public class LaserReceiver extends Platform{
 				body.getWorldCenter().x - gaugeMin.x,
 				body.getWorldCenter().y - gaugeMin.y,
 				(gaugeMax.x - gaugeMin.x), (gaugeMax.y - gaugeMin.y) * (currentCapacity / capacity),
-				1, 1, (float)Math.toDegrees(body.getAngle()));		
+				1, 1, (float)Math.toDegrees(body.getAngle()));
 		
 		sr.end();
 		
 		sb.begin();
-		
+		super.render(sb, sr, camera);
 		
 	}
 	
@@ -110,8 +114,11 @@ public class LaserReceiver extends Platform{
 		
 		gaugeMin = new Vector2();
 		sh.getVertex(0, gaugeMin);
+		gaugeMin.scl(get("width", Float.class) / original_width, get("height", Float.class) / original_height);
 		gaugeMax = new Vector2();
 		sh.getVertex(2, gaugeMax);
+		gaugeMax.scl(get("width", Float.class) / original_width, get("height", Float.class) / original_height);
+
 		
 		gaugeMin.add(body.getWorldCenter());
 		gaugeMax.add(body.getWorldCenter());
@@ -145,29 +152,4 @@ public class LaserReceiver extends Platform{
 		}
 	}
 	
-	protected void renderBodyTexture2(SpriteBatch sb, Texture texture, Body body, Transform customTransform, boolean flipX, boolean flipY) {
-		renderTex(sb, texture, body.getWorldCenter().add(customTransform.getPosition()), (float)Math.toDegrees(body.getAngle()) + customTransform.getAngle(), customTransform.getScale().cpy().scl(1/State.PHYS_SCALE), flipX, flipY);
-	}
-	
-	public void renderTex(SpriteBatch sb, Texture tex, Vector2 position, float angle, Vector2 size, boolean flipX, boolean flipY) {
-		sb.draw(
-				tex,
-				position.x - tex.getWidth()/2f,
-				position.y - (tex.getHeight() * (currentCapacity / capacity))/2f,
-				tex.getWidth()/2f,//originx
-				(tex.getHeight() * (currentCapacity / capacity))/2f,//originy
-				tex.getWidth(),//width
-				(tex.getHeight() * (currentCapacity / capacity)),//height
-				size.x,//scalex
-				size.y,//scaley
-				angle,//rotation
-				0,//srcx
-				0,//srcy
-				tex.getWidth(),//srcwidth
-				(int)(tex.getHeight() * (currentCapacity / capacity)),//srcheight
-				flipX,
-				flipY
-				);
-	}
-
 }

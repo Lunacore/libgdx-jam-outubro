@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <object type="object" gid="6" width="21.4458" height="50.3671">
+  <properties>
+   <property name="capacity" type="float" value="100"/>
+   <property name="class" value="com.mygdx.game.test.components.LaserReceiver"/>
+   <property name="conn0" value="{body}_Door_"/>
+   <property name="decaySpeed" type="float" value="20"/>
+   <property name="fillStep" type="float" value="10"/>
+   <property name="reversed" type="bool" value="true"/>
+  </properties>
+ </object>
+</template>

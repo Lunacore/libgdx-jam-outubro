@@ -1,5 +1,7 @@
 package com.mygdx.game.test.components;
 
+import java.awt.geom.Rectangle2D;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
@@ -18,6 +20,7 @@ public class LaserEmitter extends Platform{
 	StateOne state;
 	Vector2 emitDirection;
 	Vector2 emitCenter;
+	Vector2 localCenter;
 
 	public LaserEmitter(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
@@ -30,17 +33,16 @@ public class LaserEmitter extends Platform{
 		emitDirection = Helper.newPolarVector(-get("rotation", Float.class), 1);
 		frequency = get("frequency", Float.class);
 		
-		emitCenter = new Vector2();
+		
 		
 		try {
-			emitCenter = ((CircleShape)body.getFixtureList().get(1).getShape()).getPosition().cpy();
+			localCenter = ((CircleShape)body.getFixtureList().get(1).getShape()).getPosition().cpy();
 		}
 		catch(Exception e) {
 			System.err.println("Objeto Laser Emitter deve ter como seu SEGUNDO fixture, um circulo para definir de onde sai o tiro");
 			Gdx.app.exit();
 		}
-		emitCenter.rotate((float) Math.toDegrees(body.getAngle()));
-		emitCenter.add(body.getWorldCenter()).scl(State.PHYS_SCALE);
+		
 		
 	}
 	
@@ -51,12 +53,23 @@ public class LaserEmitter extends Platform{
 		
 		if(laserTimer > frequency / state.getWorldSpeed()) {
 			laserTimer -= frequency / state.getWorldSpeed();
+			
+			emitCenter = localCenter.cpy();
+			emitCenter.scl(get("width", Float.class) / original_width, get("height", Float.class) / original_height);
+			emitCenter.rotate((float) Math.toDegrees(body.getAngle()));
+			emitCenter.add(body.getWorldCenter()).scl(State.PHYS_SCALE);
+			
 			Laser laser = new Laser(info, emitCenter, emitDirection, laserSpeed);
 			getState().putInScene(laser);
 		}
 
 		
 		return false;
+	}
+	
+	@Override
+	public void resizeBox(Rectangle2D oldRect, Rectangle2D newRect) {
+		changePosition(oldRect, newRect);
 	}
 
 }

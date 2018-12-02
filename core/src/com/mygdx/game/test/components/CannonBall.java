@@ -10,17 +10,24 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.GameObject;
 import com.mygdx.game.objects.ObjectInfo;
+import com.mygdx.game.states.State;
 
 public class CannonBall extends GameObject{
 
 	private Body body;
 	static Texture ball;
 	
-	public CannonBall(ObjectInfo info, Vector2 position, Vector2 velocity) {
+	public CannonBall(ObjectInfo info, Vector2 position, Vector2 velocity, float ballSize) {
 		super(info, new MapProperties());
 		transform.setPosition(Vector2.Zero.cpy());
 		
-		body = (Helper.PhysHelp.createDynamicCircleBody(getState().getWorld(), position.cpy(), 15));
+		if(ball == null) {
+			ball = new Texture("cannon ball.png");
+		}
+		
+		transform.setScale(new Vector2(ballSize / State.PHYS_SCALE, ballSize / State.PHYS_SCALE));
+		
+		body = (Helper.PhysHelp.createDynamicCircleBody(getState().getWorld(), position.cpy(), ballSize));
 		body.setLinearVelocity(velocity.cpy());
 		body.setUserData(this);
 	}
@@ -39,7 +46,7 @@ public class CannonBall extends GameObject{
 
 	@Override
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-		// TODO Auto-generated method stub
+		renderBodyTexture(sb, ball, body);
 		
 	}
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <object type="object" gid="8" width="37.7005" height="42.7273">
+  <properties>
+   <property name="bodyType" value="DynamicBody"/>
+   <property name="class" value="com.mygdx.game.test.components.Reflector"/>
+  </properties>
+ </object>
+</template>
