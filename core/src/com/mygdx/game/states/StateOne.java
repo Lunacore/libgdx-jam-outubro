@@ -67,6 +67,9 @@ public class StateOne extends State{
 
 	public void nextLevel() {
 		nextLevel = true;
+		if(Canvas.levelToLoad.equals("")) {
+			canvas.stopMusic();
+		}
 	}
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="38">
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="42">
  <properties>
   <property name="fundo" value="maps/quadros/voice-of-luna.jpg"/>
  </properties>
@@ -54,7 +54,7 @@
    </properties>
   </object>
   <object id="26" template="../templates/reflector.tx" name="Refletor" x="87.5" y="389"/>
-  <object id="29" template="../templates/end_level.tx" x="589" y="369"/>
+  <object id="29" template="../templates/end_level.tx" x="691" y="584"/>
   <object id="35" name="CANHAO" type="object" gid="10" x="101.583" y="160.75" width="26" height="26">
    <properties>
     <property name="ballSize" type="float" value="10"/>

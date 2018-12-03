@@ -40,6 +40,7 @@ public class StateManager{
 		states.add(new TransitionState(this));
 		states.add(new IntroState(this));
 		states.add(new OpeningCutsceneState(this));
+		states.add(new EndingCutsceneState(this));
 		states.add(new CreditsState(this));
 		
 		nextState = currentState;

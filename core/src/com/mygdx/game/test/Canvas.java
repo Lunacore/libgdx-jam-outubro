@@ -468,4 +468,8 @@ public class Canvas extends GameObject{
 	public boolean keyDown(int keycode) {
 		return super.keyDown(keycode);
 	}
+
+	public void stopMusic() {
+		musicTest.stop();
+	}
 }

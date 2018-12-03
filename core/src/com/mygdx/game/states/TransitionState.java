@@ -42,7 +42,8 @@ public class TransitionState extends State{
 	}
 	
 	public String proximo() {
-		if(Canvas.levelToLoad != null) {
+		if(Canvas.levelToLoad != null && !Canvas.levelToLoad.equals("")) {
+			System.out.println("[" + Canvas.levelToLoad + "]");
 			TiledMap t = new TmxMapLoader().load(Canvas.levelToLoad);
 			String ret = t.getProperties().get("fundo", String.class);
 			t.dispose();
@@ -58,6 +59,9 @@ public class TransitionState extends State{
 		String prox = proximo();
 		if(prox != null) {
 			nextPhaseBG = new Texture(proximo());
+		}
+		else {
+			manager.changeState(4);
 		}
 	}
 
