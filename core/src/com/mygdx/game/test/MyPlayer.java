@@ -9,23 +9,27 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.brashmonkey.spriter.PlayerTweener;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.helper.Helper.Game;
 import com.mygdx.game.objects.AnimationLoader;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.objects.PlatformPlayer;
+import com.mygdx.game.objects.SpriterAnimation;
+import com.mygdx.game.states.State;
 import com.mygdx.game.states.StateOne;
 import com.mygdx.game.states.TransitionState;
 
 public class MyPlayer extends PlatformPlayer{
 
-	Animation<TextureRegion> current;
-	Animation<TextureRegion> walk;
-	Animation<TextureRegion> idle;
+	SpriterAnimation animation;
+	float endVelocityX = 0;
+	PlayerTweener idle_run;
 	
 	public MyPlayer(ObjectInfo info, Vector2 position, Vector2 size) {
 		super(info, position, size.cpy().scl(1/2f));
 
+		
 	}
 
 	public MyPlayer(ObjectInfo info, MapProperties properties) {
@@ -40,13 +44,10 @@ public class MyPlayer extends PlatformPlayer{
 		setSpeed(get("speed", Float.class));
 		setJumpStrength(get("strength", Float.class));
 		
-		idle = AnimationLoader.load("animations/luna_idle.png", 147, 176, 0, 10, 1/24f);
-		idle.setPlayMode(PlayMode.LOOP);
-		
-		walk = AnimationLoader.load("animations/luna_walk.png", 147, 176, 0, 9, 1/24f);
-		walk.setPlayMode(PlayMode.LOOP);
-
-		current = idle;
+		animation = new SpriterAnimation(info, "spriter/luna/luna.scml", new Vector2(get("x", Float.class) / State.PHYS_SCALE, get("y", Float.class) / State.PHYS_SCALE));
+		getState().putInScene(animation);
+		idle_run = animation.createInterpolatedAnimation("Idle", "Run", 0);
+		animation.setPlayer(idle_run);
 	}
 	
 	public void create() {
@@ -57,20 +58,20 @@ public class MyPlayer extends PlatformPlayer{
 
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
 		
-		TextureRegion reg = current.getKeyFrame(timer);
-		renderBodyRegion(sb, reg, body, direction == -1, false);
 	}
 	
 	@Override
 	public boolean update(float delta) {
 		timer += delta * ((StateOne)getState()).getWorldSpeed() / 2f;
 		
-		if(Math.abs(body.getLinearVelocity().x) > 1){
-			current = walk;
-		}
-		else {
-			current = idle;
-		}
+		animation.getTransform().setPosition(
+				body.getWorldCenter().x,
+				body.getWorldCenter().y - 0.5f);
+		animation.setScale(new Vector2(1/14f, 1/14f));
+		animation.flip(direction == -1, false);
+		
+		endVelocityX += (Math.abs(body.getLinearVelocity().x) - endVelocityX) / 15f;
+		idle_run.setWeight(endVelocityX / speed);
 		
 		return super.update(delta);
 	}
