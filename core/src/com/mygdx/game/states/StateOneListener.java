@@ -39,6 +39,7 @@ public class StateOneListener extends EmptyContact{
 			MyPlayer player = getInstanceFromContact(contact, MyPlayer.class);
 			EndLevel endLevel = getInstanceFromContact(contact, EndLevel.class);
 			TransitionState.nextPhase = endLevel.nextLevel;
+			TransitionState.direction = endLevel.direction;
 			Canvas.levelToLoad = endLevel.nextLevel;
 			((StateOne)state).nextLevel();
 		}

@@ -17,7 +17,7 @@ public class TransitionState extends State{
 
 	public static TextureRegion lastPrint;
 	
-	Texture print;
+	Texture parede;
 	
 	float offset = 0;
 	float timer = 0;
@@ -26,17 +26,22 @@ public class TransitionState extends State{
 	CanvasFrame frame;
 	
 	public static String nextPhase;
+	
+	public static final int RIGHT = 0;
+	public static final int LEFT = 1;
+	public static final int UP = 2;
+	public static final int DOWN = 3;
+	
+	public static int direction = UP;
+
 
 	public TransitionState(StateManager manager) {
 		super(manager);	
 		
 		enablePhysics(null);
-		print = new Texture("fundo.jpg");
+		parede = new Texture("fundo.jpg");
 		
-		frame = new CanvasFrame(new ObjectInfo(this, 0, 1f),
-				new Rectangle2D.Double(
-						ScreenSize.getWidth() - (ScreenSize.getWidth() - 800) / 2f,
-						0, 800, 600));
+		
 		camera.position.set(400 / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
 
 	}
@@ -54,6 +59,30 @@ public class TransitionState extends State{
 	}
 
 	public void create() {
+		
+		float stX = 0;
+		float stY = 0;
+		
+		switch(direction) {
+			case LEFT:
+				stX = ScreenSize.getWidth();
+				break;
+			case RIGHT:
+				stX = -ScreenSize.getWidth();
+				break;
+			case UP:
+				stY = ScreenSize.getHeight();
+				break;
+			case DOWN:
+				stY = - ScreenSize.getHeight();
+				break;
+		}
+		
+		frame = new CanvasFrame(new ObjectInfo(this, 0, 1f),
+				new Rectangle2D.Double(
+						stX - (ScreenSize.getWidth() - 800) / 2f,
+						stY, 800, 600));
+		
 		offset  = 0;
 		timer = 0;
 		String prox = proximo();
@@ -69,12 +98,43 @@ public class TransitionState extends State{
 		sb.setProjectionMatrix(Helper.getDefaultProjection());
 		
 		sb.begin();
-		sb.draw(lastPrint, -offset, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
-		sb.draw(print, ScreenSize.getWidth() - offset, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
 		
-		if(nextPhaseBG != null) {
-			sb.draw(nextPhaseBG, ScreenSize.getWidth() - offset + (ScreenSize.getWidth() - 800)/2f, (ScreenSize.getHeight() - 600)/2f, 800, 600);
-			
+		if(direction == LEFT || direction == RIGHT) {
+			sb.draw(lastPrint, -offset, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
+		}
+		else {
+			sb.draw(lastPrint, 0, -offset, ScreenSize.getWidth(), ScreenSize.getHeight());
+		}
+		
+		switch(direction) {
+			case LEFT:
+				sb.draw(parede, ScreenSize.getWidth() - offset, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
+				if(nextPhaseBG != null) {
+					sb.draw(nextPhaseBG, ScreenSize.getWidth() - offset + (ScreenSize.getWidth() - 800)/2f, (ScreenSize.getHeight() - 600)/2f, 800, 600);
+				}
+				break;
+			case RIGHT:
+				sb.draw(parede, - ScreenSize.getWidth() - offset, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
+				if(nextPhaseBG != null) {
+					sb.draw(nextPhaseBG, - ScreenSize.getWidth() - offset + (ScreenSize.getWidth() - 800)/2f, (ScreenSize.getHeight() - 600)/2f, 800, 600);
+				}
+				break;
+			case UP:
+				sb.draw(parede, 0, ScreenSize.getHeight() - offset, ScreenSize.getWidth(), ScreenSize.getHeight());
+				if(nextPhaseBG != null) {
+					sb.draw(nextPhaseBG,(ScreenSize.getWidth() - 800)/2f, ScreenSize.getHeight() + (ScreenSize.getHeight() - 600)/2f - offset, 800, 600);
+				}
+				break;
+			case DOWN:
+				sb.draw(parede, 0, - ScreenSize.getHeight() - offset, ScreenSize.getWidth(), ScreenSize.getHeight());
+				if(nextPhaseBG != null) {
+					sb.draw(nextPhaseBG, (ScreenSize.getWidth() - 800)/2f, - ScreenSize.getHeight() + (ScreenSize.getHeight() - 600)/2f - offset, 800, 600);
+				}
+				break;
+		}
+		
+		
+		if(nextPhaseBG != null) {			
 			sb.setProjectionMatrix(camera.combined);
 			frame.render(sb, sr, camera);
 		}
@@ -85,12 +145,32 @@ public class TransitionState extends State{
 
 	public void update(float delta) {
 		timer += delta;
-		camera.position.set((-150 + offset) / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
+		
+		if(direction == LEFT || direction == RIGHT) {
+			camera.position.set((-150 + offset) / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
+		}
+		else {
+			camera.position.set(-150 / State.PHYS_SCALE, (300 + offset) / State.PHYS_SCALE, 0);
+		}
 		
 		timer = Math.min(timer, 2);
 		
 		frame.update(delta);
-		offset = easeInOut(timer/2f, 0, ScreenSize.getWidth(), 1);
+		
+		switch(direction) {
+			case LEFT:
+				offset = easeInOut(timer/2f, 0, ScreenSize.getWidth(), 1);
+				break;
+			case RIGHT:
+				offset = easeInOut(timer/2f, 0, -ScreenSize.getWidth(), 1);
+				break;
+			case UP:
+				offset = easeInOut(timer/2f, 0, ScreenSize.getHeight(), 1);
+				break;
+			case DOWN:
+				offset = easeInOut(timer/2f, 0, - ScreenSize.getHeight(), 1);
+				break;
+		}
 		
 		if(timer >= 2) {
 			if(nextPhaseBG != null) {
