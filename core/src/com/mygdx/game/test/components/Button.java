@@ -2,7 +2,9 @@ package com.mygdx.game.test.components;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -15,7 +17,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.mygdx.game.helper.Helper;
-import com.mygdx.game.objects.GameParticle;
 import com.mygdx.game.objects.ObjectInfo;
 
 public class Button extends Platform{
@@ -24,10 +25,10 @@ public class Button extends Platform{
 	ArrayList<Door> connections;
 	BitmapFont font;
 	boolean pressed = false;
-
 	float timerToPressAgain = 0;
-	
 	Vector2 normalScale;
+	
+	static Sound click;
 	
 	static Texture fumacinha = new Texture("fumacinha.png");
 	
@@ -35,7 +36,9 @@ public class Button extends Platform{
 		super(info, properties);
 		connections = new ArrayList<Door>();
 		font = Helper.newFont("Allan-Bold.ttf", 18);
-		
+		if(click == null) {
+			click = Gdx.audio.newSound(Gdx.files.internal("audio/button.ogg"));
+		}
 	}
 	
 	public void create() {
@@ -70,6 +73,7 @@ public class Button extends Platform{
 		for(Door d : connections) {
 			d.open();
 		}
+		
 	}
 
 	
@@ -108,12 +112,16 @@ public class Button extends Platform{
 	public void press() {
 		
 		if(timerToPressAgain < 0) {
+			if(!pressed) {
+				click.play(1);
+			}
 			pressed = true;
 			Fixture f = body.getFixtureList().get(1);
 			f.setSensor(true);
 			
 			activate();
 			timerToPressAgain = 0.4f;
+			
 		}
 
 	}

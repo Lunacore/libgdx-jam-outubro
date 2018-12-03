@@ -54,7 +54,11 @@
    </properties>
   </object>
   <object id="26" template="../templates/reflector.tx" name="Refletor" x="87.5" y="389"/>
-  <object id="29" template="../templates/end_level.tx" x="691" y="584"/>
+  <object id="29" template="../templates/end_level.tx" x="691" y="584">
+   <properties>
+    <property name="next" value="tiled/maps/EMPTY.tmx"/>
+   </properties>
+  </object>
   <object id="35" name="CANHAO" type="object" gid="10" x="101.583" y="160.75" width="26" height="26">
    <properties>
     <property name="ballSize" type="float" value="10"/>

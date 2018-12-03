@@ -3,6 +3,7 @@ package com.mygdx.game.test.components;
 import java.awt.geom.Rectangle2D;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.CircleShape;
@@ -21,6 +22,7 @@ public class LaserEmitter extends Platform{
 	Vector2 emitDirection;
 	Vector2 emitCenter;
 	Vector2 localCenter;
+	static Sound laser;
 
 	public LaserEmitter(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
@@ -33,7 +35,8 @@ public class LaserEmitter extends Platform{
 		emitDirection = Helper.newPolarVector(-get("rotation", Float.class), 1);
 		frequency = get("frequency", Float.class);
 		
-		
+		if(laser == null)
+		laser = Gdx.audio.newSound(Gdx.files.internal("audio/laser.ogg"));
 		
 		try {
 			localCenter = ((CircleShape)body.getFixtureList().get(1).getShape()).getPosition().cpy();
@@ -61,6 +64,7 @@ public class LaserEmitter extends Platform{
 			
 			Laser laser = new Laser(info, emitCenter, emitDirection, laserSpeed);
 			getState().putInScene(laser);
+			LaserEmitter.laser.play(0.5f);
 		}
 
 		

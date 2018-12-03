@@ -1,5 +1,7 @@
 package com.mygdx.game.states;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
@@ -21,10 +23,13 @@ import com.mygdx.game.test.components.Reflector;
 
 public class StateOneListener extends EmptyContact{
 
+	Sound reflect;
 	
 	public StateOneListener(State state) {
 		super(state);
+		reflect = Gdx.audio.newSound(Gdx.files.internal("audio/reflect.ogg"));
 	}
+
 
 	public void beginContact(Contact contact) {
 		PlatformPlayer.beginContact(contact, this);
@@ -45,6 +50,7 @@ public class StateOneListener extends EmptyContact{
 			Vector2 result = contact.getWorldManifold().getNormal().rotate(ang);
 			
 			laser.setVelocity(result);
+			reflect.play(0.3f);
 		}
 		
 		//Player morre

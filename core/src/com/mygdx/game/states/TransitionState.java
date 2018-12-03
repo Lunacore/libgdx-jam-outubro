@@ -85,8 +85,8 @@ public class TransitionState extends State{
 
 	public void update(float delta) {
 		timer += delta;
-		camera.position.set((400 + offset) / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
-		camera.update();
+		camera.position.set((-150 + offset) / State.PHYS_SCALE, 300 / State.PHYS_SCALE, 0);
+		
 		timer = Math.min(timer, 2);
 		
 		frame.update(delta);
@@ -100,7 +100,7 @@ public class TransitionState extends State{
 				manager.changeState(4);
 			}
 		}
-		
+		camera.update();
 	}
 	
 	public float easeInOut(float t,float b , float c, float d) {

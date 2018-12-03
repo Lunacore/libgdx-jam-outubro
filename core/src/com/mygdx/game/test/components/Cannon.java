@@ -1,8 +1,9 @@
 package com.mygdx.game.test.components;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.states.State;
@@ -16,6 +17,7 @@ public class Cannon extends Platform{
 	StateOne state;
 	float ballSize;
 	float timer;
+	Sound fire;
 
 	public Cannon(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
@@ -27,6 +29,8 @@ public class Cannon extends Platform{
 		direction = Helper.newPolarVector(get("rotation", Float.class, 0f), 1);
 		frequency = get("frequency", Float.class, 1f);
 		ballSize = get("ballSize", Float.class, 10f);
+		
+		fire = Gdx.audio.newSound(Gdx.files.internal("audio/cannon.ogg"));
 	}
 	
 	public boolean update(float delta) {
@@ -39,6 +43,7 @@ public class Cannon extends Platform{
 			Vector2 sz = new Vector2(get("width", Float.class) / 2f / State.PHYS_SCALE, get("height", Float.class) / 2f / State.PHYS_SCALE);
 			CannonBall ball = new CannonBall(info, body.getWorldCenter().cpy().add(sz).scl(State.PHYS_SCALE), direction.cpy().scl(strength), ballSize);
 			getState().putInScene(ball);
+			fire.play(0.3f);
 		}
 		
 		return false;

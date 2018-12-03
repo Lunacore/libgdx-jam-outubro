@@ -1,35 +1,29 @@
 package com.mygdx.game.test;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.brashmonkey.spriter.PlayerTweener;
 import com.mygdx.game.MyGdxGame;
-import com.mygdx.game.helper.Helper.Game;
-import com.mygdx.game.objects.AnimationLoader;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.objects.PlatformPlayer;
 import com.mygdx.game.objects.SpriterAnimation;
 import com.mygdx.game.states.State;
 import com.mygdx.game.states.StateOne;
-import com.mygdx.game.states.TransitionState;
 
 public class MyPlayer extends PlatformPlayer{
 
 	SpriterAnimation animation;
 	float endVelocityX = 0;
 	PlayerTweener idle_run;
+	Sound death;
 	
 	public MyPlayer(ObjectInfo info, Vector2 position, Vector2 size) {
 		super(info, position, size.cpy().scl(1/2f));
-
-		
 	}
 
 	public MyPlayer(ObjectInfo info, MapProperties properties) {
@@ -49,6 +43,8 @@ public class MyPlayer extends PlatformPlayer{
 		idle_run = animation.createInterpolatedAnimation("Idle", "Run", 0);
 		animation.setPlayer(idle_run);
 		animation.setToRender(false);
+		
+		death = Gdx.audio.newSound(Gdx.files.internal("audio/luna_die.ogg"));
 	}
 	
 	public void create() {
@@ -82,6 +78,7 @@ public class MyPlayer extends PlatformPlayer{
 	public void kill() {
 		((StateOne)getState()).kill();
 		MyGdxGame.sendEvent("player_killed");
+		death.play(0.6f);
 	}
 
 	public void dispose() {

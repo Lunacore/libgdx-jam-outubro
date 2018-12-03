@@ -1,11 +1,11 @@
 package com.mygdx.game.test.components;
 
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -15,8 +15,6 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.mygdx.game.helper.Helper;
 import com.mygdx.game.objects.ObjectInfo;
-import com.mygdx.game.states.State;
-import com.mygdx.game.structs.Transform;
 
 public class LaserReceiver extends Platform{
 	
@@ -32,6 +30,9 @@ public class LaserReceiver extends Platform{
 	Vector2 gaugeMin;
 	Vector2 gaugeMax;
 	Vector2 gaugeOriginalSize;
+	
+	static Sound receive;
+	
 	public LaserReceiver(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
 		body.setUserData(this);
@@ -49,6 +50,7 @@ public class LaserReceiver extends Platform{
 		
 		gaugeOriginalSize = Helper.PhysHelp.getFixtureRelativeSize(body.getFixtureList().get(1));
 
+		receive = Gdx.audio.newSound(Gdx.files.internal("audio/receive.ogg"));
 	}
 	
 	public void create() {
@@ -150,6 +152,7 @@ public class LaserReceiver extends Platform{
 		else {
 			targetCapacity -= fillStep;
 		}
+		receive.play(0.5f);
 	}
 	
 }

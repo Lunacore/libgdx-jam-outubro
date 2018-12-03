@@ -1,14 +1,10 @@
 package com.mygdx.game.test.components;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.mygdx.game.helper.Helper;
-import com.mygdx.game.objects.GameParticle;
 import com.mygdx.game.objects.ObjectInfo;
 import com.mygdx.game.states.State;
 import com.mygdx.game.states.StateOne;
@@ -24,6 +20,8 @@ public class Door extends Platform {
 	float openTimer;
 	
 	Button parent;
+	static Sound open_sound;
+	static Sound close_sound;
 	
 	public Door(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
@@ -32,6 +30,12 @@ public class Door extends Platform {
 		body.setUserData(this);
 		
 		timeOpen = get("timeOpen", Float.class);
+		
+		if(open_sound == null) {
+			open_sound = Gdx.audio.newSound(Gdx.files.internal("audio/door_open.ogg"));
+			close_sound = Gdx.audio.newSound(Gdx.files.internal("audio/door_close.ogg"));
+		}
+
 	}
 	
 	public void setParent(Button button) {
@@ -45,6 +49,7 @@ public class Door extends Platform {
 		else {
 			open = false;
 			body.getFixtureList().get(0).setSensor(false);
+			close_sound.play();
 		}
 	}
 	
@@ -53,6 +58,7 @@ public class Door extends Platform {
 			open = true;
 			openTimer = timeOpen;
 			body.getFixtureList().get(0).setSensor(true);
+			open_sound.play();
 		}
 	}
 
