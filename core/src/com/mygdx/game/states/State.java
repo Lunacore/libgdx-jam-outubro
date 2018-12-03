@@ -420,5 +420,9 @@ public abstract class State{
 		return rayHandler;
 	}
 
+	public boolean hasObject(GameObject go) {
+		return gos.contains(go);
+	}
+
 	
 }

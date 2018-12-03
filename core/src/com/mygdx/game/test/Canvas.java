@@ -152,6 +152,10 @@ public class Canvas extends GameObject{
 		armYcurrent = new Vector2(Position.CENTERX.cpy().add(0, ScreenSize.getHeight()));
 
 	}
+	
+	public void addPlatform(GameObject go) {
+		platforms.add(go);
+	}
 
 	public void create() {
 		
@@ -162,18 +166,13 @@ public class Canvas extends GameObject{
 		
 	}
 
-	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-		
-		sb.setProjectionMatrix(Helper.getDefaultProjection());
-		//bg.render(sb, sr, camera);
-		sb.draw(wall_bg, 0, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
-		
+	public void renderFrame(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
 		sb.setProjectionMatrix(camera.combined);
 		FrameBufferStack.begin(fbo);
 		Gdx.gl.glClearColor(17/255f, 26/255f, 36/255f, 0f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		canvas_bg.render(sb, sr, camera);
+		
 		frame.render(sb, sr, camera);
 		
 		FrameBufferStack.end();
@@ -217,6 +216,14 @@ public class Canvas extends GameObject{
 		sb.setShader(null);
 
 		sb.draw(tex, 0, ScreenSize.getHeight(), ScreenSize.getWidth(), -ScreenSize.getHeight());
+	}
+	
+	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
+		
+		sb.setProjectionMatrix(Helper.getDefaultProjection());
+		sb.draw(wall_bg, 0, 0, ScreenSize.getWidth(), ScreenSize.getHeight());
+		canvas_bg.render(sb, sr, camera);
+
 		
 		sb.setProjectionMatrix(camera.combined);
 		//Desenha os blocos recortados
@@ -226,7 +233,12 @@ public class Canvas extends GameObject{
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		for(int i = platforms.size() -1 ; i >= 0; i --) {
-			platforms.get(i).render(sb, sr, camera);
+			if(getState().hasObject(platforms.get(i))) {
+				platforms.get(i).render(sb, sr, camera);
+			}
+			else {
+				platforms.remove(i);
+			}
 		}
 		
 		FrameBufferStack.end();
@@ -254,7 +266,7 @@ public class Canvas extends GameObject{
 		
 		
 		sb.begin();
-		
+				
 		sb.setProjectionMatrix(Helper.getDefaultProjection());
 		
 		sb.draw(partialplats,
@@ -262,6 +274,8 @@ public class Canvas extends GameObject{
 				ScreenSize.getHeight() - (int)canvasBox.getY() - (ScreenSize.getHeight() - 600)/2f,
 				(int)canvasBox.getWidth(),
 				-(int)canvasBox.getHeight());
+		
+		renderFrame(sb, sr, camera);
 		
 		ursoPos += (0 - ursoPos)/5f;
 		
@@ -277,11 +291,14 @@ public class Canvas extends GameObject{
 		armY.render(sb, sr, camera);
 		
 		sb.setProjectionMatrix(camera.combined);
+		
+	
+
 }
 	
 	
 	public void resizeBox(Vector2 newSize) {
-		newSize.set(Helper.clamp(newSize.x, 300, 1000), Helper.clamp(newSize.y, 200, 600));
+		newSize.set(Helper.clamp(newSize.x, 300, 1000), Helper.clamp(newSize.y, 400, 800));
 		targetCanvasBox.setFrame((800 - newSize.x)/2f, (600 - newSize.y)/2f, newSize.x, newSize.y);
 	}
 	

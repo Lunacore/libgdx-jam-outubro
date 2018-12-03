@@ -63,8 +63,8 @@
     <property name="strength" type="float" value="15"/>
    </properties>
   </object>
-  <object id="36" template="../templates/block.tx" x="481.583" y="600.333" width="106.5" height="20.6666"/>
-  <object id="37" name="Lava" type="object" gid="15" x="487.166" y="692.833" width="250.167" height="76.8333">
+  <object id="36" template="../templates/block.tx" x="481.583" y="600.333" width="91.5" height="20.6666"/>
+  <object id="37" name="Lava" type="object" gid="15" x="526.058" y="812.579" width="250.167" height="76.8333" rotation="-22.9575">
    <properties>
     <property name="class" value="com.mygdx.game.test.components.DeathCompo"/>
     <property name="tamanho" type="bool" value="true"/>

@@ -48,6 +48,7 @@ public class MyPlayer extends PlatformPlayer{
 		getState().putInScene(animation);
 		idle_run = animation.createInterpolatedAnimation("Idle", "Run", 0);
 		animation.setPlayer(idle_run);
+		animation.setToRender(false);
 	}
 	
 	public void create() {
@@ -57,7 +58,7 @@ public class MyPlayer extends PlatformPlayer{
 	float timer = 0;
 
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-		
+		animation.render(sb, sr, camera);
 	}
 	
 	@Override
@@ -72,6 +73,8 @@ public class MyPlayer extends PlatformPlayer{
 		
 		endVelocityX += (Math.abs(body.getLinearVelocity().x) - endVelocityX) / 15f;
 		idle_run.setWeight(endVelocityX / speed);
+		
+		animation.getPlayer().speed = (int) (15f * ((StateOne)getState()).getWorldSpeed());
 		
 		return super.update(delta);
 	}

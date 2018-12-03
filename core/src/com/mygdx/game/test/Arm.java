@@ -102,7 +102,7 @@ public class Arm extends GameObject{
 	}
 
 	public boolean update(float delta) {
-		length = armEnd.cpy().sub(armStart).len() / scale;
+		length = armEnd.cpy().sub(armStart.cpy()).len() / scale;
 		angle = armEnd.cpy().sub(armStart.cpy()).angle();
 		return false;
 	}

@@ -52,7 +52,7 @@ public class Button extends Platform{
 	
 	@Override
 	public void render(SpriteBatch sb, ShapeRenderer sr, OrthographicCamera camera) {
-		
+		//sb.setProjectionMatrix(camera.combined);
 		if(imgObj.getTile() instanceof AnimatedTiledMapTile) {
 			AnimatedTiledMapTile tile = (AnimatedTiledMapTile) imgObj.getTile();
 			TextureRegion region = tile.getFrameTiles()[0].getTextureRegion(); //This gets the first frame (not pressed)
@@ -78,7 +78,7 @@ public class Button extends Platform{
 		super.update(delta);
 		timerToPressAgain -= delta;
 		
-		return super.update(delta);
+		return false;
 	}
 
 	public boolean isBounded() {
