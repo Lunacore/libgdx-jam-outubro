@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="53">
+ <properties>
+  <property name="fundo" value="maps/quadros/voice-of-luna.jpg"/>
+  <property name="xLocked" type="bool" value="true"/>
+  <property name="yLocked" type="bool" value="false"/>
+ </properties>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <objectgroup name="objs">
+  <object id="3" template="../templates/block.tx" x="-4.6667" y="598.167" width="825.5" height="20.6666"/>
+  <object id="5" template="../templates/luna.tx" x="44" y="581.333" width="60" height="100"/>
+  <object id="6" template="../templates/block.tx" x="754.333" y="501.333" width="45.5" height="494"/>
+  <object id="7" template="../templates/block.tx" x="0" y="26.6667" width="799.833" height="24.6666"/>
+  <object id="9" template="../templates/block.tx" x="-1.25" y="494" width="26.5" height="487.667"/>
+  <object id="29" name="End Level" type="object" gid="10" x="789.667" y="594.667" width="10" height="100">
+   <properties>
+    <property name="class" value="com.mygdx.game.test.components.EndLevel"/>
+    <property name="direction" value="LEFT"/>
+    <property name="next" value=""/>
+    <property name="tamanho" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="46" template="../templates/spawn_point.tx" x="724" y="567"/>
+  <object id="47" template="../templates/block.tx" x="176" y="213" width="54.5" height="205.333"/>
+  <object id="48" template="../templates/emitter.tx" x="19.8603" y="144.899">
+   <properties>
+    <property name="frequency" type="float" value="0.2"/>
+   </properties>
+  </object>
+  <object id="49" template="../templates/receiver.tx" x="150.194" y="140.232" width="26.9458" height="43.3671">
+   <properties>
+    <property name="decaySpeed" type="float" value="10"/>
+    <property name="fillStep" type="float" value="20"/>
+    <property name="reversed" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="50" template="../templates/block.tx" x="664.75" y="482.666" width="110.5" height="14.3333"/>
+  <object id="51" template="../templates/door.tx" name="Door" x="666.75" y="582.667" width="10" height="100.667">
+   <properties>
+    <property name="timeOpen" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="52" template="../templates/end_level.tx" x="4" y="583" width="10" height="100">
+   <properties>
+    <property name="direction" value="RIGHT"/>
+    <property name="next" value="tiled/maps/level10.tmx"/>
+    <property name="spawnPoint" value="A"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -11,9 +11,11 @@ public class EndLevel extends Platform{
 	
 	public String nextLevel;
 	public int direction;
+	public String spawnPoint;
 	
 	public EndLevel(ObjectInfo info, MapProperties properties) {
 		super(info, properties);
+		this.spawnPoint = get("spawnPoint", String.class);
 		body = get("body", Body.class);
 		body.getFixtureList().get(0).setSensor(true);
 		body.setUserData(this);

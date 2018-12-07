@@ -48,6 +48,7 @@ public class EndingCutsceneState extends State{
 	}
 
 	public void create() {
+		System.out.println("End game step 4");
 		music.setVolume(0);
 		music.play();
 		fade.create();

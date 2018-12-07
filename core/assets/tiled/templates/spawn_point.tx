@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="A">
+  <properties>
+   <property name="class" value="com.mygdx.game.test.components.SpawnPoint"/>
+  </properties>
+  <point/>
+ </object>
+</template>

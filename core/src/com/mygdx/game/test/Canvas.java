@@ -50,7 +50,7 @@ public class Canvas extends GameObject{
 	
 	static float musicCurrentPitch;
 	
-	public static String levelToLoad = "tiled/maps/EMPTY.tmx";
+	public static String levelToLoad = "tiled/maps/level0.tmx";
 	
 	static Sound musicTest;
 	long musicID;

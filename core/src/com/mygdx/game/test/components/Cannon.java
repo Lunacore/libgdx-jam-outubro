@@ -16,7 +16,7 @@ public class Cannon extends Platform{
 	float strength;
 	StateOne state;
 	float ballSize;
-	float timer;
+	float timer = -1;
 	Sound fire;
 
 	public Cannon(ObjectInfo info, MapProperties properties) {
@@ -26,10 +26,9 @@ public class Cannon extends Platform{
 		state = (StateOne) getState();
 		
 		strength = get("strength", Float.class, 10f);
-		direction = Helper.newPolarVector(get("rotation", Float.class, 0f), 1);
+		direction = Helper.newPolarVector((float) Math.toDegrees(body.getAngle()), 1);
 		frequency = get("frequency", Float.class, 1f);
 		ballSize = get("ballSize", Float.class, 10f);
-		
 		fire = Gdx.audio.newSound(Gdx.files.internal("audio/cannon.ogg"));
 	}
 	
@@ -41,6 +40,7 @@ public class Cannon extends Platform{
 		if(timer > frequency / state.getWorldSpeed()) {
 			timer -= frequency / state.getWorldSpeed();
 			Vector2 sz = new Vector2(get("width", Float.class) / 2f / State.PHYS_SCALE, get("height", Float.class) / 2f / State.PHYS_SCALE);
+			sz.rotate((float) Math.toDegrees(body.getAngle()));
 			CannonBall ball = new CannonBall(info, body.getWorldCenter().cpy().add(sz).scl(State.PHYS_SCALE), direction.cpy().scl(strength), ballSize);
 			getState().putInScene(ball);
 			fire.play(0.3f);

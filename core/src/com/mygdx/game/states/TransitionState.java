@@ -90,7 +90,8 @@ public class TransitionState extends State{
 			nextPhaseBG = new Texture(proximo());
 		}
 		else {
-			manager.changeState(4);
+			System.out.println("End game step 3");
+			nextPhaseBG = null;
 		}
 	}
 

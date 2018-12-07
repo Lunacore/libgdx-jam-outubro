@@ -152,7 +152,7 @@ public class LaserReceiver extends Platform{
 		else {
 			targetCapacity -= fillStep;
 		}
-		receive.play(0.5f);
+		receive.play(0.3f);
 	}
 	
 }

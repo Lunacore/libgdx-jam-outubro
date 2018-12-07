@@ -126,4 +126,8 @@ public class Button extends Platform{
 
 	}
 
+	public Body getBody() {
+		return body;
+	}
+
 }

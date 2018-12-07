@@ -63,7 +63,7 @@ public class MyPlayer extends PlatformPlayer{
 		
 		animation.getTransform().setPosition(
 				body.getWorldCenter().x,
-				body.getWorldCenter().y - 0.5f);
+				body.getWorldCenter().y - 0.656f);
 		animation.setScale(new Vector2(1/14f, 1/14f));
 		animation.flip(direction == -1, false);
 		

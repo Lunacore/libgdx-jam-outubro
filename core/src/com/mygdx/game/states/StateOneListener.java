@@ -36,10 +36,10 @@ public class StateOneListener extends EmptyContact{
 		
 		//Player termina a fase
 		if(compareCollision(contact, MyPlayer.class, EndLevel.class)) {
-			MyPlayer player = getInstanceFromContact(contact, MyPlayer.class);
 			EndLevel endLevel = getInstanceFromContact(contact, EndLevel.class);
 			TransitionState.nextPhase = endLevel.nextLevel;
 			TransitionState.direction = endLevel.direction;
+			StateOne.spawnPoint = endLevel.spawnPoint;
 			Canvas.levelToLoad = endLevel.nextLevel;
 			((StateOne)state).nextLevel();
 		}
@@ -51,7 +51,7 @@ public class StateOneListener extends EmptyContact{
 			Vector2 result = contact.getWorldManifold().getNormal().rotate(ang);
 			
 			laser.setVelocity(result);
-			reflect.play(0.3f);
+			reflect.play(0.1f);
 		}
 		
 		//Player morre
@@ -112,12 +112,25 @@ public class StateOneListener extends EmptyContact{
 		}
 		//Bola de canhão aperta o botão
 		if(compareCollision(contact, Button.class, CannonBall.class)){
+			Button button = getInstanceFromContact(contact, Button.class);
+			float bang = normalizeAngle((float) Math.toDegrees(button.getBody().getAngle()));
+		
 			float angCos = contact.getWorldManifold().getNormal().angle();
-			if(angCos > 85 && angCos < 95) {
-				Button button = getInstanceFromContact(contact, Button.class);
+			System.out.println("Angle: " + bang + ", contact: " + angCos);
+
+			if(angCos > bang + 85 && angCos < bang + 95) {
 				button.press();
 			}
 		}
+	}
+	
+	public float normalizeAngle(float angle) {
+		
+		while(angle < 0)
+			angle += 360;
+		
+		angle = angle % 360;
+		return angle;
 	}
 
 	public void postSolve(Contact contact, ContactImpulse impulse) {

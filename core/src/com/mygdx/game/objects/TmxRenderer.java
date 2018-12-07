@@ -124,15 +124,16 @@ public class TmxRenderer{
 	
 	public void instanceSingle(MapObject mo, MapLayer layer, int layerCount) {
 		
+		
 		MapProperties props = mo.getProperties();
+		props.put("name", mo.getName());
 		String objClass = props.get("class", String.class);
 		
 		Body body = parser.getBodiesID().get(props.get("id", Integer.class), null);
 		if(body != null)
 		props.put("body", body);
-		
 		props.put("this", mo);
-		
+		props.put("position", new Vector2(props.get("x", Float.class), props.get("y", Float.class)));
 			try {
 				//Pega a classe que vai ser instanciada
 				@SuppressWarnings("rawtypes")
@@ -161,9 +162,7 @@ public class TmxRenderer{
 				e.printStackTrace();
 			} catch (InvocationTargetException e) {
 				System.err.println("Erro ao tentar instanciar objeto da classe " + objClass);
-				System.out.println("eta");
 				e.getTargetException().printStackTrace();
-				System.out.println("porra");
 				Gdx.app.exit();
 			} catch (NoSuchMethodException e) {
 				e.printStackTrace();

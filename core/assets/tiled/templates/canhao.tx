@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <object name="CANHAO" type="object" gid="16" width="33.4583" height="24.3333">
+  <properties>
+   <property name="ballSize" type="float" value="10"/>
+   <property name="class" value="com.mygdx.game.test.components.Cannon"/>
+   <property name="frequency" type="float" value="0.3"/>
+   <property name="strength" type="float" value="15"/>
+  </properties>
+ </object>
+</template>

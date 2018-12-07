@@ -15,7 +15,7 @@ import com.mygdx.game.states.StateOne;
 public class LaserEmitter extends Platform{
 	
 	float frequency;
-	float laserTimer = 0;
+	float laserTimer = -1;
 	float laserSpeed = 1;
 	
 	StateOne state;
@@ -64,7 +64,7 @@ public class LaserEmitter extends Platform{
 			
 			Laser laser = new Laser(info, emitCenter, emitDirection, laserSpeed);
 			getState().putInScene(laser);
-			LaserEmitter.laser.play(0.5f);
+			LaserEmitter.laser.play(0.3f);
 		}
 
 		

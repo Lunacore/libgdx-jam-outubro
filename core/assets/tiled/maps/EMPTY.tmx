@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="42">
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="46">
  <properties>
   <property name="fundo" value="maps/quadros/voice-of-luna.jpg"/>
+  <property name="xLocked" type="bool" value="false"/>
+  <property name="yLocked" type="bool" value="false"/>
  </properties>
  <tileset firstgid="1" source="../tileset/components.tsx"/>
  <objectgroup name="objs">
-  <object id="2" template="../templates/botao.tx" type="object" x="468.424" y="581.439"/>
-  <object id="3" template="../templates/block.tx" x="1" y="598.167" width="319.833" height="20.6666"/>
-  <object id="5" template="../templates/luna.tx" x="43" y="578.333"/>
-  <object id="6" template="../templates/block.tx" x="773.333" y="588" width="26.5" height="580.667"/>
+  <object id="2" template="../templates/botao.tx" type="object" x="628.39" y="535.739" rotation="-90"/>
+  <object id="3" template="../templates/block.tx" x="-85.6667" y="598.167" width="406.5" height="20.6666"/>
+  <object id="5" template="../templates/luna.tx" x="44" y="581.333" width="60" height="100"/>
+  <object id="6" template="../templates/block.tx" x="773.333" y="501.333" width="26.5" height="494"/>
   <object id="7" template="../templates/block.tx" x="0" y="26.6667" width="799.833" height="24.6666"/>
-  <object id="9" template="../templates/block.tx" x="-1.25" y="587" width="26.5" height="580.667"/>
+  <object id="9" template="../templates/block.tx" x="-1.25" y="483" width="26.5" height="476.667"/>
   <object id="10" template="../templates/door.tx" name="Door" gid="12" x="644.333" y="579" width="9" height="100.667" rotation="0"/>
   <object id="15" template="../templates/emitter.tx" name="Emitidor 1" x="641.5" y="91.701">
    <properties>
@@ -23,13 +25,8 @@
     <property name="reversed" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="19" name="Lava" type="object" gid="15" x="308.667" y="620" width="182.667" height="33.3333">
-   <properties>
-    <property name="class" value="com.mygdx.game.test.components.DeathCompo"/>
-    <property name="tamanho" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="20" template="../templates/block.tx" x="634.417" y="600.333" width="166.833" height="20.6666"/>
+  <object id="19" template="../templates/lava.tx" x="308.667" y="620"/>
+  <object id="20" template="../templates/block.tx" x="634.417" y="600.333" width="218.833" height="20.6666"/>
   <object id="21" template="../templates/block.tx" x="14.7502" y="408.333" width="166.5" height="20.6666"/>
   <object id="22" template="../templates/emitter.tx" name="Emitidor 2" x="278.274" y="334.183" rotation="-540">
    <properties>
@@ -53,16 +50,12 @@
     <property name="laserSpeed" type="float" value="10"/>
    </properties>
   </object>
-  <object id="26" template="../templates/reflector.tx" name="Refletor" x="87.5" y="389"/>
-  <object id="29" template="../templates/end_level.tx" x="691" y="584"/>
-  <object id="35" name="CANHAO" type="object" gid="10" x="101.583" y="160.75" width="26" height="26">
+  <object id="29" template="../templates/end_level.tx" x="793.667" y="594.667">
    <properties>
-    <property name="ballSize" type="float" value="10"/>
-    <property name="class" value="com.mygdx.game.test.components.Cannon"/>
-    <property name="frequency" type="float" value="0.3"/>
-    <property name="strength" type="float" value="15"/>
+    <property name="spawnPoint" value="A"/>
    </properties>
   </object>
+  <object id="35" template="../templates/canhao.tx" x="23.2497" y="119.417" width="75.625" height="55"/>
   <object id="36" template="../templates/block.tx" x="481.583" y="600.333" width="91.5" height="20.6666"/>
   <object id="37" name="Lava" type="object" gid="15" x="526.058" y="812.579" width="250.167" height="76.8333" rotation="-22.9575">
    <properties>
@@ -70,5 +63,12 @@
     <property name="tamanho" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="42" template="../templates/reflector.tx" x="145.5" y="380.333"/>
+  <object id="43" template="../templates/end_level.tx" x="-90" y="583.333" width="100" height="121.333">
+   <properties>
+    <property name="direction" value="RIGHT"/>
+   </properties>
+  </object>
+  <object id="44" template="../templates/spawn_point.tx" x="62" y="373"/>
  </objectgroup>
 </map>

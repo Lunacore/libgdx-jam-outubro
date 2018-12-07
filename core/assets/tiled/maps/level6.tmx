@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="10" tileheight="10" infinite="0" nextobjectid="58">
+ <properties>
+  <property name="fundo" value="maps/quadros/voice-of-luna.jpg"/>
+  <property name="xLocked" type="bool" value="true"/>
+  <property name="yLocked" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" source="../tileset/components.tsx"/>
+ <objectgroup name="objs">
+  <object id="3" template="../templates/block.tx" x="-4.6667" y="598.167" width="825.5" height="20.6666"/>
+  <object id="5" template="../templates/luna.tx" x="44" y="581.333" width="60" height="100"/>
+  <object id="6" template="../templates/block.tx" x="773.333" y="501.333" width="26.5" height="494"/>
+  <object id="7" template="../templates/block.tx" x="0" y="26.6667" width="799.833" height="24.6666"/>
+  <object id="9" template="../templates/block.tx" x="-1.25" y="484" width="26.5" height="477.667"/>
+  <object id="29" template="../templates/end_level.tx" x="789.667" y="594.667" width="10" height="100">
+   <properties>
+    <property name="next" value="tiled/maps/level7.tmx"/>
+   </properties>
+  </object>
+  <object id="46" template="../templates/spawn_point.tx" x="724" y="567"/>
+  <object id="47" template="../templates/canhao.tx" x="72.2292" y="26.4375" width="55.7916" height="40.5757" rotation="-270">
+   <properties>
+    <property name="frequency" type="float" value="1"/>
+    <property name="strength" type="float" value="15"/>
+   </properties>
+  </object>
+  <object id="48" template="../templates/door.tx" name="DoorA" x="142.667" y="180" width="13.3333" height="100.667" rotation="270"/>
+  <object id="49" template="../templates/block.tx" x="141" y="180.333" width="9.16667" height="155.333"/>
+  <object id="50" template="../templates/block.tx" x="38.4167" y="178.667" width="9.16667" height="155.333"/>
+  <object id="51" template="../templates/botao.tx" x="60" y="331">
+   <properties>
+    <property name="conn0" value="{body}_DoorB_"/>
+   </properties>
+  </object>
+  <object id="53" template="../templates/block.tx" x="17" y="382" width="154.5" height="51.3333"/>
+  <object id="54" template="../templates/block.tx" x="608" y="481" width="179.5" height="14.3333"/>
+  <object id="55" template="../templates/door.tx" name="DoorB" x="610" y="581" width="10" height="100.667"/>
+  <object id="56" template="../templates/botao.tx" x="359" y="582">
+   <properties>
+    <property name="conn0" value="{body}_DoorA_"/>
+   </properties>
+  </object>
+  <object id="57" template="../templates/end_level.tx" x="8" y="583" width="10" height="100">
+   <properties>
+    <property name="direction" value="RIGHT"/>
+    <property name="next" value="tiled/maps/level5.tmx"/>
+    <property name="spawnPoint" value="A"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
